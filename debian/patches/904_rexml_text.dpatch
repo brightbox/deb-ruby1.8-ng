@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 904_rexml_text.dpatch by Daigo Moriwaki <daigo@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix for Bug#462902. The upstream's chage is between r14826 and r15141.
+
+@DPATCH@
+diff -urNad ruby-1.8.6-p111~/lib/rexml/text.rb ruby-1.8.6-p111/lib/rexml/text.rb
+--- ruby-1.8.6-p111~/lib/rexml/text.rb	2007-07-28 11:46:08.000000000 +0900
++++ ruby-1.8.6-p111/lib/rexml/text.rb	2008-01-28 23:40:42.000000000 +0900
+@@ -286,7 +286,7 @@
+     EREFERENCE = /&(?!#{Entity::NAME};)/
+     # Escapes all possible entities
+     def Text::normalize( input, doctype=nil, entity_filter=nil )
+-      copy = input
++      copy = input.to_s
+       # Doing it like this rather than in a loop improves the speed
+       #copy = copy.gsub( EREFERENCE, '&amp;' )
+       copy = copy.gsub( "&", "&amp;" )
