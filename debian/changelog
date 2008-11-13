@@ -1,3 +1,11 @@
+ruby1.8 (1.8.7.72-2) unstable; urgency=high
+
+  * updated 168_rexml_dos.patch:
+    - fixed regression of fix of REXML DoS vulnerability (CVE-2008-3790)
+      (ref: #502535)
+
+ -- akira yamada <akira@debian.org>  Thu, 13 Nov 2008 10:19:49 +0900
+
 ruby1.8 (1.8.7.72-1) unstable; urgency=high
 
   * New upstream release.
