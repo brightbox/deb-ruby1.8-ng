@@ -9,3 +9,4 @@
 904_rexml_text.dpatch
 102_configure.in-crosscompile
 168_rexml_dos.dpatch
+905_class_dup_should_copy_constants

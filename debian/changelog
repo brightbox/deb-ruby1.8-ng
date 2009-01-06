@@ -1,3 +1,11 @@
+ruby1.8 (1.8.7.72-3) unstable; urgency=medium
+
+  * applied debian/patches/905_class_dup_should_copy_constants.dpatch:
+    - Class#dup should copy constants into the duplicated class.
+      (closes: #506344)
+
+ -- akira yamada <akira@debian.org>  Tue, 06 Jan 2009 10:56:56 +0900
+
 ruby1.8 (1.8.7.72-2) unstable; urgency=high
 
   * updated 168_rexml_dos.patch:
