@@ -10,3 +10,5 @@
 102_configure.in-crosscompile
 168_rexml_dos.dpatch
 905_class_dup_should_copy_constants
+931_CVE-2009-0642
+932_CVE-2009-1904
