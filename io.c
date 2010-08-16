@@ -2,8 +2,8 @@
 
   io.c -
 
-  $Author: knu $
-  $Date: 2008-06-09 03:20:37 +0900 (Mon, 09 Jun 2008) $
+  $Author: shyouhei $
+  $Date: 2010-06-08 18:02:21 +0900 (Tue, 08 Jun 2010) $
   created at: Fri Oct 15 18:08:59 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -35,6 +35,14 @@
 
 #if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) || defined(sun) || defined(_nec_ews)
 # define USE_SETVBUF
+#endif
+
+#ifndef BSD_STDIO
+# if defined(__MACH__) || defined(__DARWIN__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__)
+#   define BSD_STDIO 1
+# else
+#   define BSD_STDIO 0
+# endif
 #endif
 
 #ifdef __QNXNTO__
@@ -111,6 +119,9 @@ extern void Init_File _((void));
 #  define PIPE_BUF 512 /* is this ok? */
 # endif
 #endif
+
+#define preserving_errno(stmts) \
+	do {int saved_errno = errno; stmts; errno = saved_errno;} while (0)
 
 VALUE rb_cIO;
 VALUE rb_eEOFError;
@@ -479,6 +490,9 @@ io_fwrite(str, fptr)
         TRAP_BEG;
 	r = write(fileno(f), RSTRING(str)->ptr+offset, l);
         TRAP_END;
+#if BSD_STDIO
+	preserving_errno(fseeko(f, lseek(fileno(f), (off_t)0, SEEK_CUR), SEEK_SET));
+#endif
         if (r == n) return len;
         if (0 <= r) {
             offset += r;
@@ -650,6 +664,9 @@ rb_io_flush(io)
     f = GetWriteFile(fptr);
 
     io_fflush(f, fptr);
+#ifdef _WIN32
+    fsync(fileno(f));
+#endif
 
     return io;
 }
@@ -1283,6 +1300,8 @@ io_getpartial(int argc, VALUE *argv, VALUE io, int nonblock)
                 goto again;
             rb_sys_fail(fptr->path);
         }
+        if (fptr->f) /* update pos in FILE structure [ruby-core:21561] */
+            fflush(fptr->f);
     }
     rb_str_resize(str, n);
 
@@ -2329,10 +2348,10 @@ rb_io_fptr_finalize(fptr)
     if (fptr->path) {
 	free(fptr->path);
     }
-    if (!fptr->f && !fptr->f2) return;
-    if (fileno(fptr->f) < 3) return;
-
-    rb_io_fptr_cleanup(fptr, Qtrue);
+    if ((fptr->f && fileno(fptr->f) > 2) || fptr->f2) {
+	rb_io_fptr_cleanup(fptr, Qtrue);
+    }
+    xfree(fptr);
 }
 
 VALUE
@@ -2691,11 +2710,11 @@ VALUE
 rb_io_binmode(io)
     VALUE io;
 {
-#if defined(_WIN32) || defined(DJGPP) || defined(__CYGWIN__) || defined(__human68k__) || defined(__EMX__)
     rb_io_t *fptr;
 
     GetOpenFile(io, fptr);
-#ifdef __human68k__
+#if (defined(O_BINARY) && O_BINARY) || (defined(_IOBIN) && _IOBIN)
+#if (defined(_IOBIN) && _IOBIN)	/* __human68k__ */
     if (fptr->f)
 	fmode(fptr->f, _IOBIN);
     if (fptr->f2)
@@ -2874,13 +2893,16 @@ rb_io_modenum_mode(flags)
 #else
 # define MODE_BINARY(a,b) (a)
 #endif
+    int accmode = flags & O_ACCMODE;
     if (flags & O_APPEND) {
-	if ((flags & O_RDWR) == O_RDWR) {
+	if (accmode == O_WRONLY) {
+            return MODE_BINARY("a", "ab");
+        }
+	if (accmode == O_RDWR) {
 	    return MODE_BINARY("a+", "ab+");
 	}
-	return MODE_BINARY("a", "ab");
     }
-    switch (flags & (O_RDONLY|O_WRONLY|O_RDWR)) {
+    switch (accmode) {
       case O_RDONLY:
 	return MODE_BINARY("r", "rb");
       case O_WRONLY:
@@ -2900,10 +2922,16 @@ rb_sysopen(fname, flags, mode)
 {
     int fd;
 
+#ifdef _WIN32
+    errno = EINVAL;
+#endif
     fd = open(fname, flags, mode);
     if (fd < 0) {
 	if (errno == EMFILE || errno == ENFILE) {
 	    rb_gc();
+#ifdef _WIN32
+	    errno = EINVAL;
+#endif
 	    fd = open(fname, flags, mode);
 	}
 	if (fd < 0) {
@@ -3223,6 +3251,7 @@ retry:
     }
 
   retry:
+    rb_thread_stop_timer();
     switch ((pid = fork())) {
       case 0:			/* child */
 	if (modef & FMODE_READABLE) {
@@ -3250,11 +3279,13 @@ retry:
 		    ruby_sourcefile, ruby_sourceline, pname);
 	    _exit(127);
 	}
+	rb_thread_start_timer();
 	rb_io_synchronized(RFILE(orig_stdout)->fptr);
 	rb_io_synchronized(RFILE(orig_stderr)->fptr);
 	return Qnil;
 
       case -1:			/* fork failed */
+	rb_thread_start_timer();
 	if (errno == EAGAIN) {
 	    rb_thread_sleep(1);
 	    goto retry;
@@ -3275,6 +3306,7 @@ retry:
 	break;
 
       default:			/* parent */
+	rb_thread_start_timer();
 	if (pid < 0) rb_sys_fail(pname);
 	else {
 	    VALUE port = io_alloc(rb_cIO);
@@ -4482,10 +4514,7 @@ static void
 argf_close(file)
     VALUE file;
 {
-    if (TYPE(file) == T_FILE)
-	rb_io_close(file);
-    else
-	rb_funcall3(file, rb_intern("close"), 0, 0);
+    rb_funcall3(file, rb_intern("close"), 0, 0);
 }
 
 static int
@@ -5443,6 +5472,18 @@ io_s_read(arg)
     return io_read(arg->argc, &arg->sep, arg->io);
 }
 
+struct seek_arg {
+    VALUE io;
+    VALUE offset;
+    int mode;
+};
+
+static VALUE
+seek_before_read(struct seek_arg *arg)
+{
+    return rb_io_seek(arg->io, arg->offset, arg->mode);
+}
+
 /*
  *  call-seq:
  *     IO.read(name, [length [, offset]] )   => string
@@ -5472,7 +5513,16 @@ rb_io_s_read(argc, argv, io)
     arg.io = rb_io_open(StringValueCStr(fname), "r");
     if (NIL_P(arg.io)) return Qnil;
     if (!NIL_P(offset)) {
-	rb_io_seek(arg.io, offset, SEEK_SET);
+	struct seek_arg sarg;
+	int state = 0;
+	sarg.io = arg.io;
+	sarg.offset = offset;
+	sarg.mode = SEEK_SET;
+	rb_protect((VALUE (*)(VALUE))seek_before_read, (VALUE)&sarg, &state);
+	if (state) {
+	    rb_io_close(arg.io);
+	    rb_jump_tag(state);
+	}
     }
     return rb_ensure(io_s_read, (VALUE)&arg, rb_io_close, arg.io);
 }
@@ -5544,6 +5594,7 @@ argf_eof()
 {
     if (current_file) {
 	if (init_p == 0) return Qtrue;
+	next_argv();
 	ARGF_FORWARD(0, 0);
 	if (rb_io_eof(current_file)) {
 	    return Qtrue;
@@ -5733,7 +5784,7 @@ argf_binmode()
 static VALUE
 argf_skip()
 {
-    if (next_p != -1) {
+    if (init_p && next_p == 0) {
 	argf_close(current_file);
 	next_p = 1;
     }

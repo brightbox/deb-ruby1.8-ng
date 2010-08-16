@@ -1,16 +1,10 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 803_soap_massmem.dpatch by akira yamada <akira@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: Fix for Debian bug #393685 - SOAP4R consumes too much memory
-## DP: This was not backported into ruby 1.8 upstream (and soap is no
-## DP: longer shipped with ruby 1.9)
-## DP: refreshed for 1.8.7.72 so it can unapply - only whitespace changes.
-
-@DPATCH@
-diff -burN ruby1.8-1.8.7.72.orig/lib/soap/baseData.rb ruby1.8-1.8.7.72/lib/soap/baseData.rb
---- ruby1.8-1.8.7.72.orig/lib/soap/baseData.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/soap/baseData.rb	2008-09-10 07:36:40.000000000 +0200
+Author: akira yamada <akira@debian.org>
+Description: Fix for Debian bug #393685 - SOAP4R consumes too much memory
+This was not backported into ruby 1.8 upstream (and soap is no
+longer shipped with ruby 1.9)
+refreshed for 1.8.7.72 so it can unapply - only whitespace changes.
+--- a/lib/soap/baseData.rb
++++ b/lib/soap/baseData.rb
 @@ -1,5 +1,5 @@
  # soap/baseData.rb: SOAP4R - Base type library
 -# Copyright (C) 2000, 2001, 2003-2005  NAKAMURA, Hiroshi <nahi@ruby-lang.org>.
@@ -18,7 +12,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/baseData.rb ruby1.8-1.8.7.72/lib/soap/
  
  # This program is copyrighted free software by NAKAMURA, Hiroshi.  You can
  # redistribute it and/or modify it under the same terms of Ruby's license;
-@@ -657,37 +657,30 @@
+@@ -657,37 +657,30 @@ private
      value
    end
  
@@ -71,10 +65,9 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/baseData.rb ruby1.8-1.8.7.72/lib/soap/
  end
  
  
-diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/lib/soap/mapping/mapping.rb
---- ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/soap/mapping/mapping.rb	2008-09-10 07:36:40.000000000 +0200
-@@ -42,7 +42,8 @@
+--- a/lib/soap/mapping/mapping.rb
++++ b/lib/soap/mapping/mapping.rb
+@@ -42,7 +42,8 @@ module Mapping
      soap_obj = nil
      protect_threadvars(:SOAPMarshalDataKey, :SOAPExternalCES, :SOAPMarshalNoReference) do
        Thread.current[:SOAPMarshalDataKey] = {}
@@ -84,7 +77,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
        Thread.current[:SOAPMarshalNoReference] = opt[:no_reference]
        soap_obj = _obj2soap(obj, registry, type)
      end
-@@ -54,7 +55,8 @@
+@@ -54,7 +55,8 @@ module Mapping
      obj = nil
      protect_threadvars(:SOAPMarshalDataKey, :SOAPExternalCES, :SOAPMarshalNoReference) do
        Thread.current[:SOAPMarshalDataKey] = {}
@@ -94,7 +87,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
        Thread.current[:SOAPMarshalNoReference] = opt[:no_reference]
        obj = _soap2obj(node, registry, klass)
      end
-@@ -67,7 +69,8 @@
+@@ -67,7 +69,8 @@ module Mapping
      soap_ary = SOAPArray.new(ValueArrayName, 1, type)
      protect_threadvars(:SOAPMarshalDataKey, :SOAPExternalCES, :SOAPMarshalNoReference) do
        Thread.current[:SOAPMarshalDataKey] = {}
@@ -104,7 +97,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
        Thread.current[:SOAPMarshalNoReference] = opt[:no_reference]
        ary.each do |ele|
          soap_ary.add(_obj2soap(ele, registry, type))
-@@ -82,7 +85,8 @@
+@@ -82,7 +85,8 @@ module Mapping
      md_ary = SOAPArray.new(ValueArrayName, rank, type)
      protect_threadvars(:SOAPMarshalDataKey, :SOAPExternalCES, :SOAPMarshalNoReference) do
        Thread.current[:SOAPMarshalDataKey] = {}
@@ -114,7 +107,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
        Thread.current[:SOAPMarshalNoReference] = opt[:no_reference]
        add_md_ary(md_ary, ary, [], registry)
      end
-@@ -292,16 +296,28 @@
+@@ -292,16 +296,28 @@ module Mapping
        end
      else
        values.each do |attr_name, value|
@@ -147,7 +140,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
            rescue TypeError
              # singleton class may not exist (e.g. Float)
            end
-@@ -310,11 +326,6 @@
+@@ -310,11 +326,6 @@ module Mapping
      end
    end
  
@@ -159,10 +152,9 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/mapping.rb ruby1.8-1.8.7.72/li
    def self.schema_type_definition(klass)
      class_schema_variable(:schema_type, klass)
    end
-diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/registry.rb ruby1.8-1.8.7.72/lib/soap/mapping/registry.rb
---- ruby1.8-1.8.7.72.orig/lib/soap/mapping/registry.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/soap/mapping/registry.rb	2008-09-10 07:36:40.000000000 +0200
-@@ -133,23 +133,24 @@
+--- a/lib/soap/mapping/registry.rb
++++ b/lib/soap/mapping/registry.rb
+@@ -133,23 +133,24 @@ class Object; include Marshallable
  
  private
  
@@ -199,10 +191,9 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/registry.rb ruby1.8-1.8.7.72/l
          end
        EOS
      end
-diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/wsdlliteralregistry.rb ruby1.8-1.8.7.72/lib/soap/mapping/wsdlliteralregistry.rb
---- ruby1.8-1.8.7.72.orig/lib/soap/mapping/wsdlliteralregistry.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/soap/mapping/wsdlliteralregistry.rb	2008-09-10 07:36:40.000000000 +0200
-@@ -360,36 +360,27 @@
+--- a/lib/soap/mapping/wsdlliteralregistry.rb
++++ b/lib/soap/mapping/wsdlliteralregistry.rb
+@@ -360,36 +360,27 @@ private
      end
    end
  
@@ -250,7 +241,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/wsdlliteralregistry.rb ruby1.8
      def define_xmlattr(obj)
        obj.instance_variable_set('@__xmlattr', {})
        unless obj.respond_to?(:__xmlattr)
-@@ -400,7 +391,6 @@
+@@ -400,7 +391,6 @@ private
          EOS
        end
      end
@@ -258,10 +249,9 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/mapping/wsdlliteralregistry.rb ruby1.8
  
    # it caches @@schema_element.  this means that @@schema_element must not be
    # changed while a lifetime of a WSDLLiteralRegistry.
-diff -burN ruby1.8-1.8.7.72.orig/lib/soap/rpc/driver.rb ruby1.8-1.8.7.72/lib/soap/rpc/driver.rb
---- ruby1.8-1.8.7.72.orig/lib/soap/rpc/driver.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/soap/rpc/driver.rb	2008-09-10 07:36:40.000000000 +0200
-@@ -222,18 +222,9 @@
+--- a/lib/soap/rpc/driver.rb
++++ b/lib/soap/rpc/driver.rb
+@@ -222,18 +222,9 @@ private
      add_method_interface(name, param_count)
    end
  
@@ -283,7 +273,7 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/rpc/driver.rb ruby1.8-1.8.7.72/lib/soa
      def add_method_interface(name, param_count)
        instance_eval <<-EOS
          def #{name}(*arg)
-@@ -246,7 +237,6 @@
+@@ -246,7 +237,6 @@ private
        EOS
        self.method(name)
      end
@@ -291,10 +281,9 @@ diff -burN ruby1.8-1.8.7.72.orig/lib/soap/rpc/driver.rb ruby1.8-1.8.7.72/lib/soa
  end
  
  
-diff -burN ruby1.8-1.8.7.72.orig/lib/xsd/charset.rb ruby1.8-1.8.7.72/lib/xsd/charset.rb
---- ruby1.8-1.8.7.72.orig/lib/xsd/charset.rb	2008-09-10 07:36:30.000000000 +0200
-+++ ruby1.8-1.8.7.72/lib/xsd/charset.rb	2008-09-10 07:36:40.000000000 +0200
-@@ -167,7 +167,7 @@
+--- a/lib/xsd/charset.rb
++++ b/lib/xsd/charset.rb
+@@ -167,7 +167,7 @@ public
      SJISRegexp =~ str
    end
  

@@ -1,15 +1,9 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 102_configure.in-crosscompile.dpatch by Lucas Nussbaum <lucas@lucas-nussbaum.net>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: patch for Debian bug #341256
-## DP: replace AC_FUNC_SETPGRP with something that works when cross-compiling
-
-@DPATCH@
-diff -urNad trunk~/configure.in trunk/configure.in
---- trunk~/configure.in	2007-09-07 09:38:51.000000000 +0200
-+++ trunk/configure.in	2008-03-21 10:52:50.000000000 +0100
-@@ -635,7 +635,25 @@
+Author: Lucas Nussbaum <lucas@lucas-nussbaum.net>
+Description: patch for Debian bug #341256
+replace AC_FUNC_SETPGRP with something that works when cross-compiling
+--- a/configure.in
++++ b/configure.in
+@@ -825,7 +825,25 @@ main()
  fi
  
  AC_FUNC_GETPGRP
@@ -36,4 +30,3 @@ diff -urNad trunk~/configure.in trunk/configure.in
  
  AC_C_BIGENDIAN
  AC_C_CONST
-

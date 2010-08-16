@@ -1,3 +1,165 @@
+ruby1.8 (1.8.7.302-1) unstable; urgency=high
+
+  * New upstream release in the stable 1.8.7 branch (very minor changes only).
+    + Fixes CVE-2010-0541.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Mon, 16 Aug 2010 11:23:16 +0200
+
+ruby1.8 (1.8.7.299-2) unstable; urgency=low
+
+  * Convert from dpatch to quilt using dpatch2quilt.sh
+  * Add patch 100730_disable_getsetcontext_on_nptl: disable getsetcontext on
+    NPTL. LP: #307462, Closes: #579229
+  * Added 100730_verbose-tests.patch: run tests in verbose mode.
+  * Run make test-all, but do not consider failures fatal for now.
+  * Upgrade to Standards-Version: 3.9.1. No changes needed.
+  * Deal with Ubuntu changing the GCC target to i686-linux-gnu: search
+    for libs in i486-linux too. LP: #611322.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 30 Jul 2010 17:45:14 -0400
+
+ruby1.8 (1.8.7.299-1) unstable; urgency=low
+
+  * New upstream release
+  * Removed patches that the upstrem has applied:
+    - debian/patches/100312_timeout-fix.dpatch
+    - debian/patches/100620_fix_pathname_warning.dpatch
+    - debian/patches/100620_fix_super_called_outside_of_method.dpatch
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sun, 27 Jun 2010 22:16:44 +0900
+
+ruby1.8 (1.8.7.249-4) unstable; urgency=low
+
+  [ Lucas Nussbaum ]
+  * Make ruby1.8 depend on exactly the same version of libruby1.8 after
+    private discussion with Alex Legler. This avoids confusing situations
+    for users.
+  * Update debian/patches/100312_timeout-fix.dpatch after discussion with
+    Petr Salinger. Treat FreeBSD the same as Linux. Closes: #580464
+
+  [ Daigo Moriwaki ]
+  * Removed debian/patches/091125_gc_check.dpatch, which the upstream has
+    applied. (Closes: #586374)
+  * Added debian/patches/100620_fix_pathname_warning.dpatch, which was
+    backported from the upstream r23485. 
+    (Closes: #566611)
+  * Added debian/patches/100620_fix_super_called_outside_of_method.dpatch,
+    which was backported from the upstream r26534:26536. (Closes: #568597)
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sun, 20 Jun 2010 17:30:27 +0900
+
+ruby1.8 (1.8.7.249-3) unstable; urgency=low
+
+  * Fix sections. Agree with ftpmasters.
+  * Update debian/copyright. Clarify that Ruby is GPLv2, not just "GPL".
+  * Merge lib{dbm,gdbm,readline,openssl}-ruby1.8 into libruby1.8.
+  * Merge irb1.8 and rdoc1.8 into ruby1.8.
+  * Update lintian override.
+  * Update debian/copyright.
+  * Upgrade to Standards-Version: 3.8.4. No changes needed.
+  * Add README.source.
+  * Fix not-binnmuable-all-depends-any lintian warning.
+  * Add lintian override for package-name-doesnt-match-sonames.
+  * Remove duplicate section/priority stanzas.
+  * Fix a few minor problems in manpages.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Tue, 23 Mar 2010 13:21:22 +0100
+
+ruby1.8 (1.8.7.249-2) unstable; urgency=low
+
+  * Add 100312_timeout-fix.dpatch: Backport upstream change to fix
+    problem with threads and timeouts. Closes: #539987
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 12 Mar 2010 07:13:47 +0100
+
+ruby1.8 (1.8.7.249-1) unstable; urgency=high
+
+  * New upstream release.
+  * The upstream has fixed a vulnerability in WEBrick, a part of Ruby's
+    standard library.  WEBrick lets attackers to inject malicious escape
+    sequences to its logs, making it possible for dangerous control characters
+    to be executed on a victim's terminal emulator.
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sun, 10 Jan 2010 22:40:36 +0900
+
+ruby1.8 (1.8.7.248-1) unstable; urgency=low
+
+  * New upstream release
+  * Removed patches that the upstream has been applied:
+    - debian/patches/904_rexml_text.dpatch
+    - debian/patches/090811_thread_and_select.dpatch
+    - debian/patches/090812_finalizer_at_exit.dpatch
+    - debian/patches/090812_class_clone_segv.dpatch
+    - debian/patches/090812_eval_long_exp_segv.dpatch
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sun, 03 Jan 2010 14:46:17 +0900
+
+ruby1.8 (1.8.7.174-3) unstable; urgency=low
+
+  * Added debian/patches/091125_gc_check.dpatch: applied Bryan's patch to fix
+    garbage collector seg faults under race conditions. (upstream issue #2326)
+    Thans to Bryan McLellan.  (Closes: #557924)
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sat, 28 Nov 2009 12:50:08 +0900
+
+ruby1.8 (1.8.7.174-2) unstable; urgency=medium
+
+  [ akira yamada ]
+  * Added debian/patches/090811_thread_and_select.dpatch: threads may hangup
+    when IO.select called from two or more threads.
+  * Added debian/patches/090812_finalizer_at_exit.dpatch: finalizers should be
+    run at exit (Closes: #534241)
+  * Added debian/patches/090812_class_clone_segv.dpatch: avoid segv when an
+    object cloned.  (Closes: #533329)
+  * Added debian/patches/090812_eval_long_exp_segv.dpatch: fix segv when eval
+    a long expression.  (Closes: #510561)
+  * Added debian/patches/090812_openssl_x509_warning.dpatch: suppress warning
+    from OpenSSL::X509::ExtensionFactory.  (Closes: #489443)
+
+  [ Lucas Nussbaum ]
+  * Removed Fumitoshi UKAI <ukai@debian.or.jp> from Uploaders. Thanks a
+    lot for the past help! Closes: #541037
+
+  [ Daigo Moriwaki ]
+  * debian/fixshebang.sh: skip non-text files, which works around hanging of
+    sed on scanning gif images.
+  * Bumped up Standards-Version to 3.8.2.
+
+ -- Daigo Moriwaki <daigo@debian.org>  Wed, 19 Aug 2009 20:24:37 +0900
+
+ruby1.8 (1.8.7.174-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daigo Moriwaki <daigo@debian.org>  Tue, 16 Jun 2009 23:16:51 +0900
+
+ruby1.8 (1.8.7.173-1) unstable; urgency=high
+
+  * New upstream release.
+  * removed unnecessary patchs under debian/patches:
+    - 168_rexml_dos.dpatch
+    - 801_update_sample_README
+    - 807_sync_try_lock_always_fail.dpatch
+    - 905_class_dup_should_copy_constants.dpatch
+    - 090301_r22646_OCSP_basic_verify.dpatch
+  * Added a patch: debian/patches/090613_exclude_rdoc.dpatch
+  * Added debian/libopenssl-ruby1.8.lintian-overrides
+  * The upstream has fixed the DoS vulnerability in BigDecimal Ruby
+    Library (CVE-2009-1904; Closes: #532689)
+  * debian/control:
+    - Bumped up Standards-Version to 3.8.1.
+    - Corrected sections.
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sat, 13 Jun 2009 11:34:34 +0900
+
+ruby1.8 (1.8.7.72-3.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Add upstream patch to properly check return values of the
+    OCSP_basic_verify function (CVE-2009-0642; Closes: #522939,#517639)
+
+ -- Nico Golde <nion@debian.org>  Tue, 07 Apr 2009 15:52:53 +0200
+
 ruby1.8 (1.8.7.72-3) unstable; urgency=medium
 
   * applied debian/patches/905_class_dup_should_copy_constants.dpatch:

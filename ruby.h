@@ -50,6 +50,10 @@ extern "C" {
 # include <intrinsics.h>
 #endif
 
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#endif
+
 #include <stddef.h>
 #include <stdio.h>
 
@@ -224,7 +228,13 @@ VALUE rb_ull2inum _((unsigned LONG_LONG));
 
 #define TYPE(x) rb_type((VALUE)(x))
 
-#define RB_GC_GUARD(v) (*(volatile VALUE *)&(v))
+#ifdef __GNUC__
+#define RB_GC_GUARD_PTR(ptr) \
+    __extension__ ({volatile VALUE *rb_gc_guarded_ptr = (ptr); rb_gc_guarded_ptr;})
+#else
+#define RB_GC_GUARD_PTR(ptr) (volatile VALUE *)(ptr)
+#endif
+#define RB_GC_GUARD(v) (*RB_GC_GUARD_PTR(&(v)))
 
 void rb_check_type _((VALUE,int));
 #define Check_Type(v,t) rb_check_type((VALUE)(v),t)
@@ -342,6 +352,7 @@ struct RFloat {
     struct RBasic basic;
     double value;
 };
+#define RFLOAT_VALUE(v) (RFLOAT(v)->value)
 
 #define ELTS_SHARED FL_USER2
 
@@ -356,6 +367,7 @@ struct RString {
 };
 #define RSTRING_PTR(s) (RSTRING(s)->ptr)
 #define RSTRING_LEN(s) (RSTRING(s)->len)
+#define RSTRING_END(s) (RSTRING_PTR(s)+RSTRING_LEN(s))
 
 struct RArray {
     struct RBasic basic;
@@ -375,6 +387,8 @@ struct RRegexp {
     long len;
     char *str;
 };
+#define RREGEXP_SRC_PTR(r) (RREGEXP(r)->src)
+#define RREGEXP_SRC_LEN(r) (RREGEXP(r)->len)
 
 struct RHash {
     struct RBasic basic;
@@ -437,6 +451,12 @@ struct RBignum {
     long len;
     void *digits;
 };
+#define RBIGNUM_SIGN(b)       (RBIGNUM(b)->sign)
+#define RBIGNUM_SET_SIGN(b,s) (RBIGNUM(b)->sign = (s))
+#define RBIGNUM_POSITIVE_P(b) RBIGNUM_SIGN(b)
+#define RBIGNUM_NEGATIVE_P(b) (!RBIGNUM_SIGN(b))
+#define RBIGNUM_LEN(b)        (RBIGNUM(b)->len)
+#define RBIGNUM_DIGITS(b)     (RBIGNUM(b)->digits)
 
 #define R_CAST(st)   (struct st*)
 #define RBASIC(obj)  (R_CAST(RBasic)(obj))

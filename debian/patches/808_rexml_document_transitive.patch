@@ -1,14 +1,8 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 808_rexml_document_transitive.dpatch by akira yamada <akira@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: REXML::Document#write(io, 1, true, true) raises NameError/ArgumentError
-
-@DPATCH@
-diff -urNad ruby1.8-1.8.7.22~/lib/rexml/document.rb ruby1.8-1.8.7.22/lib/rexml/document.rb
---- ruby1.8-1.8.7.22~/lib/rexml/document.rb	2008-06-06 17:05:24.000000000 +0900
-+++ ruby1.8-1.8.7.22/lib/rexml/document.rb	2008-09-09 22:06:37.000000000 +0900
-@@ -185,6 +185,7 @@
+Author: akira yamada <akira@debian.org>
+Description: REXML::Document#write(io, 1, true, true) raises NameError/ArgumentError
+--- a/lib/rexml/document.rb
++++ b/lib/rexml/document.rb
+@@ -186,6 +186,7 @@ module REXML
        end
        formatter = if indent > -1
            if trans
@@ -16,10 +10,9 @@ diff -urNad ruby1.8-1.8.7.22~/lib/rexml/document.rb ruby1.8-1.8.7.22/lib/rexml/d
              REXML::Formatters::Transitive.new( indent, ie_hack )
            else
              REXML::Formatters::Pretty.new( indent, ie_hack )
-diff -urNad ruby1.8-1.8.7.22~/lib/rexml/element.rb ruby1.8-1.8.7.22/lib/rexml/element.rb
---- ruby1.8-1.8.7.22~/lib/rexml/element.rb	2008-06-06 17:05:24.000000000 +0900
-+++ ruby1.8-1.8.7.22/lib/rexml/element.rb	2008-09-09 22:06:57.000000000 +0900
-@@ -675,6 +675,7 @@
+--- a/lib/rexml/element.rb
++++ b/lib/rexml/element.rb
+@@ -675,6 +675,7 @@ module REXML
        Kernel.warn("#{self.class.name}.write is deprecated.  See REXML::Formatters")
        formatter = if indent > -1
            if transitive
@@ -27,10 +20,9 @@ diff -urNad ruby1.8-1.8.7.22~/lib/rexml/element.rb ruby1.8-1.8.7.22/lib/rexml/el
              REXML::Formatters::Transitive.new( indent, ie_hack )
            else
              REXML::Formatters::Pretty.new( indent, ie_hack )
-diff -urNad ruby1.8-1.8.7.22~/lib/rexml/formatters/transitive.rb ruby1.8-1.8.7.22/lib/rexml/formatters/transitive.rb
---- ruby1.8-1.8.7.22~/lib/rexml/formatters/transitive.rb	2007-07-30 11:26:17.000000000 +0900
-+++ ruby1.8-1.8.7.22/lib/rexml/formatters/transitive.rb	2008-09-09 22:07:33.000000000 +0900
-@@ -12,9 +12,10 @@
+--- a/lib/rexml/formatters/transitive.rb
++++ b/lib/rexml/formatters/transitive.rb
+@@ -12,9 +12,10 @@ module REXML
      # formatted.  Since this formatter does not alter whitespace nodes, the
      # results of formatting already formatted XML will be odd.
      class Transitive < Default
@@ -42,7 +34,7 @@ diff -urNad ruby1.8-1.8.7.22~/lib/rexml/formatters/transitive.rb ruby1.8-1.8.7.2
        end
  
        protected
-@@ -29,6 +30,7 @@
+@@ -29,6 +30,7 @@ module REXML
          output << "\n"
          output << ' '*@level
          if node.children.empty?

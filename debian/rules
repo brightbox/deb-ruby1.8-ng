@@ -17,8 +17,7 @@ examples_dir = $(CURDIR)/debian/ruby$(ruby_ver)-examples/usr/share/doc/ruby$(rub
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/rules/dpatch.mk
-include /usr/share/dpatch/dpatch.make
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 
@@ -30,11 +29,14 @@ else
 	CFLAGS += -g -O2
 endif
 
-ifeq ($(DEB_BUILD_GNU_CPU),i386)
+ifneq (,$(filter $(DEB_BUILD_GNU_CPU),i386 i486 i586 i686))
 	DEB_CONFIGURE_USER_FLAGS += --enable-frame-address
 endif
-ifneq (,$(filter $(DEB_BUILD_GNU_CPU),i486 i586 i686))
-	DEB_CONFIGURE_USER_FLAGS += --enable-frame-address
+ifeq ($(DEB_BUILD_GNU_CPU),i686)
+	DEB_CONFIGURE_USER_FLAGS += --with-extra-site-search-path='/usr/local/lib/site_ruby/$(ruby_ver)/i486-linux'
+	DEB_CONFIGURE_USER_FLAGS += --with-extra-search-path='/usr/lib/ruby/$(ruby_ver)/i486-linux'
+endif
+ifeq ($(DEB_BUILD_GNU_CPU),i486)
 	DEB_CONFIGURE_USER_FLAGS += --with-extra-site-search-path='/usr/local/lib/site_ruby/$(ruby_ver)/i386-linux'
 	DEB_CONFIGURE_USER_FLAGS += --with-extra-search-path='/usr/lib/ruby/$(ruby_ver)/i386-linux'
 endif
@@ -56,7 +58,11 @@ DEB_CONFIGURE_USER_FLAGS += --with-bundled-md5
 DEB_CONFIGURE_USER_FLAGS += --with-bundled-rmd160
 
 DEB_MAKE_BUILD_TARGET = all test
-#DEB_MAKE_BUILD_TARGET = all test test-all
+
+common-post-build-arch::
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	-make test-all
+endif
 
 DEB_INSTALL_DIRS_ruby$(ruby_ver)-elisp += $(el_dir)
 DEB_INSTALL_DIRS_ruby$(ruby_ver)-elisp += $(el_etc)
@@ -65,22 +71,6 @@ DEB_INSTALL_DOCS_ruby$(ruby_ver)-elisp += $(DEB_SRCDIR)/misc/README
 DEB_INSTALL_DIRS_ri$(ruby_ver) += $(bin_dir)
 DEB_INSTALL_DIRS_ri$(ruby_ver) += $(man_dir)
 DEB_INSTALL_MANPAGES_ri$(ruby_ver) += debian/ri$(ruby_ver).1
-
-DEB_INSTALL_DIRS_rdoc$(ruby_ver) += $(bin_dir)
-DEB_INSTALL_DIRS_rdoc$(ruby_ver) += $(man_dir)
-DEB_INSTALL_DIRS_rdoc$(ruby_ver) += $(ruby_libdir)
-DEB_INSTALL_DOCS_rdoc$(ruby_ver) += $(DEB_SRCDIR)/lib/rdoc/README
-DEB_INSTALL_MANPAGES_rdoc$(ruby_ver) += debian/rdoc$(ruby_ver).1
-
-DEB_INSTALL_DIRS_irb$(ruby_ver) += $(bin_dir)
-DEB_INSTALL_DIRS_irb$(ruby_ver) += $(man_dir)
-DEB_INSTALL_DIRS_irb$(ruby_ver) += $(ruby_libdir)
-DEB_INSTALL_DOCS_irb$(ruby_ver) += $(DEB_SRCDIR)/doc/irb/*
-DEB_INSTALL_MANPAGES_irb$(ruby_ver) += debian/irb$(ruby_ver).1
-
-DEB_INSTALL_DOCS_libgdbm-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/gdbm/README*
-
-DEB_INSTALL_DOCS_libreadline-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/readline/README*
 
 DEB_INSTALL_DOCS_libtcltk-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/tk/README*
 DEB_INSTALL_DOCS_libtcltk-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/tk/MANUAL*
@@ -96,6 +86,8 @@ DEB_INSTALL_DOCS_ruby$(ruby_ver) += $(DEB_SRCDIR)/NEWS
 DEB_INSTALL_DOCS_ruby$(ruby_ver) += $(DEB_SRCDIR)/doc/NEWS-1.8.0
 DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/testrb$(ruby_ver).1
 DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/erb$(ruby_ver).1
+DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/rdoc$(ruby_ver).1
+DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/irb$(ruby_ver).1
 
 DEB_INSTALL_DOCS_libruby$(ruby_ver) += $(DEB_SRCDIR)/lib/README
 DEB_INSTALL_DOCS_libruby$(ruby_ver) += $(DEB_SRCDIR)/NEWS
@@ -108,27 +100,6 @@ DEB_INSTALL_DOCS_ruby$(ruby_ver)-dev += $(DEB_SRCDIR)/README.EXT*
 DEB_COMPRESS_EXCLUDE = .rb .pl .py .scm .awk .dat
 DEB_SHLIBDEPS_INCLUDE = $(CURDIR)/debian/libruby$(ruby_ver)/usr/lib
 DEB_DH_MAKESHLIBS_ARGS_ALL = -m$(ruby_ver) -V
-
-binary-install/libdbm-ruby$(ruby_ver) \
-binary-install/libgdbm-ruby$(ruby_ver) \
-binary-install/libreadline-ruby$(ruby_ver) \
-binary-install/libopenssl-ruby$(ruby_ver)::
-	dh_movefiles -p$(cdbs_curpkg) \
-	    $(ruby_archdir)/$(patsubst lib%-ruby$(ruby_ver),%,$(cdbs_curpkg)).so
-	sh $(CURDIR)/debian/extfixup_rubylibs.sh $(cdbs_curpkg) \
-	    $(DEB_SRCDIR)/ext/$(patsubst lib%-ruby$(ruby_ver),%,$(cdbs_curpkg))
-	sh $(CURDIR)/debian/extfixup_examples.sh $(cdbs_curpkg) \
-	    $(DEB_SRCDIR)/ext/$(patsubst lib%-ruby$(ruby_ver),%,$(cdbs_curpkg))
-binary-install/libopenssl-ruby$(ruby_ver)::
-	dh_movefiles -p$(cdbs_curpkg) \
-	    usr/lib/ruby/$(ruby_ver)/drb/ssl.rb \
-	    usr/lib/ruby/$(ruby_ver)/net/https.rb \
-	    usr/lib/ruby/$(ruby_ver)/webrick/ssl.rb
-	install -d \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/examples
-	(cd $(DEB_SRCDIR)/sample/openssl && \
-	 tar cf - .) | \
-	  (cd $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/examples && tar xf -)
 
 binary-install/libtcltk-ruby$(ruby_ver)::
 	dh_movefiles -p$(cdbs_curpkg) \
@@ -171,7 +142,7 @@ binary-install/libruby$(ruby_ver):: $(patsubst %,binary-install/%,$(filter-out l
 	cd $(DEB_SRCDIR)/ext && \
 	for dir in \
 	    bigdecimal curses digest dl enumerator etc \
-	    fcntl iconv io nkf pty racc sdbm socket \
+	    fcntl iconv io nkf pty racc readline openssl sdbm socket \
 	    stringio strscan syck syslog thread zlib \
 	    ; \
 	do \
@@ -203,6 +174,8 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/ruby$(ruby_ver) \
 	    usr/bin/erb$(ruby_ver) \
 	    usr/bin/testrb$(ruby_ver) \
+	    usr/bin/rdoc$(ruby_ver) \
+	    usr/bin/irb$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
 
 binary-post-install/ruby$(ruby_ver)-elisp::
@@ -213,21 +186,6 @@ binary-install/ri$(ruby_ver)::
 	dh_movefiles -p$(cdbs_curpkg) $(bin_dir)/$(cdbs_curpkg)
 binary-post-install/ri$(ruby_ver)::
 	$(DEB_MAKE_INVOKE) install-doc DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg)
-	install -m444 $(CURDIR)/debian/$(cdbs_curpkg).1 \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/$(cdbs_curpkg).1
-
-binary-install/rdoc$(ruby_ver)::
-	dh_movefiles -p$(cdbs_curpkg) \
-	    $(bin_dir)/$(cdbs_curpkg) \
-	    $(ruby_libdir)/rdoc
-binary-post-install/rdoc$(ruby_ver)::
-	install -m444 $(CURDIR)/debian/$(cdbs_curpkg).1 \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/$(cdbs_curpkg).1
-
-binary-install/irb$(ruby_ver)::
-	dh_movefiles -p$(cdbs_curpkg) $(bin_dir)/$(cdbs_curpkg) \
-	    $(ruby_libdir)/irb.rb $(ruby_libdir)/irb
-binary-post-install/irb$(ruby_ver)::
 	install -m444 $(CURDIR)/debian/$(cdbs_curpkg).1 \
 	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/$(cdbs_curpkg).1
 
@@ -261,12 +219,11 @@ binary-post-install/ruby$(ruby_ver)-examples::
 
 	(cd $(DEB_SRCDIR)/sample && tar cf - .) | \
 	  (cd $(examples_dir) && tar xf -)
-	cd $(examples_dir) && rm -rf openssl
 
 $(patsubst %,binary-post-install/%,$(DEB_PACKAGES))::
-	sh $(CURDIR)/debian/fixshebang.sh ruby$(ruby_ver) \
+	bash $(CURDIR)/debian/fixshebang.sh ruby$(ruby_ver) \
 	    '$(CURDIR)/debian/$(cdbs_curpkg)/$(bin_dir)'
-	sh $(CURDIR)/debian/fixshebang.sh ruby$(ruby_ver) \
+	bash $(CURDIR)/debian/fixshebang.sh ruby$(ruby_ver) \
 	    '$(CURDIR)/debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/examples'
 	sh $(CURDIR)/debian/rmshebang.sh \
 	    '$(CURDIR)/debian/$(cdbs_curpkg)/$(ruby_libdir)'
