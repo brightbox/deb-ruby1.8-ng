@@ -9,3 +9,4 @@
 090812_openssl_x509_warning.patch
 100730_disable_getsetcontext_on_nptl.patch
 100730_verbose-tests.patch
+100901_threading_fixes.patch

@@ -1,3 +1,11 @@
+ruby1.8 (1.8.7.302-2) unstable; urgency=high
+
+  * Add debian/patches/100901_threading_fixes.patch. Fixes threading
+    problems on Debian GNU/kFreeBSD exhibited by puppet.
+    Thanks to Petr Salinger and Aurélien Jarno. Closes: #595034
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Wed, 01 Sep 2010 12:08:48 +0200
+
 ruby1.8 (1.8.7.302-1) unstable; urgency=high
 
   * New upstream release in the stable 1.8.7 branch (very minor changes only).
