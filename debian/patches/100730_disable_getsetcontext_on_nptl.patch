@@ -9,7 +9,7 @@ Ubuntu-bug: https://bugs.launchpad.net/ubuntu/+source/ruby1.8/+bug/307462
  		 fcntl.h sys/fcntl.h sys/select.h sys/time.h sys/times.h sys/param.h\
  		 syscall.h pwd.h grp.h a.out.h utime.h memory.h direct.h sys/resource.h \
  		 sys/mkdev.h sys/utime.h netinet/in_systm.h float.h ieeefp.h pthread.h \
--		 ucontext.h intrinsics.h)
+-		 ucontext.h intrinsics.h time.h)
 +		 intrinsics.h)
  
  dnl Check additional types.

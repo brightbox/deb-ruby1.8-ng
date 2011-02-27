@@ -1,3 +1,11 @@
+ruby1.8 (1.8.7.334-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #615279)
+    - (CVE-2011-1005; Closes: #615517)
+    - (CVE-2011-1004; Closes: #615518)
+
+ -- Daigo Moriwaki <daigo@debian.org>  Sun, 27 Feb 2011 13:12:03 +0900
+
 ruby1.8 (1.8.7.302-2) unstable; urgency=high
 
   * Add debian/patches/100901_threading_fixes.patch. Fixes threading
