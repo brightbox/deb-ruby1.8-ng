@@ -1,3 +1,14 @@
+ruby1.8 (1.8.7.334-2~experimental.1) experimental; urgency=low
+
+  * Switch to dpkg-source 3.0 (quilt) format
+  * Add a 'nordoc' option for DEB_BUILD_OPTIONS
+  * Switch to alternatives to manage ruby, rdoc, ri, ...
+  * Add a ruby1.8-full metapackage.
+  * Upload to experimental. Changes are very intrusive and need
+    extensive testing.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Sat, 05 Mar 2011 20:43:46 +0100
+
 ruby1.8 (1.8.7.334-1) unstable; urgency=low
 
   * New upstream release. (Closes: #615279)

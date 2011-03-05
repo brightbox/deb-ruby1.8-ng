@@ -17,7 +17,6 @@ examples_dir = $(CURDIR)/debian/ruby$(ruby_ver)-examples/usr/share/doc/ruby$(rub
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 
@@ -185,7 +184,9 @@ binary-post-install/ruby$(ruby_ver)-elisp::
 binary-install/ri$(ruby_ver)::
 	dh_movefiles -p$(cdbs_curpkg) $(bin_dir)/$(cdbs_curpkg)
 binary-post-install/ri$(ruby_ver)::
+ifeq (,$(filter nordoc,$(DEB_BUILD_OPTIONS)))
 	$(DEB_MAKE_INVOKE) install-doc DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg)
+endif
 	install -m444 $(CURDIR)/debian/$(cdbs_curpkg).1 \
 	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/$(cdbs_curpkg).1
 
