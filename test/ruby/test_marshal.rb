@@ -12,11 +12,17 @@ class TestMarshal < Test::Unit::TestCase
   include MarshalTestLib
 
   def encode(o)
+    stress, GC.stress = GC.stress, true
     Marshal.dump(o)
+  ensure
+    GC.stress = stress
   end
 
   def decode(s)
+    stress, GC.stress = GC.stress, true
     Marshal.load(s)
+  ensure
+    GC.stress = stress
   end
 
   def fact(n)
@@ -64,5 +70,14 @@ class TestMarshal < Test::Unit::TestCase
       Marshal.load(data)
     }
     assert_equal("marshal data too short", e.message)
+  end
+
+  def test_taint
+    x = Object.new
+    x.taint
+    s = Marshal.dump(x)
+    assert_equal(true, s.tainted?)
+    y = Marshal.load(s)
+    assert_equal(true, y.tainted?)
   end
 end

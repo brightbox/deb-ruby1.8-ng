@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "utils.rb")
+require File.expand_path("../utils.rb", __FILE__)
 
 class TestIconv::Option < TestIconv
   def test_ignore_option
@@ -28,4 +28,4 @@ class TestIconv::Option < TestIconv
     assert_equal(SJIS_STR, str)
     iconv.close
   end
-end if defined?(TestIconv)
+end if false and defined?(TestIconv)

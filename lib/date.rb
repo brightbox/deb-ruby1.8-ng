@@ -1,7 +1,7 @@
 #
 # date.rb - date and time library
 #
-# Author: Tadayoshi Funaba 1998-2008
+# Author: Tadayoshi Funaba 1998-2010
 #
 # Documentation: William Webber <william@williamwebber.com>
 #
@@ -1305,7 +1305,10 @@ class Date
     y, m = (year * 12 + (mon - 1) + n).divmod(12)
     m,   = (m + 1)                    .divmod(1)
     d = mday
-    d -= 1 until jd2 = self.class.valid_civil?(y, m, d, fix_style)
+    until jd2 = self.class.valid_civil?(y, m, d, fix_style)
+      d -= 1
+      raise ArgumentError, 'invalid date' unless d > 0
+    end
     self + (jd2 - jd)
   end
 
@@ -1660,12 +1663,23 @@ class Date
   # Create a new Date object representing today.
   #
   # +sg+ specifies the Day of Calendar Reform.
-  def self.today(sg=ITALY) Time.now.__send__(:to_date)    .new_start(sg) end
+  def self.today(sg=ITALY)
+    t = Time.now
+    jd = civil_to_jd(t.year, t.mon, t.mday, sg)
+    new!(jd_to_ajd(jd, 0, 0), 0, sg)
+  end
 
   # Create a new DateTime object representing the current time.
   #
   # +sg+ specifies the Day of Calendar Reform.
-  def self.now  (sg=ITALY) Time.now.__send__(:to_datetime).new_start(sg) end
+  def self.now(sg=ITALY)
+    t = Time.now
+    jd = civil_to_jd(t.year, t.mon, t.mday, sg)
+    fr = time_to_day_fraction(t.hour, t.min, [t.sec, 59].min) +
+      Rational(t.usec, 86400_000_000)
+    of = Rational(t.utc_offset, 86400)
+    new!(jd_to_ajd(jd, fr, of), of, sg)
+  end
 
   private_class_method :now
 
