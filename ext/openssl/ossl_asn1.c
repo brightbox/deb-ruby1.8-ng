@@ -1,5 +1,5 @@
 /*
- * $Id: ossl_asn1.c 28004 2010-05-24 23:58:49Z shyouhei $
+ * $Id: ossl_asn1.c 29861 2010-11-22 07:22:05Z shyouhei $
  * 'OpenSSL for Ruby' team members
  * Copyright (C) 2003
  * All rights reserved.
@@ -196,7 +196,11 @@ static ID sUNIVERSAL, sAPPLICATION, sCONTEXT_SPECIFIC, sPRIVATE;
 static ASN1_BOOLEAN
 obj_to_asn1bool(VALUE obj)
 {
+#if OPENSSL_VERSION_NUMBER < 0x00907000L
      return RTEST(obj) ? 0xff : 0x100;
+#else
+     return RTEST(obj) ? 0xff : 0x0;
+#endif
 }
 
 static ASN1_INTEGER*

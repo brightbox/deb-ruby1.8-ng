@@ -17,6 +17,20 @@
 
 #include "ruby.h"
 #include "st.h"
+
+#define GNUC_OLDER_3_4_4 \
+    ((__GNUC__ < 3) || \
+     ((__GNUC__ <= 3) && (__GNUC_MINOR__ < 4)) || \
+     ((__GNUC__ <= 3) && (__GNUC_MINOR__ <= 4) && (__GNUC_PATCHLEVEL__ <= 4)))
+
+#if (defined(__GNUC__)) && (GNUC_OLDER_3_4_4) 
+#ifndef NONAMELESSUNION
+#define NONAMELESSUNION 1
+#endif
+#endif
+
+#include <ctype.h>
+
 #include <windows.h>
 #include <ocidl.h>
 #include <olectl.h>
@@ -36,13 +50,13 @@
 #define DOUTI(x) fprintf(stderr, "[%ld]:" #x "=%d\n",__LINE__,x)
 #define DOUTD(x) fprintf(stderr, "[%d]:" #x "=%f\n",__LINE__,x)
 
-#if defined NONAMELESSUNION && __GNUC__
+#if (defined(__GNUC__)) && (GNUC_OLDER_3_4_4) 
 #define V_UNION1(X, Y) ((X)->u.Y)
 #else
 #define V_UNION1(X, Y) ((X)->Y)
 #endif
 
-#if defined NONAMELESSUNION && __GNUC__
+#if (defined(__GNUC__)) && (GNUC_OLDER_3_4_4) 
 #undef V_UNION
 #define V_UNION(X,Y) ((X)->n1.n2.n3.Y)
 
@@ -78,7 +92,7 @@
 
 #define WC2VSTR(x) ole_wc2vstr((x), TRUE)
 
-#define WIN32OLE_VERSION "0.7.8"
+#define WIN32OLE_VERSION "0.7.9"
 
 typedef HRESULT (STDAPICALLTYPE FNCOCREATEINSTANCEEX)
     (REFCLSID, IUnknown*, DWORD, COSERVERINFO*, DWORD, MULTI_QI*);
@@ -6113,7 +6127,6 @@ find_default_source(ole, piid, ppTypeInfo)
 
     OLE_RELEASE_TYPEATTR(pTypeInfo, pTypeAttr);
     OLE_RELEASE(pTypeInfo);
-
     /* Now that would be a bad surprise, if we didn't find it, wouldn't it? */
     if (!*ppTypeInfo) {
         if (SUCCEEDED(hr))
@@ -6209,6 +6222,7 @@ fev_initialize(argc, argv, self)
         rb_raise(rb_eTypeError, "1st parameter must be WIN32OLE object");
     }
 
+    pTypeInfo = NULL;
     if(TYPE(itf) != T_NIL) {
         if (ruby_safe_level > 0 && OBJ_TAINTED(itf)) {
             rb_raise(rb_eSecurityError, "Insecure Event Creation - %s",

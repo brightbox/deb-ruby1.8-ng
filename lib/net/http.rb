@@ -22,7 +22,7 @@
 # http://www.ruby-lang.org/ja/man/?cmd=view;name=net%2Fhttp.rb
 # 
 #--
-# $Id: http.rb 28336 2010-06-16 06:57:47Z shyouhei $
+# $Id: http.rb 29865 2010-11-22 07:22:19Z shyouhei $
 #++ 
 
 require 'net/protocol'
@@ -278,7 +278,7 @@ module Net   #:nodoc:
   class HTTP < Protocol
 
     # :stopdoc:
-    Revision = %q$Revision: 28336 $.split[1]
+    Revision = %q$Revision: 29865 $.split[1]
     HTTPVersion = '1.1'
     @newimpl = true
     # :startdoc:
@@ -1056,7 +1056,7 @@ module Net   #:nodoc:
         end_transport req, res
       rescue => exception
         D "Conn close because of error #{exception}"
-        @socket.close unless @socket.closed?
+        @socket.close if @socket and not @socket.closed?
         raise exception
       end
 
