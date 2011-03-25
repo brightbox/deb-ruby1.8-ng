@@ -1,3 +1,9 @@
+ruby1.8 (1.8.7.334-3) UNRELEASED; urgency=low
+
+  * 
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 25 Mar 2011 10:37:55 +0100
+
 ruby1.8 (1.8.7.334-2) unstable; urgency=low
 
   * Switch to git. Update Vcs-* fields.
