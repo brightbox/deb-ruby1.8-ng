@@ -43,7 +43,6 @@ DEB_CONFIGURE_USER_FLAGS += --program-suffix=$(ruby_ver)
 DEB_CONFIGURE_USER_FLAGS += --enable-pthread
 DEB_CONFIGURE_USER_FLAGS += --enable-shared
 DEB_CONFIGURE_USER_FLAGS += --enable-ipv6
-DEB_CONFIGURE_USER_FLAGS += --with-lookup-order-hack=INET
 DEB_CONFIGURE_USER_FLAGS += --disable-rpath
 DEB_CONFIGURE_USER_FLAGS += --disable-install-doc
 DEB_CONFIGURE_USER_FLAGS += --with-sitedir='/usr/local/lib/site_ruby'

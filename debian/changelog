@@ -1,8 +1,9 @@
 ruby1.8 (1.8.7.334-3) UNRELEASED; urgency=low
 
-  * 
+  * Remove --with-lookup-order-hack=INET. That breaks IPv6-only systems.
+    Closes: #619209
 
- -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 25 Mar 2011 10:37:55 +0100
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 25 Mar 2011 14:37:47 +0100
 
 ruby1.8 (1.8.7.334-2) unstable; urgency=low
 
