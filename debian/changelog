@@ -1,8 +1,9 @@
-ruby1.8 (1.8.7.334-2~experimental.2) UNRELEASED; urgency=low
+ruby1.8 (1.8.7.334-2) unstable; urgency=low
 
   * Switch to git. Update Vcs-* fields.
+  * Upload to unstable.
 
- -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Sat, 12 Mar 2011 10:17:45 +0100
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 25 Mar 2011 10:07:59 +0100
 
 ruby1.8 (1.8.7.334-2~experimental.1) experimental; urgency=low
 
