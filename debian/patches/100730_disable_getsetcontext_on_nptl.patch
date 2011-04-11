@@ -14,7 +14,7 @@ Ubuntu-bug: https://bugs.launchpad.net/ubuntu/+source/ruby1.8/+bug/307462
  
  dnl Check additional types.
  AC_CHECK_SIZEOF(rlim_t, 0, [
-@@ -1097,8 +1097,22 @@ if test x"$enable_pthread" = xyes; then
+@@ -1103,8 +1103,22 @@ if test x"$enable_pthread" = xyes; then
         fi
      fi
  fi
