@@ -27,8 +27,7 @@ Description: Interpreter of object-oriented scripting language Ruby 1.8
  On Debian, Ruby 1.8 is provided as separate packages.  You can get
  full Ruby 1.8 distribution by installing following packages.
  .
-   ruby1.8 ruby1.8-dev ri1.8 ruby1.8-elisp ruby1.8-examples
-   libtcltk-ruby1.8
+   ruby1.8 ruby1.8-dev ri1.8 ruby1.8-examples libtcltk-ruby1.8
 
 Package: libruby1.8
 Section: libs
@@ -93,15 +92,6 @@ Description: Examples for Ruby 1.8
  files and to do system management tasks (as in perl).  It is simple,
  straight-forward, and extensible.
 
-Package: ruby1.8-elisp
-Architecture: all
-Depends: emacs | emacsen, ${misc:Depends}
-Suggests: ruby1.8 (>= ${source:Version})
-Conflicts: ruby-elisp (<< 1.8), ruby1.6-elisp, ruby1.7-elisp, ruby-beta-elisp
-Description: ruby-mode for Emacsen
- This package provides major-mode for editing Ruby scripts and some
- emacs-lisp programs for Ruby programmers.
-
 Package: ri1.8
 Architecture: all
 Depends: ruby1.8 (>= ${source:Version}), ${misc:Depends}
@@ -118,7 +108,7 @@ Description: Ruby Interactive reference (for Ruby 1.8)
 Package: ruby1.8-full
 Architecture: all
 Depends: ruby1.8, ri1.8, ruby1.8-dev, ${misc:Depends}
-Recommends: libtcltk-ruby1.8, ruby1.8-elisp
+Recommends: libtcltk-ruby1.8
 Provides: ruby-full
 Description: Ruby 1.8 full installation
  For many good reasons, the Ruby programming language is split in many

@@ -1,3 +1,13 @@
+ruby1.8 (1.8.7.334-4) UNRELEASED; urgency=low
+
+  * Drop ruby1.8-elisp. The Ruby emacs mode is now provided in emacs 23.
+    All the open bugs were mentioned to an upstream developer, who fixed the
+    ones that still affected ruby-mode.
+    Closes: #502926, #527266, #192647, #282796, #366045, #373199, #411173.
+    Closes: #468952, #619754.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Mon, 11 Apr 2011 14:14:30 +0200
+
 ruby1.8 (1.8.7.334-3) unstable; urgency=low
 
   * Remove --with-lookup-order-hack=INET. That breaks IPv6-only systems.
