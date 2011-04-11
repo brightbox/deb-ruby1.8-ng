@@ -9,7 +9,6 @@ ruby_archdir = usr/lib/ruby/$(ruby_ver)/$(arch_name)
 bin_dir = usr/bin
 man_dir = usr/share/man/man1
 
-el_dir = usr/share/emacs/site-lisp/ruby$(ruby_ver)-elisp
 el_etc = etc/emacs/site-start.d
 
 examples_dir = $(CURDIR)/debian/ruby$(ruby_ver)-examples/usr/share/doc/ruby$(ruby_ver)-examples/examples
@@ -61,10 +60,6 @@ common-post-build-arch::
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	-make test-all
 endif
-
-DEB_INSTALL_DIRS_ruby$(ruby_ver)-elisp += $(el_dir)
-DEB_INSTALL_DIRS_ruby$(ruby_ver)-elisp += $(el_etc)
-DEB_INSTALL_DOCS_ruby$(ruby_ver)-elisp += $(DEB_SRCDIR)/misc/README
 
 DEB_INSTALL_DIRS_ri$(ruby_ver) += $(bin_dir)
 DEB_INSTALL_DIRS_ri$(ruby_ver) += $(man_dir)
@@ -175,10 +170,6 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/rdoc$(ruby_ver) \
 	    usr/bin/irb$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
-
-binary-post-install/ruby$(ruby_ver)-elisp::
-	install -m444 $(DEB_SRCDIR)/misc/*.el \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/$(el_dir)
 
 binary-install/ri$(ruby_ver)::
 	dh_movefiles -p$(cdbs_curpkg) $(bin_dir)/$(cdbs_curpkg)
