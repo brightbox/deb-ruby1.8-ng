@@ -170,10 +170,6 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/ri$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
 
-binary-post-install/ruby$(ruby_ver)::
-	install -m444 $(CURDIR)/debian/ri1.8.1 \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/ri1.8.1
-
 binary-post-install/ri$(ruby_ver)::
 ifeq (,$(filter nordoc,$(DEB_BUILD_OPTIONS)))
 	$(DEB_MAKE_INVOKE) install-doc DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg)
