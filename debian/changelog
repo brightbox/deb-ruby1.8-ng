@@ -4,7 +4,7 @@ ruby1.8 (1.8.7.334-4) UNRELEASED; urgency=low
     All the open bugs were mentioned to an upstream developer, who fixed the
     ones that still affected ruby-mode.
     Closes: #502926, #527266, #192647, #282796, #366045, #373199, #411173.
-    Closes: #468952, #619754.
+    Closes: #468952, #619754, #489355.
   * Add patch 110411_disable_osslv2.patch
     Disables SSLv2. Closes: #621509
   * Move the ri1.8 binary and manpage to the ruby1.8 package. ri1.8 still
