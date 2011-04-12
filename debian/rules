@@ -61,9 +61,6 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	-make test-all
 endif
 
-DEB_INSTALL_DIRS_ri$(ruby_ver) += $(bin_dir)
-DEB_INSTALL_DIRS_ri$(ruby_ver) += $(man_dir)
-DEB_INSTALL_MANPAGES_ri$(ruby_ver) += debian/ri$(ruby_ver).1
 
 DEB_INSTALL_DOCS_libtcltk-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/tk/README*
 DEB_INSTALL_DOCS_libtcltk-ruby$(ruby_ver) += $(DEB_SRCDIR)/ext/tk/MANUAL*
@@ -81,6 +78,7 @@ DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/testrb$(ruby_ver).1
 DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/erb$(ruby_ver).1
 DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/rdoc$(ruby_ver).1
 DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/irb$(ruby_ver).1
+DEB_INSTALL_MANPAGES_ruby$(ruby_ver) += debian/ri$(ruby_ver).1
 
 DEB_INSTALL_DOCS_libruby$(ruby_ver) += $(DEB_SRCDIR)/lib/README
 DEB_INSTALL_DOCS_libruby$(ruby_ver) += $(DEB_SRCDIR)/NEWS
@@ -169,16 +167,17 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/testrb$(ruby_ver) \
 	    usr/bin/rdoc$(ruby_ver) \
 	    usr/bin/irb$(ruby_ver) \
+	    usr/bin/ri$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
 
-binary-install/ri$(ruby_ver)::
-	dh_movefiles -p$(cdbs_curpkg) $(bin_dir)/$(cdbs_curpkg)
+binary-post-install/ruby$(ruby_ver)::
+	install -m444 $(CURDIR)/debian/ri1.8.1 \
+	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/ri1.8.1
+
 binary-post-install/ri$(ruby_ver)::
 ifeq (,$(filter nordoc,$(DEB_BUILD_OPTIONS)))
 	$(DEB_MAKE_INVOKE) install-doc DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg)
 endif
-	install -m444 $(CURDIR)/debian/$(cdbs_curpkg).1 \
-	    $(CURDIR)/debian/$(cdbs_curpkg)/$(man_dir)/$(cdbs_curpkg).1
 
 binary-post-install/ruby$(ruby_ver)-examples::
 	install -d $(examples_dir)/bigdecimal

@@ -12,7 +12,7 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/ruby1.8.git;a=summary
 Package: ruby1.8
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libruby1.8 (= ${binary:Version})
-Conflicts: irb1.8, rdoc1.8, ruby (<= 4.5), ri (<= 4.5)
+Conflicts: irb1.8, rdoc1.8, ri1.8 (<< 1.8.7.334-4~), ruby (<= 4.5), ri (<= 4.5)
 Replaces: irb1.8, rdoc1.8
 Provides: irb1.8, rdoc1.8, ruby, ruby-interpreter
 Suggests: ruby1.8-examples, ri1.8
@@ -103,7 +103,8 @@ Description: Ruby Interactive reference (for Ruby 1.8)
  synopsis along with a list of the methods the class or module
  implements.
  .
- This package provides ri command and descriptions about Ruby 1.8.
+ This package provides the ri documentation for the Ruby 1.8 standard library.
+ The ri1.8 executable itself is in the ruby1.8 package.
 
 Package: ruby1.8-full
 Architecture: all
