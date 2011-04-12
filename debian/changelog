@@ -10,6 +10,7 @@ ruby1.8 (1.8.7.334-4) UNRELEASED; urgency=low
   * Move the ri1.8 binary and manpage to the ruby1.8 package. ri1.8 still
     exists, but only contains the documentation. This is needed to
     Closes: #621058.
+  * Make libruby1.8 Conflict, Replace irb1.8, rdoc1.8. Closes: #608582
 
  -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Mon, 11 Apr 2011 14:14:30 +0200
 
