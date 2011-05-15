@@ -3,7 +3,7 @@ Section: ruby
 Priority: optional
 Maintainer: akira yamada <akira@debian.org>
 Uploaders: Daigo Moriwaki <daigo@debian.org>, Lucas Nussbaum <lucas@lucas-nussbaum.net>
-Build-Depends: cdbs, debhelper (>= 5), autotools-dev, autoconf, m4, quilt (>= 0.40), patch, bison, binutils (>= 2.14.90.0.7), libgdbm-dev, libncurses5-dev, libreadline5-dev, tcl8.4-dev, tk8.4-dev, zlib1g-dev, libssl-dev (>= 0.9.6b), file
+Build-Depends: cdbs, debhelper (>= 5), autotools-dev, autoconf, m4, quilt (>= 0.40), patch, bison, binutils (>= 2.14.90.0.7), libgdbm-dev, libncurses5-dev, libreadline-gplv2-dev, tcl8.4-dev, tk8.4-dev, zlib1g-dev, libssl-dev (>= 0.9.6b), file
 Standards-Version: 3.9.1
 Homepage: http://www.ruby-lang.org/
 Vcs-Git: git://git.debian.org/collab-maint/ruby1.8.git
