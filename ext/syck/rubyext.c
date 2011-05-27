@@ -3,7 +3,7 @@
  * rubyext.c
  *
  * $Author: knu $
- * $Date: 2008-04-18 19:03:26 +0900 (Fri, 18 Apr 2008) $
+ * $Date: 2008-04-18 12:03:26 +0200 (Fri, 18 Apr 2008) $
  *
  * Copyright (C) 2003-2005 why the lucky stiff
  */

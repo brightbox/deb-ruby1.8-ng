@@ -3,7 +3,7 @@
   range.c -
 
   $Author: shyouhei $
-  $Date: 2009-02-22 21:43:42 +0900 (Sun, 22 Feb 2009) $
+  $Date: 2009-02-22 13:43:42 +0100 (Sun, 22 Feb 2009) $
   created at: Thu Aug 19 17:46:47 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

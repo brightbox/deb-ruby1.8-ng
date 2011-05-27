@@ -3,7 +3,7 @@
   inits.c -
 
   $Author: knu $
-  $Date: 2008-04-09 20:13:04 +0900 (Wed, 09 Apr 2008) $
+  $Date: 2008-04-09 13:13:04 +0200 (Wed, 09 Apr 2008) $
   created at: Tue Dec 28 16:01:58 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

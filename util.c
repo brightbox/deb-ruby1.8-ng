@@ -3,7 +3,7 @@
   util.c -
 
   $Author: shyouhei $
-  $Date: 2010-11-22 16:21:34 +0900 (Mon, 22 Nov 2010) $
+  $Date: 2010-11-22 08:21:34 +0100 (Mon, 22 Nov 2010) $
   created at: Fri Mar 10 17:22:34 JST 1995
 
   Copyright (C) 1993-2008 Yukihiro Matsumoto

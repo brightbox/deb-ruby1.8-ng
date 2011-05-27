@@ -3,7 +3,7 @@
   prec.c -
 
   $Author: shyouhei $
-  $Date: 2007-02-13 08:01:19 +0900 (Tue, 13 Feb 2007) $
+  $Date: 2007-02-13 00:01:19 +0100 (Tue, 13 Feb 2007) $
   created at: Tue Jan 26 02:40:41 2000
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

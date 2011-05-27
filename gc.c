@@ -3,7 +3,7 @@
   gc.c -
 
   $Author: shyouhei $
-  $Date: 2009-12-24 17:28:08 +0900 (Thu, 24 Dec 2009) $
+  $Date: 2009-12-24 09:28:08 +0100 (Thu, 24 Dec 2009) $
   created at: Tue Oct  5 09:44:46 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

@@ -3,7 +3,7 @@
  *
  *   Copyright (C) UENO Katsuhiro 2000-2003
  *
- * $Id: zlib.c 27917 2010-05-20 07:21:52Z shyouhei $
+ * $Id: zlib.c 31714 2011-05-23 04:49:42Z shyouhei $
  */
 
 #include <ruby.h>
@@ -610,7 +610,8 @@ zstream_append_input(z, src, len)
 }
 
 #define zstream_append_input2(z,v)\
-    zstream_append_input((z), RSTRING(v)->ptr, RSTRING(v)->len)
+    RB_GC_GUARD(v),\
+    zstream_append_input((z), (Bytef*)RSTRING_PTR(v), RSTRING_LEN(v))
 
 static void
 zstream_discard_input(z, len)
@@ -2090,7 +2091,7 @@ gzfile_check_footer(gz)
     if (gz->crc != crc) {
 	rb_raise(cCRCError, "invalid compressed data -- crc error");
     }
-    if (gz->z.stream.total_out != length) {
+    if ((gz->z.stream.total_out & 0xFFFFFFFFUL) != length) {
 	rb_raise(cLengthError, "invalid compressed data -- length error");
     }
 }

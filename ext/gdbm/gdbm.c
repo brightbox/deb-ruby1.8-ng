@@ -3,7 +3,7 @@
   gdbm.c -
 
   $Author: shyouhei $
-  $Date: 2009-02-18 22:08:13 +0900 (Wed, 18 Feb 2009) $
+  $Date: 2009-02-18 14:08:13 +0100 (Wed, 18 Feb 2009) $
   modified at: Mon Jan 24 15:59:52 JST 1994
 
   Documentation by Peter Adolphs < futzilogik at users dot sourceforge dot net >

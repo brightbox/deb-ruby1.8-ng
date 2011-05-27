@@ -3,7 +3,7 @@
   error.c -
 
   $Author: shyouhei $
-  $Date: 2011-02-18 21:32:35 +0900 (Fri, 18 Feb 2011) $
+  $Date: 2011-02-18 13:32:35 +0100 (Fri, 18 Feb 2011) $
   created at: Mon Aug  9 16:11:34 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

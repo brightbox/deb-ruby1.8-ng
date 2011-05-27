@@ -3,7 +3,7 @@
   random.c -
 
   $Author: shyouhei $
-  $Date: 2009-01-17 12:18:21 +0900 (Sat, 17 Jan 2009) $
+  $Date: 2011-05-23 06:49:40 +0200 (Mon, 23 May 2011) $
   created at: Fri Dec 24 16:39:21 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -491,9 +491,15 @@ rb_f_rand(argc, argv, obj)
 }
 
 void
-Init_Random()
+rb_reset_random_seed()
 {
     rand_init(random_seed());
+}
+
+void
+Init_Random()
+{
+    rb_reset_random_seed();
     rb_define_global_function("srand", rb_f_srand, -1);
     rb_define_global_function("rand", rb_f_rand, -1);
     rb_global_variable(&saved_seed);

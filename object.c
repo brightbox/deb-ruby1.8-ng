@@ -3,7 +3,7 @@
   object.c -
 
   $Author: shyouhei $
-  $Date: 2009-12-14 12:53:19 +0900 (Mon, 14 Dec 2009) $
+  $Date: 2009-12-14 04:53:19 +0100 (Mon, 14 Dec 2009) $
   created at: Thu Jul 15 12:01:24 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

@@ -2,7 +2,7 @@
 #   irb.rb - irb main module
 #   	$Release Version: 0.9.5 $
 #   	$Revision: 24483 $
-#   	$Date: 2009-08-09 17:44:15 +0900 (Sun, 09 Aug 2009) $
+#   	$Date: 2009-08-09 10:44:15 +0200 (Sun, 09 Aug 2009) $
 #   	by Keiju ISHITSUKA(keiju@ruby-lang.org)
 #
 # --

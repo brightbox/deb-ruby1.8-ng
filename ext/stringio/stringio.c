@@ -3,7 +3,7 @@
   stringio.c -
 
   $Author: shyouhei $
-  $Date: 2010-11-24 16:38:34 +0900 (Wed, 24 Nov 2010) $
+  $Date: 2010-11-24 08:38:34 +0100 (Wed, 24 Nov 2010) $
   $RoughId: stringio.c,v 1.13 2002/03/14 03:24:18 nobu Exp $
   created at: Tue Feb 19 04:10:38 JST 2002
 

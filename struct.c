@@ -3,7 +3,7 @@
   struct.c -
 
   $Author: knu $
-  $Date: 2008-05-31 20:44:49 +0900 (Sat, 31 May 2008) $
+  $Date: 2008-05-31 13:44:49 +0200 (Sat, 31 May 2008) $
   created at: Tue Mar 22 18:44:30 JST 1995
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
