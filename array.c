@@ -3,7 +3,7 @@
   array.c -
 
   $Author: shyouhei $
-  $Date: 2009-02-05 08:55:33 +0900 (Thu, 05 Feb 2009) $
+  $Date: 2009-02-05 00:55:33 +0100 (Thu, 05 Feb 2009) $
   created at: Fri Aug  6 09:46:12 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

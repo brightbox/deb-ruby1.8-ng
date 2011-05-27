@@ -2,7 +2,7 @@
 #   irb/slex.rb - simple lex analyzer
 #   	$Release Version: 0.9.5$
 #   	$Revision: 16857 $
-#   	$Date: 2008-06-06 17:05:24 +0900 (Fri, 06 Jun 2008) $
+#   	$Date: 2008-06-06 10:05:24 +0200 (Fri, 06 Jun 2008) $
 #   	by Keiju ISHITSUKA(keiju@ruby-lang.org)
 #
 # --

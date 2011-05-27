@@ -3,7 +3,7 @@
   eval.c -
 
   $Author: shyouhei $
-  $Date: 2010-06-10 13:38:43 +0900 (Thu, 10 Jun 2010) $
+  $Date: 2011-05-23 06:49:40 +0200 (Mon, 23 May 2011) $
   created at: Thu Jun 10 14:22:17 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -13178,6 +13178,7 @@ rb_thread_atfork()
 {
     rb_thread_t th;
 
+    rb_reset_random_seed();
     if (rb_thread_alone()) return;
     FOREACH_THREAD(th) {
 	if (th != curr_thread) {

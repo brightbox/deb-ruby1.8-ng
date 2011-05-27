@@ -3,7 +3,7 @@
   hash.c -
 
   $Author: shyouhei $
-  $Date: 2009-12-14 11:46:50 +0900 (Mon, 14 Dec 2009) $
+  $Date: 2009-12-14 03:46:50 +0100 (Mon, 14 Dec 2009) $
   created at: Mon Nov 22 18:51:18 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

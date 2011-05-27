@@ -3,7 +3,7 @@
   numeric.c -
 
   $Author: shyouhei $
-  $Date: 2009-11-17 15:31:41 +0900 (Tue, 17 Nov 2009) $
+  $Date: 2011-05-21 00:29:05 +0200 (Sat, 21 May 2011) $
   created at: Fri Aug 13 18:33:09 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -1447,7 +1447,7 @@ ruby_float_step(from, to, step, excl)
 
 	if (err>0.5) err=0.5;
 	n = floor(n + err);
-	if (!excl) n++;
+	if (!excl || ((long)n)*unit+beg < end) n++;
 	for (i=0; i<n; i++) {
 	    rb_yield(rb_float_new(i*unit+beg));
 	}

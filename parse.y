@@ -3,7 +3,7 @@
   parse.y -
 
   $Author: shyouhei $
-  $Date: 2010-11-22 16:22:12 +0900 (Mon, 22 Nov 2010) $
+  $Date: 2010-11-22 08:22:12 +0100 (Mon, 22 Nov 2010) $
   created at: Fri May 28 18:02:42 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

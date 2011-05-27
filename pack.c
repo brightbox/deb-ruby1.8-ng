@@ -3,7 +3,7 @@
   pack.c -
 
   $Author: shyouhei $
-  $Date: 2010-06-08 17:42:55 +0900 (Tue, 08 Jun 2010) $
+  $Date: 2010-06-08 10:42:55 +0200 (Tue, 08 Jun 2010) $
   created at: Thu Feb 10 15:17:05 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

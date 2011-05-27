@@ -4,7 +4,7 @@
   	      for missing timeval struct
 
   $Author: shyouhei $
-  $Date: 2010-11-22 16:21:27 +0900 (Mon, 22 Nov 2010) $
+  $Date: 2010-11-22 08:21:27 +0100 (Mon, 22 Nov 2010) $
   created at: Sat May 11 23:46:03 JST 2002
 
 ************************************************/
