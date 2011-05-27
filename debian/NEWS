@@ -5,7 +5,7 @@ ruby1.8 (1.8.6.111-1) unstable; urgency=low
   The upstream author had taken two actions about CVE-2007-5162.
 
     1) They released Ruby 1.8.6-p111 and 1.8.5-p114.  But the release
-       requires to change user's code to verify server's identity.
+       requires one to change user's code to verify server's identity.
 
          http://www.ruby-lang.org/en/news/2007/10/04/net-https-vulnerability/ [en]
          http://www.ruby-lang.org/ja/news/2007/10/04/isecpartners-com-2007-006-rubyssl/ [ja]
