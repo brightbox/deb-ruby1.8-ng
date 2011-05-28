@@ -1,3 +1,9 @@
+ruby1.8 (1.8.7.334-5bbox1) lucid; urgency=low
+
+  * Backported to Ubuntu Lucid
+
+ -- John Leach <john@brightbox.co.uk>  Sat, 28 May 2011 21:06:10 +0100
+
 ruby1.8 (1.8.7.334-5) unstable; urgency=low
 
   * Build depend on libreadline-gplv2-dev instead of libreadline5-dev. Ruby
