@@ -3,7 +3,7 @@
   ruby.c -
 
   $Author: shyouhei $
-  $Date: 2008-07-10 11:38:35 +0200 (Thu, 10 Jul 2008) $
+  $Date: 2008-07-10 18:38:35 +0900 (Thu, 10 Jul 2008) $
   created at: Tue Aug 10 12:47:31 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

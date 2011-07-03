@@ -3,7 +3,7 @@
   string.c -
 
   $Author: shyouhei $
-  $Date: 2010-04-01 09:11:40 +0200 (Thu, 01 Apr 2010) $
+  $Date: 2010-04-01 16:11:40 +0900 (Thu, 01 Apr 2010) $
   created at: Mon Aug  9 17:12:58 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

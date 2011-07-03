@@ -3,7 +3,7 @@
   variable.c -
 
   $Author: shyouhei $
-  $Date: 2011-06-02 12:02:20 +0200 (Thu, 02 Jun 2011) $
+  $Date: 2011-06-02 19:02:20 +0900 (Thu, 02 Jun 2011) $
   created at: Tue Apr 19 23:55:15 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

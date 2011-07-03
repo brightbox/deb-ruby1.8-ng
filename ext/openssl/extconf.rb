@@ -11,7 +11,7 @@
   (See the file 'LICENCE'.)
 
 = Version
-  $Id: extconf.rb 28367 2010-06-21 09:18:59Z shyouhei $
+  $Id: extconf.rb 32234 2011-06-26 08:58:06Z shyouhei $
 =end
 
 require "mkmf"
@@ -99,6 +99,12 @@ have_func("SSL_SESSION_get_id")
 have_func("OPENSSL_cleanse")
 if try_compile("#define FOO(...) foo(__VA_ARGS__)\n int x(){FOO(1);FOO(1,2);FOO(1,2,3);}\n")
   $defs.push("-DHAVE_VA_ARGS_MACRO")
+end
+have_func("SSLv2_method")
+have_func("SSLv2_server_method")
+have_func("SSLv2_client_method")
+unless have_func("SSL_set_tlsext_host_name", ['openssl/ssl.h'])
+  have_macro("SSL_set_tlsext_host_name", ['openssl/ssl.h']) && $defs.push("-DHAVE_SSL_SET_TLSEXT_HOST_NAME")
 end
 if have_header("openssl/engine.h")
   have_func("ENGINE_add")

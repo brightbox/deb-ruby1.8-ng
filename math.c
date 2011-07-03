@@ -3,7 +3,7 @@
   math.c -
 
   $Author: shyouhei $
-  $Date: 2008-07-02 11:26:29 +0200 (Wed, 02 Jul 2008) $
+  $Date: 2008-07-02 18:26:29 +0900 (Wed, 02 Jul 2008) $
   created at: Tue Jan 25 14:12:56 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
