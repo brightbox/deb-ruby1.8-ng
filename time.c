@@ -3,7 +3,7 @@
   time.c -
 
   $Author: shyouhei $
-  $Date: 2009-07-12 18:42:27 +0200 (Sun, 12 Jul 2009) $
+  $Date: 2009-07-13 01:42:27 +0900 (Mon, 13 Jul 2009) $
   created at: Tue Dec 28 14:31:59 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

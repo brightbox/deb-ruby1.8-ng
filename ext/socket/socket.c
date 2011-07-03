@@ -3,7 +3,7 @@
   socket.c -
 
   $Author: shyouhei $
-  $Date: 2011-05-21 00:25:41 +0200 (Sat, 21 May 2011) $
+  $Date: 2011-05-21 07:25:41 +0900 (Sat, 21 May 2011) $
   created at: Thu Mar 31 12:21:29 JST 1994
 
   Copyright (C) 1993-2001 Yukihiro Matsumoto

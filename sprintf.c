@@ -3,7 +3,7 @@
   sprintf.c -
 
   $Author: shyouhei $
-  $Date: 2008-06-20 01:12:46 +0200 (Fri, 20 Jun 2008) $
+  $Date: 2008-06-20 08:12:46 +0900 (Fri, 20 Jun 2008) $
   created at: Fri Oct 15 10:39:26 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

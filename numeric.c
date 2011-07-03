@@ -3,7 +3,7 @@
   numeric.c -
 
   $Author: shyouhei $
-  $Date: 2011-05-21 00:29:05 +0200 (Sat, 21 May 2011) $
+  $Date: 2011-05-21 07:29:05 +0900 (Sat, 21 May 2011) $
   created at: Fri Aug 13 18:33:09 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

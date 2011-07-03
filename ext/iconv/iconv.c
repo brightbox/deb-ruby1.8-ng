@@ -4,7 +4,7 @@
   iconv.c -
 
   $Author: shyouhei $
-  $Date: 2010-06-08 10:45:59 +0200 (Tue, 08 Jun 2010) $
+  $Date: 2010-06-08 17:45:59 +0900 (Tue, 08 Jun 2010) $
   created at: Wed Dec  1 20:28:09 JST 1999
 
   All the files in this distribution are covered under the Ruby's

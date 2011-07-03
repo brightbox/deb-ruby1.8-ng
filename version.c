@@ -3,7 +3,7 @@
   version.c -
 
   $Author: knu $
-  $Date: 2008-05-31 15:37:06 +0200 (Sat, 31 May 2008) $
+  $Date: 2008-05-31 22:37:06 +0900 (Sat, 31 May 2008) $
   created at: Thu Sep 30 20:08:01 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

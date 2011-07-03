@@ -1,3 +1,47 @@
+Thu Jun 30 12:52:56 2011  WATANABE Hirofumi  <eban@ruby-lang.org>
+
+	* ext/tk/extconf.rb (intptr_t, uintptr_t): support for the latest ActiveTcl with mingw.
+
+Sun Jun 26 17:52:32 2011  Nobuhiro Iwamatsu  <iwamatsu@nigauri.org>
+
+        * ext/openssl/ossl_ssl.c: By trunk@31346, function check of SSLv2 is executed.
+        However, the problem is not revised in this.
+        This adds the control of using function of SSLv2 in made macro by function check.
+
+Sun Jun 26 17:52:32 2011  Nobuhiro Iwamatsu  <iwamatsu@nigauri.org>
+
+	* ext/openssl/extconf.rb: Should check SSLv2_*method.
+	  openssl compiled with "no-ssl2" the extconf don't fail
+	  when running `make' having this compilation errors.
+	  Patched by Laurent Arnoud. fixes #4562, #4556
+
+Sun Jun 26 17:46:43 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
+
+	* ext/tk/extconf.rb: copy from trunk, as requested by Hidetoshi NAGAI.
+
+Thu Jun 23 18:38:43 2011  Hiroshi Nakamura  <nahi@ruby-lang.org>
+
+	backported r26281 from ruby_1_8
+
+	* lib/webrick/accesslog.rb (WEBrick::AccessLog.format): log parameter
+	  embedding did not work. See #4913.
+
+	* test/webrick/test_accesslog.rb: Add for test it.
+
+Thu Jun 16 22:55:02 2011  Hiroshi Nakamura  <nahi@ruby-lang.org>
+
+	* test/test_securerandom.rb: Add testcase.  This testcase does NOT aim
+	  to test cryptographically strongness and randomness.  It includes
+	  the test for PID recycle issue of OpenSSL described in #4579 but
+	  it's disabled by default.
+
+Mon Jun 13 18:33:04 2011  Tanaka Akira  <akr@fsij.org>
+
+	* lib/securerandom.rb (SecureRandom.random_bytes): modify PRNG state
+	  to prevent random number sequence repeatation at forked
+	  child process which has same pid.
+	  reported by Eric Wong.  [ruby-core:35765]
+
 Thu Jun  2 18:33:51 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
 
 	* variable.c (rb_const_get_0):  Fix  previous change.   There were
@@ -36,7 +80,7 @@ Thu Jun  2 18:28:58 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
 Mon May 30 10:58:17 2011  Hiroshi Nakamura  <nahi@ruby-lang.org>
 
 	* lib/logger.rb (Logger::ProgName): do not depend on subversion
-	  keyword ($Id: ChangeLog 31904 2011-06-02 10:02:20Z shyouhei $). ProgName with revision number was written in the
+	  keyword ($Id: ChangeLog 32320 2011-06-30 03:53:30Z shyouhei $). ProgName with revision number was written in the
 	  header line of each logfile for ease of tracking what version user
 	  is using in troubleshooting.  Logger is already stable enough.
 
