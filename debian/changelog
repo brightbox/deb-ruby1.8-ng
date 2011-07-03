@@ -2,6 +2,7 @@ ruby1.8 (1.8.7.352-1) unstable; urgency=low
 
   * New upstream release.
     + debian/patches/110411_disable_osslv2.patch: not needed anymore
+  * Backport r30993 from the ruby_1.9 branch to fix CVE-2011-0188. Closes: #628452
 
  -- Lucas Nussbaum <lucas@debian.org>  Sun, 03 Jul 2011 16:41:37 +0200
 
