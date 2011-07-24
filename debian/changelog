@@ -1,3 +1,9 @@
+ruby1.8 (1.8.7.352-2) unstable; urgency=low
+
+  * Add -fno-tree-sra on armel. Workaround that Closes: #634260
+
+ -- Lucas Nussbaum <lucas@debian.org>  Sun, 24 Jul 2011 12:30:48 +0200
+
 ruby1.8 (1.8.7.352-1) unstable; urgency=low
 
   * New upstream release.
