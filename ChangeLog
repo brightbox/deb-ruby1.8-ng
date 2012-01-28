@@ -1,3 +1,54 @@
+Wed Dec 28 21:34:23 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
+
+	* string.c (rb_str_hash): randomize hash to avoid algorithmic
+	  complexity attacks. CVE-2011-4815
+
+	* st.c (strhash): ditto.
+
+	* string.c (Init_String): initialization of hash_seed to be at the
+	  beginning of the process.
+
+	* st.c (Init_st): ditto.
+
+Thu Dec  8 11:57:04 2011  Tanaka Akira  <akr@fsij.org>
+
+	* inits.c (rb_call_inits): call Init_RandomSeed at first.
+
+	* random.c (seed_initialized): defined.
+	  (fill_random_seed): extracted from random_seed.
+	  (make_seed_value): extracted from random_seed.
+	  (rb_f_rand): initialize random seed at first.
+	  (initial_seed): defined.
+	  (Init_RandomSeed): defined.
+	  (Init_RandomSeed2): defined.
+	  (rb_reset_random_seed): defined.
+	  (Init_Random): call Init_RandomSeed2.
+
+Sat Dec 10 20:44:23 2011  Tanaka Akira  <akr@fsij.org>
+
+	* lib/securerandom.rb: call OpenSSL::Random.seed at the
+	  SecureRandom.random_bytes call.
+	  insert separators for array join.
+	  patch by Masahiro Tomita.  [ruby-dev:44270]
+
+Mon Oct 17 04:20:22 2011  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* mkconfig.rb: fix for continued lines.  based on a patch from
+	  Marcus Rueckert <darix AT opensu.se> at [ruby-core:20420].
+
+Mon Oct 17 04:19:39 2011  Yukihiro Matsumoto  <matz@ruby-lang.org>
+
+	* numeric.c (flo_cmp): Infinity is greater than any bignum
+	  number.  [ruby-dev:38672]
+
+	* bignum.c (rb_big_cmp): ditto.
+
+Mon Oct 17 03:56:12 2011  Yusuke Endoh  <mame@tsg.ne.jp>
+
+	* ext/openssl/ossl_x509store.c (ossl_x509store_initialize): initialize
+	  store->ex_data.sk.  [ruby-core:28907] [ruby-core:23971]
+	  [ruby-core:18121]
+
 Thu Jun 30 12:52:56 2011  WATANABE Hirofumi  <eban@ruby-lang.org>
 
 	* ext/tk/extconf.rb (intptr_t, uintptr_t): support for the latest ActiveTcl with mingw.
@@ -80,7 +131,7 @@ Thu Jun  2 18:28:58 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
 Mon May 30 10:58:17 2011  Hiroshi Nakamura  <nahi@ruby-lang.org>
 
 	* lib/logger.rb (Logger::ProgName): do not depend on subversion
-	  keyword ($Id: ChangeLog 32320 2011-06-30 03:53:30Z shyouhei $). ProgName with revision number was written in the
+	  keyword ($Id: ChangeLog 34151 2011-12-28 12:47:15Z shyouhei $). ProgName with revision number was written in the
 	  header line of each logfile for ease of tracking what version user
 	  is using in troubleshooting.  Logger is already stable enough.
 
