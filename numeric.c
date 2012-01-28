@@ -3,7 +3,7 @@
   numeric.c -
 
   $Author: shyouhei $
-  $Date: 2011-05-21 07:29:05 +0900 (Sat, 21 May 2011) $
+  $Date: 2011-12-10 21:17:27 +0900 (Sat, 10 Dec 2011) $
   created at: Fri Aug 13 18:33:09 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -936,6 +936,10 @@ flo_cmp(x, y)
 	break;
 
       case T_BIGNUM:
+	if (isinf(a)) {
+	    if (a > 0.0) return INT2FIX(1);
+	    else return INT2FIX(-1);
+	}
 	b = rb_big2dbl(y);
 	break;
 
