@@ -1,3 +1,29 @@
+ruby1.8 (1.8.7.352-2) unstable; urgency=low
+
+  * Add -fno-tree-sra on armel. Workaround that Closes: #634260
+
+ -- Lucas Nussbaum <lucas@debian.org>  Sun, 24 Jul 2011 12:30:48 +0200
+
+ruby1.8 (1.8.7.352-1) unstable; urgency=low
+
+  * New upstream release.
+    + debian/patches/110411_disable_osslv2.patch: not needed anymore
+  * Backport r30993 from the ruby_1.9 branch to fix CVE-2011-0188.
+    Closes: #628452
+  * Build-depend on tcl-dev and tk-dev instead of 8.4.
+  * Add debian/patches/tcltk-no-rpath.patch: disable rpath in
+    the tcltk extension.
+
+ -- Lucas Nussbaum <lucas@debian.org>  Sun, 03 Jul 2011 19:00:52 +0200
+
+ruby1.8 (1.8.7.334+svn31904-1) experimental; urgency=low
+
+  * new upstream snapshot from SVN revision 31904.
+  * Update Lucas' email address.
+  * Bump Standards-Version to 3.9.2. No changes needed.
+
+ -- Lucas Nussbaum <lucas@debian.org>  Wed, 15 Jun 2011 11:47:48 +0200
+
 ruby1.8 (1.8.7.334-5bbox1) lucid; urgency=low
 
   * Backported to Ubuntu Lucid
