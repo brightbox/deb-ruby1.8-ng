@@ -1,11 +1,15 @@
-ruby1.8 (1.8.7.357-1) UNRELEASED; urgency=low
+ruby1.8 (1.8.7.357-1) unstable; urgency=low
 
   * New upstream release
     + Fixes vulnerability against algorithmic complexity attacks on hashes.
       This fixes CVE-2011-4815
   * Added myself to Uploaders.
+  * Remove -V from the dh_makeshlibs call. This way we don't force the latest
+    version as a dependency for packages that link to libruby1.8. Since
+    upstream is very conservative with compatibility, this should not be a
+    problem (Closes: #636975).
 
- -- Antonio Terceiro <terceiro@debian.org>  Sat, 28 Jan 2012 15:58:39 -0200
+ -- Antonio Terceiro <terceiro@debian.org>  Mon, 30 Jan 2012 00:33:08 -0200
 
 ruby1.8 (1.8.7.352-2) unstable; urgency=low
 

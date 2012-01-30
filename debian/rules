@@ -94,7 +94,7 @@ DEB_INSTALL_DOCS_ruby$(ruby_ver)-dev += $(DEB_SRCDIR)/README.EXT*
 
 DEB_COMPRESS_EXCLUDE = .rb .pl .py .scm .awk .dat
 DEB_SHLIBDEPS_INCLUDE = $(CURDIR)/debian/libruby$(ruby_ver)/usr/lib
-DEB_DH_MAKESHLIBS_ARGS_ALL = -m$(ruby_ver) -V
+DEB_DH_MAKESHLIBS_ARGS_ALL = -m$(ruby_ver)
 
 binary-install/libtcltk-ruby$(ruby_ver)::
 	dh_movefiles -p$(cdbs_curpkg) \
