@@ -12,3 +12,4 @@
 100901_threading_fixes.patch
 110703_CVE-2011-0188.patch
 tcltk-no-rpath.patch
+120130_ruby_ee.patch
