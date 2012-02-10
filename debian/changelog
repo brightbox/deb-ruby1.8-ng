@@ -1,3 +1,10 @@
+ruby1.8 (1:1.8.7.352-2bbox2) lucid; urgency=low
+
+  * Ignore .pc directory when building source package, to fix launchpad
+    build problem.
+
+ -- John Leach <john@brightbox.co.uk>  Fri, 10 Feb 2012 14:53:01 +0000
+
 ruby1.8 (1:1.8.7.352-2bbox1) lucid; urgency=low
 
   * Ruby Enterprise Edition 2012.01 support
