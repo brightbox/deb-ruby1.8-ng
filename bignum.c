@@ -3,7 +3,7 @@
   bignum.c -
 
   $Author: shyouhei $
-  $Date: 2010-06-08 17:42:55 +0900 (Tue, 08 Jun 2010) $
+  $Date: 2011-12-10 21:17:27 +0900 (Sat, 10 Dec 2011) $
   created at: Fri Jun 10 00:48:55 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -1114,7 +1114,15 @@ rb_big_cmp(x, y)
 	break;
 
       case T_FLOAT:
-	return rb_dbl_cmp(rb_big2dbl(x), RFLOAT(y)->value);
+	{
+	    double a = RFLOAT_VALUE(y);
+
+	    if (isinf(a)) {
+		if (a > 0.0) return INT2FIX(-1);
+		else return INT2FIX(1);
+	    }
+	    return rb_dbl_cmp(rb_big2dbl(x), a);
+	}
 
       default:
 	return rb_num_coerce_cmp(x, y);

@@ -1,3 +1,15 @@
+ruby1.8 (1.8.7.357-1) unstable; urgency=low
+
+  * New upstream release
+    + Fixes vulnerability against algorithmic complexity attacks on hashes.
+      This fixes CVE-2011-4815
+  * Added myself to Uploaders.
+  * Remove -V from the dh_makeshlibs call; use a symbols file for libruby1.8
+    instead. This way we don't force the latest version as a dependency for
+    packages that link to libruby1.8. (Closes: #636975).
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 31 Jan 2012 16:04:29 -0200
+
 ruby1.8 (1:1.8.7.352-2bbox2) lucid; urgency=low
 
   * Ignore .pc directory when building source package, to fix launchpad
@@ -772,7 +784,7 @@ ruby1.8 (1.8.5-1) unstable; urgency=medium
 ruby1.8 (1.8.4-5) unstable; urgency=medium
 
   * Update debian/patches/903_mkconfig.rb.patch to unquote commas, unbreaking
-    CONFIG["LDFLAGS"].  (Closes: #373679) Thanks Adeodato Sim$BC3(B.
+    CONFIG["LDFLAGS"].  (Closes: #373679) Thanks Adeodato Simó.
 
  -- akira yamada <akira@debian.org>  Sat, 17 Jun 2006 09:57:02 +0900
 
