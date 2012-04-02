@@ -1,3 +1,9 @@
+ruby1.8 (1.8.7.358-1bbox2) lucid; urgency=low
+
+  * Launchpad build fixes
+
+ -- John Leach <john@brightbox.co.uk>  Mon, 02 Apr 2012 23:49:05 +0100
+
 ruby1.8 (1.8.7.358-1bbox1) lucid; urgency=low
 
   * New upstream release
