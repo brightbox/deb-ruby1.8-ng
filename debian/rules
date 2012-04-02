@@ -15,6 +15,7 @@ examples_dir = $(CURDIR)/debian/ruby$(ruby_ver)-examples/usr/share/doc/ruby$(rub
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 
