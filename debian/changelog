@@ -1,3 +1,10 @@
+ruby1.8 (1:1.8.7.358-1bbox3) lucid; urgency=low
+
+  * Add libgoogle-perftools-dev as dep for ruby1.8-dev
+	* Increase epoch to override distro version
+
+ -- John Leach <john@brightbox.co.uk>  Thu, 12 Apr 2012 23:37:48 +0100
+
 ruby1.8 (1.8.7.358-1bbox2) lucid; urgency=low
 
   * Launchpad build fixes
