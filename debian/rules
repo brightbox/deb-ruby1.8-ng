@@ -62,7 +62,7 @@ DEB_MAKE_BUILD_TARGET = all test
 
 common-post-build-arch::
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	-timeout 1200 make test-all
+	-timeout 1h make test-all
 endif
 
 
