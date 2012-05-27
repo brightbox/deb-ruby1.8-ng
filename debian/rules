@@ -19,6 +19,7 @@ include /usr/share/cdbs/1/class/autotools.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 
+CC = gcc-4.6 # see #674541
 CFLAGS += -fno-strict-aliasing -g
 CXXFLAGS += -fno-strict-aliasing -g
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
