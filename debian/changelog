@@ -1,8 +1,11 @@
-ruby1.8 (1.8.7.358-4) UNRELEASED; urgency=low
+ruby1.8 (1.8.7.358-4) unstable; urgency=low
 
   * debian/rules: avoid running DRB tests, since they crash and leave runaway
     processes that make buildds hang forever. With this, I expect that we
     don't need to set timeouts for the test suite at all (Closes: #674942).
+  * Added patch by Steven Chamberlain to make ruby1.8-dev depend on gcc-4.6,
+    since Ruby will hard code that as the compiler for building C extensions.
+    Any C extension will FTBFS if gcc-4.6 is not installed (Closes: #675347).
 
  -- Antonio Terceiro <terceiro@debian.org>  Fri, 01 Jun 2012 22:44:42 -0300
 
