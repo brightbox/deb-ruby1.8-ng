@@ -63,7 +63,10 @@ DEB_MAKE_BUILD_TARGET = all test
 
 common-post-build-arch::
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	-timeout 1h make test-all
+	# avoid running drb tests -- they make buildds hang forever
+	mv test/drb _test_drb
+	-make test-all
+	mv _test_drb test/drb
 endif
 
 
