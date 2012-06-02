@@ -19,7 +19,7 @@ include /usr/share/cdbs/1/class/autotools.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 
-CC = gcc-4.6 # see #674541
+CC = gcc-4.6 # see #674541; same version must be in Depends of ruby1.8-dev
 CFLAGS += -fno-strict-aliasing -g
 CXXFLAGS += -fno-strict-aliasing -g
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
