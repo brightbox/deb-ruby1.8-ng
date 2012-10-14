@@ -13,3 +13,4 @@
 110703_CVE-2011-0188.patch
 tcltk-no-rpath.patch
 use-ldflags.patch
+CVE-2012-4481.patch

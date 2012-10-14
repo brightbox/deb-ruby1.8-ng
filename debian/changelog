@@ -1,3 +1,10 @@
+ruby1.8 (1.8.7.358-5) unstable; urgency=high
+
+  * added debian/patches/CVE-2012-4481.patch to fix CVE-2012-4481
+    (Closes: #689945)
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 14 Oct 2012 19:45:52 -0300
+
 ruby1.8 (1.8.7.358-4) unstable; urgency=low
 
   * debian/rules: avoid running DRB tests, since they crash and leave runaway
