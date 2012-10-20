@@ -4,7 +4,7 @@
  * <amos+ruby@utdallas.edu>
  *
  * $RoughId: syslog.c,v 1.21 2002/02/25 12:21:17 knu Exp $
- * $Id: syslog.c 17809 2008-07-02 09:58:40Z shyouhei $
+ * $Id: syslog.c 35746 2012-05-21 07:35:21Z knu $
  */
 
 #include "ruby.h"
@@ -167,6 +167,8 @@ static VALUE mSyslog_log(int argc, VALUE *argv, VALUE self)
 static VALUE mSyslog_inspect(VALUE self)
 {
     char buf[1024];
+
+    Check_Type(self, T_MODULE);
 
     if (syslog_opened) {
 	snprintf(buf, sizeof(buf),
