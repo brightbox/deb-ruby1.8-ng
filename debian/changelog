@@ -1,3 +1,52 @@
+ruby1.8 (1.8.7.358-4) unstable; urgency=low
+
+  * debian/rules: avoid running DRB tests, since they crash and leave runaway
+    processes that make buildds hang forever. With this, I expect that we
+    don't need to set timeouts for the test suite at all (Closes: #674942).
+  * Added patch by Steven Chamberlain to make ruby1.8-dev depend on gcc-4.6,
+    since Ruby will hard code that as the compiler for building C extensions.
+    Any C extension will FTBFS if gcc-4.6 is not installed (Closes: #675347).
+
+ -- Antonio Terceiro <terceiro@debian.org>  Fri, 01 Jun 2012 22:44:42 -0300
+
+ruby1.8 (1.8.7.358-3) unstable; urgency=low
+
+  * Guard test suit run with a explicit timeout to avoid FTBFS on kfreebsd-*
+    due to a timeout after 150 minutes of inactivity (Closes: #673594). For
+    now, the timeout is  1 hour, which should be enough time to run the test
+    suite on other architectures, and is less than the 150 minutes tolerated
+    by kfreebsd-*. Thanks to Steven Chamberlain.
+  * Force compilation with gcc-4.6. This avoids segfaults when ruby1.8 is
+    compiled with gcc-4.7 (See #674541).
+  * debian/patches/use-ldflags.patch: patch by Simon Ruderich to make Ruby
+    use any existing LDFLAGS environment variable. This should make ruby1.8 be
+    properly built with hardening (Closes: #667957).
+
+ -- Antonio Terceiro <terceiro@debian.org>  Thu, 24 May 2012 22:19:52 -0300
+
+ruby1.8 (1.8.7.358-2) unstable; urgency=low
+
+  * Marking 2 symbols as specific to 64-bit architectures. This should fix the
+    build on all non-64-bit architectures.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 22 Apr 2012 11:43:29 -0300
+
+ruby1.8 (1.8.7.358-1) unstable; urgency=low
+
+  * New upstream release
+    + Fixes vulnerability against algorithmic complexity attacks on hashes.
+      This fixes CVE-2011-4815 and Closes: #658072
+    + Fixes vulnerability in OpenSSL (CVE-2011-3389)
+  * Added myself to Uploaders.
+  * Remove -V from the dh_makeshlibs call; use a symbols file for libruby1.8
+    instead. This way we don't force the latest version as a dependency for
+    packages that link to libruby1.8. (Closes: #636975).
+  * Enable hardened build flags with a patch by Moritz Muehlenhoff - thanks!
+    (Closes: #667957)
+  * Suggests ruby-switch (Closes: #654311)
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 21 Apr 2012 12:36:00 -0300
+
 ruby1.8 (1:1.8.7.358-1bbox3) lucid; urgency=low
 
   * Add libgoogle-perftools-dev as dep for ruby1.8-dev
@@ -17,18 +66,6 @@ ruby1.8 (1.8.7.358-1bbox1) lucid; urgency=low
   * New upstream Ruby Enterprise Edition 2012.02
 
  -- John Leach <john@brightbox.co.uk>  Mon, 02 Apr 2012 15:56:04 +0100
-
-ruby1.8 (1.8.7.357-1) unstable; urgency=low
-
-  * New upstream release
-    + Fixes vulnerability against algorithmic complexity attacks on hashes.
-      This fixes CVE-2011-4815
-  * Added myself to Uploaders.
-  * Remove -V from the dh_makeshlibs call; use a symbols file for libruby1.8
-    instead. This way we don't force the latest version as a dependency for
-    packages that link to libruby1.8. (Closes: #636975).
-
- -- Antonio Terceiro <terceiro@debian.org>  Tue, 31 Jan 2012 16:04:29 -0200
 
 ruby1.8 (1:1.8.7.352-2bbox2) lucid; urgency=low
 
