@@ -1,3 +1,85 @@
+Fri Jun 29 21:26:05 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* eval.c (stack_extend): prevent ALLOCA_N, which reserves a memory
+	  space with for restoring machine stack stored in each threads, from
+	  optimization out.  backport r34278 from the trunk.
+
+Mon Jun 18 18:32:43 2012  Martin Bosslet  <Martin.Bosslet@googlemail.com>
+
+	* backport r32609 from trunk.
+
+	* ext/openssl/ossl_hmac.c: Revert checking return type of
+	  HMAC_Init_ex as it is not compatible with OpenSSL < 1.0.0.
+
+Mon Jun 18 18:32:43 2012  Martin Bosslet  <Martin.Bosslet@googlemail.com>
+
+	* backport r32606 from trunk.
+
+	* ext/openssl/ossl_digest.c: Check return value of EVP_DigestInit_ex.
+	* ext/openssl/ossl_hmac.c: Check return value of HMAC_Init_ex.
+	  Thanks, Jared Jennings, for the patch.
+	  [ Ruby 1.9 - Bug #4944 ] [ruby-core:37670]
+
+Sun Jun 10 03:00:21 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* eval.c (ruby_setjmp): need to save the stack after r2 (the Table
+	  of Contents on ppc64) is saved onto the stack by getcontext().
+	  based on <https://bugzilla.redhat.com/show_bug.cgi?id=628715>.
+	  Bug#4411
+
+Thu Jun  7 19:00:35 2012  Kenta Murata <mrkn@mrkn.jp>
+
+	* ext/bigdecimal/bigdecimal.c (VpMemAlloc): Fixes a bug reported
+	  by Drew Yao <ayao at apple.com>
+
+Wed Jun  6 15:09:00 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* eval.c (rb_thread_join), ext/thread/thread.c (wake_one): adjusts
+	  targets of rest waiting threads to join.  [ruby-core:23457]
+
+Wed Jun  6 14:44:13 2012  Kenta Murata  <mrkn@mrkn.jp>
+
+	* bignum.c (rb_big2dbl), test/ruby/test_bignum.rb (test_to_f):
+	  A negative Bignum out of Float range should be converted to -Infinity.
+	  [ruby-core:30492] [Bug #3362]
+
+Wed Jun  6 14:06:02 2012  Tanaka Akira  <akr@fsij.org>
+
+	* lib/webrick/utils.rb: fix fcntl call.
+
+	* lib/drb/unix.rb: ditto.
+
+Mon May 21 16:29:47 2012  Akinori MUSHA  <knu@iDaemons.org>
+
+	* ext/syslog/syslog.c (mSyslog_inspect): Make sure self is a
+	  module before calling rb_class2name().
+
+Fri May 11 14:09:48 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* ext/bigdecimal/bigdecimal.c (PUSH): to prevent VALUE from GC,
+	  must not cast it to unsigned long, which may be shorter than
+	  VALUE, and the result can be mere garbage.
+
+Sat Apr 14 18:51:41 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* bignum.c (rb_big2str0): prevent working clone from
+	  GC. [exerb-dev:0578].  patched by MURASE Masamitsu
+	  <masamitsu.murase AT gmail.com> at [exerb-dev:0580]
+
+Fri Mar  2 11:44:33 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* marshal.c (mark_dump_arg): mark destination string.  patch by
+	  Vit Ondruch.  [Bug #4339]
+
+	* marshal.c (clear_dump_arg, clear_load_arg): clean up also data
+	  tables as same as symbols tables.
+
+Fri Mar  2 11:44:33 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+
+	* marshal.c (struct {dump,load}_arg): manage with dfree, instead
+	  of using local variable which may be moved by context switch.
+	  [ruby-dev:39425]
+
 Wed Feb  8 14:06:59 2012  Hiroshi Nakamura  <nahi@ruby-lang.org>
 
 	* ext/openssl/ossl_ssl.c: Add SSL constants and allow to unset SSL
@@ -162,7 +244,7 @@ Thu Jun  2 18:28:58 2011  URABE Shyouhei  <shyouhei@ruby-lang.org>
 Mon May 30 10:58:17 2011  Hiroshi Nakamura  <nahi@ruby-lang.org>
 
 	* lib/logger.rb (Logger::ProgName): do not depend on subversion
-	  keyword ($Id: ChangeLog 34486 2012-02-08 06:09:40Z nahi $). ProgName with revision number was written in the
+	  keyword ($Id: ChangeLog 36253 2012-06-29 12:31:25Z shyouhei $). ProgName with revision number was written in the
 	  header line of each logfile for ease of tracking what version user
 	  is using in troubleshooting.  Logger is already stable enough.
 

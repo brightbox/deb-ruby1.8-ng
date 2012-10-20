@@ -3,7 +3,7 @@
   eval.c -
 
   $Author: shyouhei $
-  $Date: 2011-05-23 13:49:40 +0900 (Mon, 23 May 2011) $
+  $Date: 2012-06-29 21:31:25 +0900 (Fri, 29 Jun 2012) $
   created at: Thu Jun 10 14:22:17 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -179,6 +179,9 @@ int function_call_may_return_twice_false_2 = 0;
        (function_call_may_return_twice_false_2 ? \
         setjmp(function_call_may_return_twice_jmp_buf) : \
         0)
+#  elif defined(__PPC64__)
+#    define JUST_BEFORE_SETJMP(extra_save, j) ((void)0)
+#    define JUST_AFTER_SETJMP(extra_save, j) ((j)->status ? (void)0 : (extra_save))
 #  elif defined(__FreeBSD__) && __FreeBSD__ < 7
 /*
  * workaround for FreeBSD/i386 getcontext/setcontext bug.
@@ -196,16 +199,23 @@ static int volatile freebsd_clear_carry_flag = 0;
 #  ifndef POST_GETCONTEXT
 #    define POST_GETCONTEXT 0
 #  endif
+#  ifndef JUST_BEFORE_SETJMP
+#    define JUST_BEFORE_SETJMP(extra_save, j) (extra_save)
+#  endif
+#  ifndef JUST_AFTER_SETJMP
+#    define JUST_AFTER_SETJMP(extra_save, j) ((void)0)
+#  endif
 #  define ruby_longjmp(env, val) rb_jump_context(env, val)
-#  define ruby_setjmp(just_before_setjmp, j) ((j)->status = 0, \
-     (just_before_setjmp), \
+#  define ruby_setjmp(extra_save, j) ((j)->status = 0, \
+     JUST_BEFORE_SETJMP(extra_save, j), \
      PRE_GETCONTEXT, \
      getcontext(&(j)->context), \
      POST_GETCONTEXT, \
+     JUST_AFTER_SETJMP(extra_save, j), \
      (j)->status)
 #else
-#  define ruby_setjmp(just_before_setjmp, env) \
-     ((just_before_setjmp), RUBY_SETJMP(env))
+#  define ruby_setjmp(extra_save, env) \
+     ((extra_save), RUBY_SETJMP(env))
 #  define ruby_longjmp(env,val) RUBY_LONGJMP(env,val)
 #  ifdef __CYGWIN__
 int _setjmp(), _longjmp();
@@ -10814,6 +10824,7 @@ stack_extend(rb_thread_t th, int exit)
 	if (space > th->stk_pos) {
 # ifdef HAVE_ALLOCA
 	    sp = ALLOCA_N(VALUE, &space[0] - th->stk_pos);
+	    space[0] = *sp;
 # else
 	    stack_extend(th, exit);
 # endif
@@ -10828,6 +10839,7 @@ stack_extend(rb_thread_t th, int exit)
 	if (&space[STACK_PAD_SIZE] < th->stk_pos + th->stk_len) {
 # ifdef HAVE_ALLOCA
 	    sp = ALLOCA_N(VALUE, th->stk_pos + th->stk_len - &space[STACK_PAD_SIZE]);
+	    space[0] = *sp;
 # else
 	    stack_extend(th, exit);
 # endif
@@ -11564,6 +11576,16 @@ rb_thread_join(thread, limit)
 {
     if (limit < 0) limit = DELAY_INFTY;
     return rb_thread_join0(rb_thread_check(thread), limit);
+}
+
+void
+rb_thread_set_join(thread, join)
+    VALUE thread, join;
+{
+    rb_thread_t th = rb_thread_check(thread);
+    rb_thread_t jth = rb_thread_check(join);
+    th->wait_for = WAIT_JOIN;
+    th->join = jth;
 }
 
 
