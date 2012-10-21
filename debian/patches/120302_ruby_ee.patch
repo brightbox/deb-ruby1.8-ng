@@ -1,8 +1,14 @@
+commit ff1b93fd53b34e320c7017824bf70d40ec5065ff
+Author: John Leach <john@johnleach.co.uk>
+Date:   Sun Oct 21 00:58:14 2012 +0100
+
+    Updated ruby EE patch
+
 diff --git a/ChangeLog b/ChangeLog
-index a09237e..9a2a66b 100644
+index d1ecccf..b2956bf 100644
 --- a/ChangeLog
 +++ b/ChangeLog
-@@ -80,6 +80,22 @@ Mon Oct 17 03:56:12 2011  Yusuke Endoh  <mame@tsg.ne.jp>
+@@ -162,6 +162,22 @@ Mon Oct 17 03:56:12 2011  Yusuke Endoh  <mame@tsg.ne.jp>
  	  store->ex_data.sk.  [ruby-core:28907] [ruby-core:23971]
  	  [ruby-core:18121]
  
@@ -25,7 +31,7 @@ index a09237e..9a2a66b 100644
  Thu Jun 30 12:52:56 2011  WATANABE Hirofumi  <eban@ruby-lang.org>
  
  	* ext/tk/extconf.rb (intptr_t, uintptr_t): support for the latest ActiveTcl with mingw.
-@@ -1026,6 +1042,23 @@ Thu Apr  1 05:32:17 2010  NAKAMURA Usaku  <usa@ruby-lang.org>
+@@ -1108,6 +1124,23 @@ Thu Apr  1 05:32:17 2010  NAKAMURA Usaku  <usa@ruby-lang.org>
  	* string.c (rb_str_inspect): wrong result of UTF-8 inspect because of
  	  the mistake of calculation.  reported by eban via IRC.
  
@@ -49,7 +55,7 @@ index a09237e..9a2a66b 100644
  Sun Jan 10 19:00:31 2010  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* lib/webrick/accesslog.rb : Escape needed.
-@@ -1595,6 +1628,11 @@ Tue May 26 20:50:32 2009  Tanaka Akira  <akr@fsij.org>
+@@ -1677,6 +1710,11 @@ Tue May 26 20:50:32 2009  Tanaka Akira  <akr@fsij.org>
  	* eval.c (rb_thread_schedule): handle EBADF of select as well.
  	  [ruby-core:21264]
  
@@ -61,7 +67,7 @@ index a09237e..9a2a66b 100644
  Wed Apr  8 18:59:52 2009  NAKAMURA Usaku  <usa@ruby-lang.org>
  
  	* win32/win32.c (subtruct): check tv_sec.
-@@ -1696,6 +1734,24 @@ Mon Mar  9 08:54:47 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -1778,6 +1816,24 @@ Mon Mar  9 08:54:47 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  	* parse.y (IS_BEG): EXPR_CLASS should be treated like EXPR_BEG.
  	  [ruby-core:21453]
  
@@ -86,7 +92,7 @@ index a09237e..9a2a66b 100644
  Wed Feb 25 15:15:52 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* node.h (rb_thread_raised_clear): should not clear flags other than
-@@ -1717,6 +1773,16 @@ Wed Feb 25 14:57:18 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -1799,6 +1855,16 @@ Wed Feb 25 14:57:18 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	* win32/win32.c (winnt_stat): gets rid of strange behavior of
  	  GetFileAttributes().  [ruby-core:21269]
  
@@ -103,7 +109,7 @@ index a09237e..9a2a66b 100644
  Tue Feb 24 02:44:39 2009  Masatoshi SEKI  <m_seki@mva.biglobe.ne.jp>
  
  	* lib/erb.rb (PercentScanner): remove PercentScanner. fixed % after
-@@ -1729,6 +1795,20 @@ Tue Feb 24 02:35:29 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -1811,6 +1877,20 @@ Tue Feb 24 02:35:29 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	* hash.c (rb_hash_s_create): set nil as the value if assoc length
  	  is not enough.  [ruby-core:21249]
  
@@ -124,7 +130,7 @@ index a09237e..9a2a66b 100644
  Sun Feb 22 22:08:45 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (stack_extend): streamlined rb_thread_restore_context()
-@@ -1868,22 +1948,28 @@ Sun Feb 15 04:21:42 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -1950,22 +2030,28 @@ Sun Feb 15 04:21:42 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  	  a patch from Alan Johnson <alan.wayne.johnson at gmail.com> in 
  	  [ruby-core:19982].
  
@@ -158,7 +164,7 @@ index a09237e..9a2a66b 100644
  Tue Feb 10 20:00:52 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (load_lock): makes circular require deadlock.
-@@ -1903,6 +1989,12 @@ Wed Feb 11 23:37:35 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -1985,6 +2071,12 @@ Wed Feb 11 23:37:35 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  	  Shin").  [ruby-talk:273360]
  	  back ported from 1.9. fix [ruby-core:19791]
  
@@ -171,7 +177,7 @@ index a09237e..9a2a66b 100644
  Mon Feb  9 17:35:38 2009  NAKAMURA Usaku  <usa@ruby-lang.org>
  
  	* win32/win32.c (rb_w32_accept): secure fd before accept because if
-@@ -1921,6 +2013,23 @@ Mon Feb  9 13:40:21 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -2003,6 +2095,23 @@ Mon Feb  9 13:40:21 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  	* ext/stringio/stringio.c (strio_ungetc): should allow ungetc at
  	  the top of the buffer.  ref #701
  
@@ -195,7 +201,7 @@ index a09237e..9a2a66b 100644
  Thu Feb  5 09:38:48 2009  NARUSE, Yui  <naruse@ruby-lang.org>
  
  	* ext/nkf/nkf-utf8/nkf.c (h_conv): can't guess UTF-8 input in
-@@ -2025,6 +2134,15 @@ Fri Jan 23 11:49:45 2009  Shugo Maeda  <shugo@ruby-lang.org>
+@@ -2107,6 +2216,15 @@ Fri Jan 23 11:49:45 2009  Shugo Maeda  <shugo@ruby-lang.org>
  
  	* test/rexml/test_document.rb: ditto.
  
@@ -211,7 +217,7 @@ index a09237e..9a2a66b 100644
  Thu Jan 22 15:19:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* marshal.c (marshal_load): arg.data is no longer a VALUE but a
-@@ -2075,6 +2193,21 @@ Mon Jan 19 18:25:28 2009  Tanaka Akira  <akr@fsij.org>
+@@ -2157,6 +2275,21 @@ Mon Jan 19 18:25:28 2009  Tanaka Akira  <akr@fsij.org>
  	  rb_broken_glibc_ia64_erfc.
  	  [ruby-core:18228]
  
@@ -233,7 +239,7 @@ index a09237e..9a2a66b 100644
  Sat Jan 17 12:16:10 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  
  	* random.c (Init_Random): always initialize seed.
-@@ -2088,16 +2221,47 @@ Fri Jan 16 10:59:31 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -2170,16 +2303,47 @@ Fri Jan 16 10:59:31 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  
  	* eval.c (PUSH_CREF): use NEW_CREF().
  
@@ -281,7 +287,7 @@ index a09237e..9a2a66b 100644
  Tue Jan 13 04:40:30 2009  Shugo Maeda  <shugo@ruby-lang.org>
  
  	* lib/net/ftp.rb (login): raise FTPReplyError if passwd or acct
-@@ -2111,6 +2275,22 @@ Mon Jan 12 00:23:37 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2193,6 +2357,22 @@ Mon Jan 12 00:23:37 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	* gc.c (rb_gc_call_finalizer_at_exit): self-referencing finalizers
  	  cannot be invoked.  [ruby-dev:35681]
  
@@ -304,7 +310,7 @@ index a09237e..9a2a66b 100644
  Sun Jan 11 11:33:27 2009  Shugo Maeda  <shugo@ruby-lang.org>
  
  	* lib/net/ftp.rb (chdir): handle 5xx errors correctly.
-@@ -2138,6 +2318,20 @@ Tue Jan  6 09:03:35 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2220,6 +2400,20 @@ Tue Jan  6 09:03:35 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	* parse.y (yylex): 8 and 9 in octal integer should cause compile
  	  error.  [ruby-dev:35729]
  
@@ -325,7 +331,7 @@ index a09237e..9a2a66b 100644
  Mon Jan  5 11:14:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (rb_thread_schedule): runs deferred finalizers.
-@@ -2153,6 +2347,21 @@ Mon Jan  5 11:14:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2235,6 +2429,21 @@ Mon Jan  5 11:14:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	  finalizers before explicit GC.start or the process termination.
  	  [ruby-core:18045]
  
@@ -347,7 +353,7 @@ index a09237e..9a2a66b 100644
  Sun Jan  4 04:49:01 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* win32/win32.c (rb_w32_telldir): just returns loc.
-@@ -2161,13 +2370,74 @@ Sun Jan  4 04:49:01 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2243,13 +2452,74 @@ Sun Jan  4 04:49:01 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  	  [ruby-core:18041]
  
  Sun Jan  4 04:45:26 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
@@ -780,7 +786,7 @@ index 62b34a8..ca239ff 100644
  if test "$search_path" != ""; then
      AC_DEFINE_UNQUOTED(RUBY_SEARCH_PATH,"$search_path")
 diff --git a/defines.h b/defines.h
-index f39097f..77eccce 100644
+index 87b89f4..be467c7 100644
 --- a/defines.h
 +++ b/defines.h
 @@ -51,6 +51,19 @@ void *xcalloc _((long,long));
@@ -804,10 +810,10 @@ index f39097f..77eccce 100644
  # define LONG_LONG long long
  #elif SIZEOF___INT64 > 0
 diff --git a/eval.c b/eval.c
-index 7886e17..6d32dee 100644
+index b1cbb6c..0ae3e68 100644
 --- a/eval.c
 +++ b/eval.c
-@@ -230,9 +230,9 @@ VALUE rb_cProc;
+@@ -240,9 +240,9 @@ VALUE rb_cProc;
  VALUE rb_cBinding;
  static VALUE proc_invoke _((VALUE,VALUE,VALUE,VALUE));
  static VALUE rb_f_binding _((VALUE));
@@ -819,7 +825,7 @@ index 7886e17..6d32dee 100644
  static void eval_check_tick _((void));
  
  VALUE rb_cMethod;
-@@ -255,6 +255,23 @@ static int scope_vmode;
+@@ -265,6 +265,23 @@ static int scope_vmode;
  VALUE (*ruby_sandbox_save)_((rb_thread_t));
  VALUE (*ruby_sandbox_restore)_((rb_thread_t));
  NODE* ruby_current_node;
@@ -843,7 +849,7 @@ index 7886e17..6d32dee 100644
  int ruby_safe_level = 0;
  /* safe-level:
     0 - strings from streams/environment/ARGV are tainted (default)
-@@ -739,6 +756,7 @@ rb_attr(klass, id, read, write, ex)
+@@ -749,6 +766,7 @@ rb_attr(klass, id, read, write, ex)
      if (!name) {
  	rb_raise(rb_eArgError, "argument needs to be symbol or string");
      }
@@ -851,7 +857,7 @@ index 7886e17..6d32dee 100644
      len = strlen(name)+2;
      buf = ALLOCA_N(char,len);
      snprintf(buf, len, "@%s", name);
-@@ -779,7 +797,7 @@ static unsigned long frame_unique = 0;
+@@ -789,7 +807,7 @@ static unsigned long frame_unique = 0;
      _frame.argc = 0;			\
      _frame.flags = 0;			\
      _frame.uniq = frame_unique++;	\
@@ -860,7 +866,7 @@ index 7886e17..6d32dee 100644
  
  #define POP_FRAME()  			\
      ruby_current_node = _frame.node;	\
-@@ -977,7 +995,7 @@ rb_svar(cnt)
+@@ -987,7 +1005,7 @@ rb_svar(cnt)
      ID id;
  
      if (!ruby_scope->local_tbl) return NULL;
@@ -869,7 +875,7 @@ index 7886e17..6d32dee 100644
      id = ruby_scope->local_tbl[cnt+1];
      while (vars) {
  	if (vars->id == id) return &vars->val;
-@@ -1040,7 +1058,26 @@ static struct tag *prot_tag;
+@@ -1050,7 +1068,26 @@ static struct tag *prot_tag;
  #define PROT_LAMBDA INT2FIX(2)	/* 5 */
  #define PROT_YIELD  INT2FIX(3)	/* 7 */
  
@@ -897,7 +903,7 @@ index 7886e17..6d32dee 100644
  
  #define JUMP_TAG(st) do {		\
      ruby_frame = prot_tag->frame;	\
-@@ -1116,10 +1153,17 @@ static void scope_dup _((struct SCOPE *));
+@@ -1126,10 +1163,17 @@ static void scope_dup _((struct SCOPE *));
  } while (0)
  
  static VALUE rb_eval _((VALUE,NODE*));
@@ -917,7 +923,7 @@ index 7886e17..6d32dee 100644
  
  #define YIELD_LAMBDA_CALL 1
  #define YIELD_PROC_CALL   2
-@@ -1129,7 +1173,7 @@ static VALUE rb_yield_0 _((VALUE, VALUE, VALUE, int, int));
+@@ -1139,7 +1183,7 @@ static VALUE rb_yield_0 _((VALUE, VALUE, VALUE, int, int));
  #define YIELD_FUNC_LAMBDA 3
  
  static VALUE rb_call _((VALUE,VALUE,ID,int,const VALUE*,int,VALUE));
@@ -926,7 +932,7 @@ index 7886e17..6d32dee 100644
  
  static VALUE massign _((VALUE,NODE*,VALUE,int));
  static void assign _((VALUE,NODE*,VALUE,int));
-@@ -1161,22 +1205,6 @@ static VALUE trace_func = 0;
+@@ -1171,22 +1215,6 @@ static VALUE trace_func = 0;
  static int tracing = 0;
  static void call_trace_func _((rb_event_t,NODE*,VALUE,ID,VALUE));
  
@@ -949,7 +955,7 @@ index 7886e17..6d32dee 100644
  static void
  #ifdef HAVE_STDARG_PROTOTYPES
  warn_printf(const char *fmt, ...)
-@@ -1238,20 +1266,15 @@ set_backtrace(info, bt)
+@@ -1248,20 +1276,15 @@ set_backtrace(info, bt)
  static void
  error_print()
  {
@@ -973,7 +979,7 @@ index 7886e17..6d32dee 100644
      if (EXEC_TAG()) goto error;
      if (NIL_P(errat)){
  	ruby_set_current_source();
-@@ -1434,7 +1457,7 @@ ruby_init()
+@@ -1444,7 +1467,7 @@ ruby_init()
  }
  
  static VALUE
@@ -982,7 +988,7 @@ index 7886e17..6d32dee 100644
      VALUE self;
      NODE *node;
  {
-@@ -1583,12 +1606,13 @@ ruby_finalize()
+@@ -1593,12 +1616,13 @@ ruby_finalize()
  }
  
  int
@@ -999,7 +1005,7 @@ index 7886e17..6d32dee 100644
  
      errs[1] = ruby_errinfo;
      ruby_safe_level = 0;
-@@ -1651,7 +1675,7 @@ ruby_exec_internal()
+@@ -1661,7 +1685,7 @@ ruby_exec_internal()
      /* default visibility is private at toplevel */
      SCOPE_SET(SCOPE_PRIVATE);
      if ((state = EXEC_TAG()) == 0) {
@@ -1008,7 +1014,7 @@ index 7886e17..6d32dee 100644
      }
      POP_ITER();
      POP_TAG();
-@@ -1859,8 +1883,8 @@ rb_eval_cmd(cmd, arg, level)
+@@ -1869,8 +1893,8 @@ rb_eval_cmd(cmd, arg, level)
      int level;
  {
      int state;
@@ -1019,7 +1025,7 @@ index 7886e17..6d32dee 100644
      volatile int safe = ruby_safe_level;
  
      if (OBJ_TAINTED(cmd)) {
-@@ -1891,9 +1915,7 @@ rb_eval_cmd(cmd, arg, level)
+@@ -1901,9 +1925,7 @@ rb_eval_cmd(cmd, arg, level)
      ruby_safe_level = level;
  
      PUSH_TAG(PROT_NONE);
@@ -1030,7 +1036,7 @@ index 7886e17..6d32dee 100644
      if (ruby_scope->flags & SCOPE_DONT_RECYCLE)
  	scope_dup(saved_scope);
      ruby_scope = saved_scope;
-@@ -1932,6 +1954,10 @@ ev_const_defined(cref, id, self)
+@@ -1942,6 +1964,10 @@ ev_const_defined(cref, id, self)
      return rb_const_defined(cref->nd_clss, id);
  }
  
@@ -1041,7 +1047,7 @@ index 7886e17..6d32dee 100644
  static VALUE
  ev_const_get(cref, id, self)
      NODE *cref;
-@@ -2259,7 +2285,10 @@ rb_copy_node_scope(node, rval)
+@@ -2269,7 +2295,10 @@ rb_copy_node_scope(node, rval)
      NODE *node;
      NODE *rval;
  {
@@ -1053,7 +1059,7 @@ index 7886e17..6d32dee 100644
  
      if (node->nd_tbl) {
  	copy->nd_tbl = ALLOC_N(ID, node->nd_tbl[0]+1);
-@@ -2366,10 +2395,10 @@ arg_defined(self, node, buf, type)
+@@ -2376,10 +2405,10 @@ arg_defined(self, node, buf, type)
  static const char*
  is_defined(self, node, buf)
      VALUE self;
@@ -1066,7 +1072,7 @@ index 7886e17..6d32dee 100644
      int state;
  
    again:
-@@ -2714,14 +2743,15 @@ call_trace_func(event, node, self, id, klass)
+@@ -2724,14 +2753,15 @@ call_trace_func(event, node, self, id, klass)
      NODE *node;
      VALUE self;
      ID id;
@@ -1086,7 +1092,7 @@ index 7886e17..6d32dee 100644
  
      if (!trace_func) return;
      if (tracing) return;
-@@ -2771,7 +2801,6 @@ call_trace_func(event, node, self, id, klass)
+@@ -2781,7 +2811,6 @@ call_trace_func(event, node, self, id, klass)
  
      tracing = 0;
      ruby_current_node = node_save;
@@ -1094,7 +1100,7 @@ index 7886e17..6d32dee 100644
      if (state) JUMP_TAG(state);
  }
  
-@@ -2930,11 +2959,11 @@ class_prefix(self, cpath)
+@@ -2940,11 +2969,11 @@ class_prefix(self, cpath)
  NORETURN(static void return_jump _((VALUE)));
  NORETURN(static void break_jump _((VALUE)));
  NORETURN(static void next_jump _((VALUE)));
@@ -1108,7 +1114,7 @@ index 7886e17..6d32dee 100644
  {
      ruby_current_node = 0;
      if (node->flags == 0) {
-@@ -2948,41 +2977,884 @@ unknown_node(node)
+@@ -2958,41 +2987,884 @@ unknown_node(node)
      }
  }
  
@@ -2013,7 +2019,7 @@ index 7886e17..6d32dee 100644
  	break;
  
  	/* begin .. end without clauses */
-@@ -2997,65 +3869,33 @@ rb_eval(self, n)
+@@ -3007,65 +3879,33 @@ rb_eval(self, n)
  
  	/* nodes for speed-up(literal match) */
        case NODE_MATCH2:
@@ -2090,7 +2096,7 @@ index 7886e17..6d32dee 100644
  
        case NODE_IF:
  	if (RTEST(rb_eval(self, node->nd_cond))) {
-@@ -3073,150 +3913,20 @@ rb_eval(self, n)
+@@ -3083,150 +3923,20 @@ rb_eval(self, n)
  	goto again;
  
        case NODE_WHEN:
@@ -2249,7 +2255,7 @@ index 7886e17..6d32dee 100644
  
        case NODE_BLOCK_PASS:
  	result = block_pass(self, node);
-@@ -3224,47 +3934,7 @@ rb_eval(self, n)
+@@ -3234,47 +3944,7 @@ rb_eval(self, n)
  
        case NODE_ITER:
        case NODE_FOR:
@@ -2298,7 +2304,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_BREAK:
-@@ -3272,19 +3942,14 @@ rb_eval(self, n)
+@@ -3282,19 +3952,14 @@ rb_eval(self, n)
  	break;
  
        case NODE_NEXT:
@@ -2318,7 +2324,7 @@ index 7886e17..6d32dee 100644
  
        case NODE_SPLAT:
  	result = splat_value(rb_eval(self, node->nd_head));
-@@ -3307,78 +3972,19 @@ rb_eval(self, n)
+@@ -3317,78 +3982,19 @@ rb_eval(self, n)
  	else {
  	    result = Qundef;	/* no arg */
  	}
@@ -2403,7 +2409,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_AND:
-@@ -3394,56 +4000,20 @@ rb_eval(self, n)
+@@ -3404,56 +4010,20 @@ rb_eval(self, n)
  	goto again;
  
        case NODE_NOT:
@@ -2465,7 +2471,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_RETURN:
-@@ -3451,220 +4021,46 @@ rb_eval(self, n)
+@@ -3461,220 +4031,46 @@ rb_eval(self, n)
  	break;
  
        case NODE_ARGSCAT:
@@ -2699,7 +2705,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_OP_ASGN_AND:
-@@ -3713,26 +4109,21 @@ rb_eval(self, n)
+@@ -3723,26 +4119,21 @@ rb_eval(self, n)
  	break;
  
        case NODE_CDECL:
@@ -2732,7 +2738,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_LVAR:
-@@ -3775,26 +4166,21 @@ rb_eval(self, n)
+@@ -3785,26 +4176,21 @@ rb_eval(self, n)
  	break;
  
        case NODE_COLON2:
@@ -2772,7 +2778,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_COLON3:
-@@ -3825,23 +4211,7 @@ rb_eval(self, n)
+@@ -3835,23 +4221,7 @@ rb_eval(self, n)
  	break;
  
        case NODE_HASH:
@@ -2797,7 +2803,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_ZARRAY:		/* zero length list */
-@@ -3849,19 +4219,7 @@ rb_eval(self, n)
+@@ -3859,19 +4229,7 @@ rb_eval(self, n)
  	break;
  
        case NODE_ARRAY:
@@ -2818,7 +2824,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_STR:
-@@ -3877,53 +4235,8 @@ rb_eval(self, n)
+@@ -3887,53 +4245,8 @@ rb_eval(self, n)
        case NODE_DREGX:
        case NODE_DREGX_ONCE:
        case NODE_DSYM:
@@ -2874,7 +2880,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_XSTR:
-@@ -3935,84 +4248,13 @@ rb_eval(self, n)
+@@ -3945,84 +4258,13 @@ rb_eval(self, n)
  	break;
  
        case NODE_DEFN:
@@ -2963,7 +2969,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_UNDEF:
-@@ -4020,7 +4262,6 @@ rb_eval(self, n)
+@@ -4030,7 +4272,6 @@ rb_eval(self, n)
  	    rb_raise(rb_eTypeError, "no class to undef method");
  	}
  	rb_undef(ruby_class, rb_to_id(rb_eval(self, node->u2.node)));
@@ -2971,7 +2977,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_ALIAS:
-@@ -4029,134 +4270,26 @@ rb_eval(self, n)
+@@ -4039,134 +4280,26 @@ rb_eval(self, n)
  	}
  	rb_alias(ruby_class, rb_to_id(rb_eval(self, node->u1.node)),
  		             rb_to_id(rb_eval(self, node->u2.node)));
@@ -3110,7 +3116,7 @@ index 7886e17..6d32dee 100644
  	break;
  
        case NODE_NEWLINE:
-@@ -4169,25 +4302,19 @@ rb_eval(self, n)
+@@ -4179,25 +4312,19 @@ rb_eval(self, n)
        default:
  	unknown_node(node);
      }
@@ -3141,7 +3147,7 @@ index 7886e17..6d32dee 100644
      TMP_PROTECT;
  
      frame = *ruby_frame;
-@@ -4578,16 +4705,16 @@ rb_iter_break()
+@@ -4588,16 +4715,16 @@ rb_iter_break()
      break_jump(Qnil);
  }
  
@@ -3162,7 +3168,7 @@ index 7886e17..6d32dee 100644
  
      if (rb_thread_set_raised(th)) {
  	ruby_errinfo = exception_error;
-@@ -4720,14 +4847,12 @@ rb_make_exception(argc, argv)
+@@ -4730,14 +4857,12 @@ rb_make_exception(argc, argv)
      int argc;
      VALUE *argv;
  {
@@ -3178,7 +3184,7 @@ index 7886e17..6d32dee 100644
  	break;
        case 1:
  	if (NIL_P(argv[0])) break;
-@@ -4898,7 +5023,7 @@ break_jump(retval)
+@@ -4908,7 +5033,7 @@ break_jump(retval)
  	    tt->dst = (VALUE)tt->frame->uniq;
  	    tt->retval = retval;
  	    JUMP_TAG(TAG_BREAK);
@@ -3187,7 +3193,7 @@ index 7886e17..6d32dee 100644
  	  case PROT_FUNC:
  	    tt = 0;
  	    continue;
-@@ -4927,7 +5052,7 @@ next_jump(retval)
+@@ -4937,7 +5062,7 @@ next_jump(retval)
  	    tt->dst = (VALUE)tt->frame->uniq;
  	    tt->retval = retval;
  	    JUMP_TAG(TAG_NEXT);
@@ -3196,7 +3202,7 @@ index 7886e17..6d32dee 100644
  	  default:
  	    break;
  	}
-@@ -4946,19 +5071,21 @@ rb_need_block()
+@@ -4956,19 +5081,21 @@ rb_need_block()
  
  static VALUE
  rb_yield_0(val, self, klass, flags, avalue)
@@ -3223,7 +3229,7 @@ index 7886e17..6d32dee 100644
      int state;
  
      rb_need_block();
-@@ -5068,56 +5195,49 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5078,56 +5205,49 @@ rb_yield_0(val, self, klass, flags, avalue)
  
      PUSH_ITER(block->iter);
      PUSH_TAG(lambda ? PROT_NONE : PROT_YIELD);
@@ -3319,7 +3325,7 @@ index 7886e17..6d32dee 100644
      }
      POP_TAG();
      POP_ITER();
-@@ -5159,6 +5279,7 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5169,6 +5289,7 @@ rb_yield_0(val, self, klass, flags, avalue)
  		    tt->retval = result;
  		    JUMP_TAG(TAG_BREAK);
  		}
@@ -3327,7 +3333,7 @@ index 7886e17..6d32dee 100644
  		tt = tt->prev;
  	    }
  	    proc_jump_error(TAG_BREAK, result);
-@@ -5166,7 +5287,6 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5176,7 +5297,6 @@ rb_yield_0(val, self, klass, flags, avalue)
  	/* fall through */
        default:
  	JUMP_TAG(state);
@@ -3335,7 +3341,7 @@ index 7886e17..6d32dee 100644
      }
      ruby_current_node = cnode;
      return result;
-@@ -5176,6 +5296,7 @@ VALUE
+@@ -5186,6 +5306,7 @@ VALUE
  rb_yield(val)
      VALUE val;
  {
@@ -3343,7 +3349,7 @@ index 7886e17..6d32dee 100644
      return rb_yield_0(val, 0, 0, 0, Qfalse);
  }
  
-@@ -5224,6 +5345,7 @@ static VALUE
+@@ -5234,6 +5355,7 @@ static VALUE
  loop_i()
  {
      for (;;) {
@@ -3351,7 +3357,7 @@ index 7886e17..6d32dee 100644
  	rb_yield_0(Qundef, 0, 0, 0, Qfalse);
  	CHECK_INTS;
      }
-@@ -5375,7 +5497,6 @@ assign(self, lhs, val, pcall)
+@@ -5385,7 +5507,6 @@ assign(self, lhs, val, pcall)
  	    if (!lhs->nd_args) {
  		/* attr set */
  		ruby_current_node = lhs;
@@ -3359,7 +3365,7 @@ index 7886e17..6d32dee 100644
  		rb_call(CLASS_OF(recv), recv, lhs->nd_mid, 1, &val, scope, self);
  	    }
  	    else {
-@@ -5385,7 +5506,6 @@ assign(self, lhs, val, pcall)
+@@ -5395,7 +5516,6 @@ assign(self, lhs, val, pcall)
  		args = rb_eval(self, lhs->nd_args);
  		rb_ary_push(args, val);
  		ruby_current_node = lhs;
@@ -3367,7 +3373,7 @@ index 7886e17..6d32dee 100644
  		rb_call(CLASS_OF(recv), recv, lhs->nd_mid,
  			RARRAY(args)->len, RARRAY(args)->ptr, scope, self);
  	    }
-@@ -5404,7 +5524,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
+@@ -5414,7 +5534,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
      VALUE data1, data2;
  {
      int state;
@@ -3376,7 +3382,7 @@ index 7886e17..6d32dee 100644
      NODE *node = NEW_IFUNC(bl_proc, data2);
      VALUE self = ruby_top_self;
  
-@@ -5428,12 +5548,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
+@@ -5438,12 +5558,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
      POP_BLOCK();
      POP_TAG();
  
@@ -3390,7 +3396,7 @@ index 7886e17..6d32dee 100644
      return retval;
  }
  
-@@ -5465,16 +5580,17 @@ handle_rescue(self, node)
+@@ -5475,16 +5590,17 @@ handle_rescue(self, node)
  
  VALUE
  #ifdef HAVE_STDARG_PROTOTYPES
@@ -3412,7 +3418,7 @@ index 7886e17..6d32dee 100644
      volatile VALUE e_info = ruby_errinfo;
      volatile int handle = Qfalse;
      VALUE eclass;
-@@ -5533,9 +5649,9 @@ VALUE
+@@ -5543,9 +5659,9 @@ VALUE
  rb_protect(proc, data, state)
      VALUE (*proc) _((VALUE));
      VALUE data;
@@ -3424,7 +3430,7 @@ index 7886e17..6d32dee 100644
      int status;
  
      PUSH_TAG(PROT_NONE);
-@@ -5548,10 +5664,6 @@ rb_protect(proc, data, state)
+@@ -5558,10 +5674,6 @@ rb_protect(proc, data, state)
      if (state) {
  	*state = status;
      }
@@ -3435,7 +3441,7 @@ index 7886e17..6d32dee 100644
      return result;
  }
  
-@@ -5559,19 +5671,18 @@ VALUE
+@@ -5569,19 +5681,18 @@ VALUE
  rb_ensure(b_proc, data1, e_proc, data2)
      VALUE (*b_proc)();
      VALUE data1;
@@ -3459,7 +3465,7 @@ index 7886e17..6d32dee 100644
      if (!thread_no_ensure()) {
  	(*e_proc)(data2);
      }
-@@ -5585,7 +5696,7 @@ rb_with_disable_interrupt(proc, data)
+@@ -5595,7 +5706,7 @@ rb_with_disable_interrupt(proc, data)
      VALUE (*proc)();
      VALUE data;
  {
@@ -3468,7 +3474,7 @@ index 7886e17..6d32dee 100644
      int status;
  
      DEFER_INTS;
-@@ -5602,7 +5713,6 @@ rb_with_disable_interrupt(proc, data)
+@@ -5612,7 +5723,6 @@ rb_with_disable_interrupt(proc, data)
      }
      ENABLE_INTS;
      if (status) JUMP_TAG(status);
@@ -3476,7 +3482,7 @@ index 7886e17..6d32dee 100644
      return result;
  }
  
-@@ -5671,7 +5781,6 @@ rb_method_missing(argc, argv, obj)
+@@ -5681,7 +5791,6 @@ rb_method_missing(argc, argv, obj)
      VALUE *argv;
      VALUE obj;
  {
@@ -3484,7 +3490,7 @@ index 7886e17..6d32dee 100644
      VALUE exc = rb_eNoMethodError;
      const char *format = 0;
      NODE *cnode = ruby_current_node;
-@@ -5682,8 +5791,6 @@ rb_method_missing(argc, argv, obj)
+@@ -5692,8 +5801,6 @@ rb_method_missing(argc, argv, obj)
  
      stack_check();
  
@@ -3493,14 +3499,12 @@ index 7886e17..6d32dee 100644
      if (last_call_status & CSTAT_PRIV) {
  	format = "private method `%s' called for %s";
      }
-@@ -5847,17 +5954,17 @@ call_cfunc(func, recv, len, argc, argv)
- }
+@@ -5858,16 +5965,16 @@ call_cfunc(func, recv, len, argc, argv)
  
  static VALUE
--rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
 -    VALUE klass, recv;
 -    ID    id;
-+rb_call0(klass, recv, id, oid, argc, argv, body, flags)
 +    volatile VALUE klass, recv;
 +    volatile ID    id;
      ID    oid;
@@ -3519,7 +3523,7 @@ index 7886e17..6d32dee 100644
      int itr;
      TMP_PROTECT;
      volatile int safe = -1;
-@@ -5959,9 +6066,10 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -5969,9 +6076,10 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
  	    Data_Get_Struct(body->nd_cval, struct BLOCK, data);
  	    EXEC_EVENT_HOOK(RUBY_EVENT_CALL, data->body, recv, id, klass);
  	}
@@ -3532,7 +3536,7 @@ index 7886e17..6d32dee 100644
  	}
  	break;
  
-@@ -5969,7 +6077,7 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -5979,7 +6087,7 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
  	{
  	    int state;
  	    VALUE *local_vars;	/* OK */
@@ -3541,7 +3545,7 @@ index 7886e17..6d32dee 100644
  
  	    PUSH_SCOPE();
  	    if (body->nd_rval) {
-@@ -6015,8 +6123,9 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6025,8 +6133,9 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
  
  		    i = node->nd_cnt;
  		    if (i > argc) {
@@ -3553,7 +3557,7 @@ index 7886e17..6d32dee 100644
  		    }
  		    if (!node->nd_rest) {
  			NODE *optnode = node->nd_opt;
-@@ -6084,7 +6193,8 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6094,7 +6203,8 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
  	    }
  	    POP_TAG();
  	    if (event_hooks) {
@@ -3563,7 +3567,7 @@ index 7886e17..6d32dee 100644
  	    }
  	    POP_VARS();
  	    POP_CLASS();
-@@ -6098,21 +6208,18 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6108,21 +6218,18 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
  	      case TAG_BREAK:
  	      case TAG_RETURN:
  		JUMP_TAG(state);
@@ -3585,7 +3589,7 @@ index 7886e17..6d32dee 100644
      }
      POP_FRAME();
      POP_ITER();
-@@ -6281,7 +6388,7 @@ rb_funcall_rescue(recv, mid, n, va_alist)
+@@ -6291,7 +6398,7 @@ rb_funcall_rescue(recv, mid, n, va_alist)
      va_dcl
  #endif
  {
@@ -3594,7 +3598,7 @@ index 7886e17..6d32dee 100644
      int status;
      va_list ar;
  
-@@ -6497,12 +6604,13 @@ compile(src, file, line)
+@@ -6507,12 +6614,13 @@ compile(src, file, line)
  
  static VALUE
  eval(self, src, scope, file, line)
@@ -3611,7 +3615,7 @@ index 7886e17..6d32dee 100644
      struct SCOPE * volatile old_scope;
      struct BLOCK * volatile old_block;
      struct RVarmap * volatile old_dyna_vars;
-@@ -6510,7 +6618,7 @@ eval(self, src, scope, file, line)
+@@ -6520,7 +6628,7 @@ eval(self, src, scope, file, line)
      int volatile old_vmode;
      volatile VALUE old_wrapper;
      struct FRAME frame;
@@ -3620,7 +3624,7 @@ index 7886e17..6d32dee 100644
      volatile int iter = ruby_frame->iter;
      volatile int safe = ruby_safe_level;
      int state;
-@@ -6575,7 +6683,7 @@ eval(self, src, scope, file, line)
+@@ -6585,7 +6693,7 @@ eval(self, src, scope, file, line)
  	    compile_error(0);
  	}
  	if (!NIL_P(result)) ruby_errinfo = result;
@@ -3629,7 +3633,7 @@ index 7886e17..6d32dee 100644
      }
      POP_TAG();
      POP_CLASS();
-@@ -6597,6 +6705,7 @@ eval(self, src, scope, file, line)
+@@ -6607,6 +6715,7 @@ eval(self, src, scope, file, line)
  
  	    scope_dup(ruby_scope);
  	    for (tag=prot_tag; tag; tag=tag->prev) {
@@ -3637,7 +3641,7 @@ index 7886e17..6d32dee 100644
  		scope_dup(tag->scope);
  	    }
  	    for (vars = ruby_dyna_vars; vars; vars = vars->next) {
-@@ -6708,12 +6817,13 @@ rb_f_eval(argc, argv, self)
+@@ -6718,12 +6827,13 @@ rb_f_eval(argc, argv, self)
  static VALUE
  exec_under(func, under, cbase, args)
      VALUE (*func)();
@@ -3654,7 +3658,7 @@ index 7886e17..6d32dee 100644
      struct FRAME *f = ruby_frame;
  
      PUSH_CLASS(under);
-@@ -6739,7 +6849,6 @@ exec_under(func, under, cbase, args)
+@@ -6749,7 +6859,6 @@ exec_under(func, under, cbase, args)
      POP_FRAME();
      POP_CLASS();
      if (state) JUMP_TAG(state);
@@ -3662,7 +3666,7 @@ index 7886e17..6d32dee 100644
      return val;
  }
  
-@@ -6999,9 +7108,9 @@ rb_load(fname, wrap)
+@@ -7009,9 +7118,9 @@ rb_load(fname, wrap)
      volatile int prohibit_int = rb_prohibit_interrupt;
      volatile ID last_func;
      volatile VALUE wrapper = ruby_wrapper;
@@ -3674,7 +3678,7 @@ index 7886e17..6d32dee 100644
  
      if (wrap && ruby_safe_level >= 4) {
  	StringValue(fname);
-@@ -7051,7 +7160,7 @@ rb_load(fname, wrap)
+@@ -7061,7 +7170,7 @@ rb_load(fname, wrap)
      ruby_current_node = 0;
      if (state == 0) {
  	NODE *node;
@@ -3683,7 +3687,7 @@ index 7886e17..6d32dee 100644
  
  	DEFER_INTS;
  	ruby_in_eval++;
-@@ -7063,7 +7172,7 @@ rb_load(fname, wrap)
+@@ -7073,7 +7182,7 @@ rb_load(fname, wrap)
  	rb_thread_critical = critical;
  	ALLOW_INTS;
  	if (ruby_nerrs == 0) {
@@ -3692,7 +3696,7 @@ index 7886e17..6d32dee 100644
  	}
      }
      ruby_frame->last_func = last_func;
-@@ -7096,7 +7205,7 @@ void
+@@ -7106,7 +7215,7 @@ void
  rb_load_protect(fname, wrap, state)
      VALUE fname;
      int wrap;
@@ -3701,7 +3705,7 @@ index 7886e17..6d32dee 100644
  {
      int status;
  
-@@ -7165,16 +7274,8 @@ rb_feature_p(ftptr, ext, rb)
+@@ -7175,16 +7284,8 @@ rb_feature_p(ftptr, ext, rb)
  {
      VALUE v;
      const char *f, *e, *feature = *ftptr;
@@ -3719,7 +3723,7 @@ index 7886e17..6d32dee 100644
      for (i = 0; i < RARRAY_LEN(rb_features); ++i) {
  	v = RARRAY_PTR(rb_features)[i];
  	f = StringValuePtr(v);
-@@ -7254,6 +7355,9 @@ rb_provide(feature)
+@@ -7264,6 +7365,9 @@ rb_provide(feature)
      rb_provide_feature(rb_str_new2(feature));
  }
  
@@ -3729,7 +3733,7 @@ index 7886e17..6d32dee 100644
  static char *
  load_lock(ftptr)
      const char *ftptr;
-@@ -8125,7 +8229,7 @@ rb_f_at_exit()
+@@ -8135,7 +8239,7 @@ rb_f_at_exit()
  void
  rb_exec_end_proc()
  {
@@ -3738,7 +3742,7 @@ index 7886e17..6d32dee 100644
      int status;
      volatile int safe = ruby_safe_level;
  
-@@ -8199,6 +8303,17 @@ rb_f_method_name()
+@@ -8209,6 +8313,17 @@ rb_f_method_name()
      }
  }
  
@@ -3756,7 +3760,7 @@ index 7886e17..6d32dee 100644
  void
  Init_eval()
  {
-@@ -8244,6 +8359,7 @@ Init_eval()
+@@ -8254,6 +8369,7 @@ Init_eval()
      rb_define_global_function("fail", rb_f_raise, -1);
  
      rb_define_global_function("caller", rb_f_caller, -1);
@@ -3764,7 +3768,7 @@ index 7886e17..6d32dee 100644
  
      rb_define_global_function("exit", rb_f_exit, -1);
      rb_define_global_function("abort", rb_f_abort, -1);
-@@ -8848,8 +8964,9 @@ proc_invoke(proc, args, self, klass)
+@@ -8858,8 +8974,9 @@ proc_invoke(proc, args, self, klass)
      int state;
      volatile int safe = ruby_safe_level;
      volatile VALUE old_wrapper = ruby_wrapper;
@@ -3776,7 +3780,7 @@ index 7886e17..6d32dee 100644
      VALUE bvar = Qnil;
  
      if (rb_block_given_p() && ruby_frame->last_func) {
-@@ -8911,7 +9028,7 @@ proc_invoke(proc, args, self, klass)
+@@ -8921,7 +9038,7 @@ proc_invoke(proc, args, self, klass)
        case TAG_RETRY:
  	proc_jump_error(TAG_RETRY, Qnil); /* xxx */
  	JUMP_TAG(state);
@@ -3785,7 +3789,7 @@ index 7886e17..6d32dee 100644
        case TAG_NEXT:
        case TAG_BREAK:
  	if (!pcall && result != Qundef) {
-@@ -9155,15 +9272,15 @@ proc_binding(proc)
+@@ -9165,15 +9282,15 @@ proc_binding(proc)
  
  static VALUE
  block_pass(self, node)
@@ -3805,7 +3809,7 @@ index 7886e17..6d32dee 100644
      int state;
      volatile int orphan;
      volatile int safe = ruby_safe_level;
-@@ -9210,20 +9327,24 @@ block_pass(self, node)
+@@ -9220,20 +9337,24 @@ block_pass(self, node)
  
      PUSH_TAG(PROT_LOOP);
      state = EXEC_TAG();
@@ -3840,7 +3844,7 @@ index 7886e17..6d32dee 100644
      }
      POP_TAG();
      POP_ITER();
-@@ -9240,7 +9361,6 @@ block_pass(self, node)
+@@ -9250,7 +9371,6 @@ block_pass(self, node)
        default:
  	JUMP_TAG(state);
      }
@@ -3848,7 +3852,7 @@ index 7886e17..6d32dee 100644
      return result;
  }
  
-@@ -9574,7 +9694,7 @@ method_call(argc, argv, method)
+@@ -9584,7 +9704,7 @@ method_call(argc, argv, method)
      VALUE *argv;
      VALUE method;
  {
@@ -3857,7 +3861,7 @@ index 7886e17..6d32dee 100644
      struct METHOD *data;
      int safe;
  
-@@ -9869,12 +9989,9 @@ static VALUE
+@@ -9879,12 +9999,9 @@ static VALUE
  bmcall(args, method)
      VALUE args, method;
  {
@@ -3873,7 +3877,7 @@ index 7886e17..6d32dee 100644
      return ret;
  }
  
-@@ -9991,6 +10108,7 @@ rb_mod_define_method(argc, argv, mod)
+@@ -10001,6 +10118,7 @@ rb_mod_define_method(argc, argv, mod)
  	rb_raise(rb_eArgError, "wrong number of arguments (%d for 1)", argc);
      }
      orig = body;
@@ -3881,7 +3885,7 @@ index 7886e17..6d32dee 100644
      if (RDATA(body)->dmark == (RUBY_DATA_FUNC)bm_mark) {
  	node = NEW_DMETHOD(method_unbind(body));
      }
-@@ -10022,6 +10140,111 @@ rb_mod_define_method(argc, argv, mod)
+@@ -10032,6 +10150,111 @@ rb_mod_define_method(argc, argv, mod)
      return orig;
  }
  
@@ -3993,7 +3997,7 @@ index 7886e17..6d32dee 100644
  /*
   *  <code>Proc</code> objects are blocks of code that have been bound to
   *  a set of local variables. Once bound, the code may be called in
-@@ -10106,6 +10329,15 @@ Init_Proc()
+@@ -10116,6 +10339,15 @@ Init_Proc()
      rb_define_method(rb_cUnboundMethod, "owner", method_owner, 0);
      rb_define_method(rb_cUnboundMethod, "bind", umethod_bind, 1);
      rb_define_method(rb_cModule, "instance_method", rb_mod_method, 1);
@@ -4009,7 +4013,7 @@ index 7886e17..6d32dee 100644
  }
  
  /*
-@@ -10431,14 +10663,19 @@ timeofday()
+@@ -10441,14 +10673,19 @@ timeofday()
      return (double)tv.tv_sec + (double)tv.tv_usec * 1e-6;
  }
  
@@ -4031,7 +4035,7 @@ index 7886e17..6d32dee 100644
  
      rb_gc_mark(th->result);
      rb_gc_mark(th->thread);
-@@ -10473,15 +10710,26 @@ thread_mark(th)
+@@ -10483,15 +10720,26 @@ thread_mark(th)
  	}
  #endif
      }
@@ -4060,7 +4064,7 @@ index 7886e17..6d32dee 100644
  		rb_gc_mark_frame(tmp);
  		tmp = tmp->prev;
  	    }
-@@ -10490,7 +10738,7 @@ thread_mark(th)
+@@ -10500,7 +10748,7 @@ thread_mark(th)
      }
      block = th->block;
      while (block) {
@@ -4069,7 +4073,7 @@ index 7886e17..6d32dee 100644
  	rb_gc_mark_frame(&block->frame);
  	block = block->prev;
      }
-@@ -10541,7 +10789,7 @@ rb_gc_abort_threads()
+@@ -10551,7 +10799,7 @@ rb_gc_abort_threads()
          return;
  
      FOREACH_THREAD_FROM(main_thread, th) {
@@ -4078,7 +4082,7 @@ index 7886e17..6d32dee 100644
  	if (th->status == THREAD_STOPPED) {
  	    th->status = THREAD_TO_KILL;
  	    rb_gc_mark(th->thread);
-@@ -10549,15 +10797,20 @@ rb_gc_abort_threads()
+@@ -10559,15 +10807,20 @@ rb_gc_abort_threads()
      } END_FOREACH_FROM(main_thread, th);
  }
  
@@ -4103,7 +4107,7 @@ index 7886e17..6d32dee 100644
  #endif
  }
  
-@@ -10574,6 +10827,8 @@ thread_free(th)
+@@ -10584,6 +10837,8 @@ thread_free(th)
      if (th != main_thread) free(th);
  }
  
@@ -4112,7 +4116,7 @@ index 7886e17..6d32dee 100644
  static rb_thread_t
  rb_thread_check(data)
      VALUE data;
-@@ -10582,7 +10837,7 @@ rb_thread_check(data)
+@@ -10592,7 +10847,7 @@ rb_thread_check(data)
  	rb_raise(rb_eTypeError, "wrong argument type %s (expected Thread)",
  		 rb_obj_classname(data));
      }
@@ -4121,7 +4125,7 @@ index 7886e17..6d32dee 100644
  }
  
  static VALUE rb_thread_raise _((int, VALUE*, rb_thread_t));
-@@ -10599,6 +10854,7 @@ static int   th_sig, th_safe;
+@@ -10609,6 +10864,7 @@ static int   th_sig, th_safe;
  #define RESTORE_RAISE		5
  #define RESTORE_SIGNAL		6
  #define RESTORE_EXIT		7
@@ -4129,7 +4133,7 @@ index 7886e17..6d32dee 100644
  
  extern VALUE *rb_gc_stack_start;
  #ifdef __ia64
-@@ -10609,13 +10865,10 @@ static void
+@@ -10619,13 +10875,10 @@ static void
  rb_thread_save_context(th)
      rb_thread_t th;
  {
@@ -4144,7 +4148,7 @@ index 7886e17..6d32dee 100644
      if (len > th->stk_max) {
  	VALUE *ptr = realloc(th->stk_ptr, sizeof(VALUE) * len);
  	if (!ptr) rb_memerror();
-@@ -10676,13 +10929,16 @@ static int
+@@ -10686,13 +10939,16 @@ static int
  rb_thread_switch(n)
      int n;
  {
@@ -4162,7 +4166,7 @@ index 7886e17..6d32dee 100644
        case RESTORE_INTERRUPT:
  	rb_interrupt();
  	break;
-@@ -10705,6 +10961,15 @@ rb_thread_switch(n)
+@@ -10715,6 +10971,15 @@ rb_thread_switch(n)
  	}
  	rb_exc_raise(th_raise_exception);
  	break;
@@ -4178,7 +4182,7 @@ index 7886e17..6d32dee 100644
        case RESTORE_NORMAL:
        default:
  	break;
-@@ -10712,8 +10977,8 @@ rb_thread_switch(n)
+@@ -10722,8 +10987,8 @@ rb_thread_switch(n)
      return 1;
  }
  
@@ -4189,36 +4193,40 @@ index 7886e17..6d32dee 100644
  
  NORETURN(static void rb_thread_restore_context _((rb_thread_t,int)));
  NORETURN(NOINLINE(static void rb_thread_restore_context_0(rb_thread_t,int)));
-@@ -10804,7 +11069,7 @@ static void
+@@ -10814,8 +11079,8 @@ static void
  stack_extend(rb_thread_t th, int exit)
  {
  #define STACK_PAD_SIZE 1024
 -    volatile VALUE space[STACK_PAD_SIZE], *sp = space;
-+    volatile VALUE space[STACK_PAD_SIZE];
- 
+-
++	volatile VALUE space[STACK_PAD_SIZE];
++ 
  #if !STACK_GROW_DIRECTION
      if (space < rb_gc_stack_start) {
-@@ -10813,7 +11078,8 @@ stack_extend(rb_thread_t th, int exit)
+         /* Stack grows downward */
+@@ -10823,8 +11088,8 @@ stack_extend(rb_thread_t th, int exit)
  #if STACK_GROW_DIRECTION <= 0
  	if (space > th->stk_pos) {
  # ifdef HAVE_ALLOCA
 -	    sp = ALLOCA_N(VALUE, &space[0] - th->stk_pos);
-+            (void)(volatile void *)
+-	    space[0] = *sp;
++			(void)(volatile void *)
 +	    ALLOCA_N(VALUE, &space[0] - th->stk_pos);
  # else
  	    stack_extend(th, exit);
  # endif
-@@ -10827,7 +11093,8 @@ stack_extend(rb_thread_t th, int exit)
+@@ -10838,8 +11103,8 @@ stack_extend(rb_thread_t th, int exit)
  #if STACK_GROW_DIRECTION >= 0
  	if (&space[STACK_PAD_SIZE] < th->stk_pos + th->stk_len) {
  # ifdef HAVE_ALLOCA
 -	    sp = ALLOCA_N(VALUE, th->stk_pos + th->stk_len - &space[STACK_PAD_SIZE]);
-+	    (void)(volatile void *)
-+            ALLOCA_N(VALUE, th->stk_pos + th->stk_len - &space[STACK_PAD_SIZE]);
+-	    space[0] = *sp;
++			(void)(volatile void *)
++	    ALLOCA_N(VALUE, th->stk_pos + th->stk_len - &space[STACK_PAD_SIZE]);
  # else
  	    stack_extend(th, exit);
  # endif
-@@ -10947,14 +11214,11 @@ copy_fds(dst, src, max)
+@@ -10959,14 +11224,11 @@ copy_fds(dst, src, max)
      fd_set *dst, *src;
      int max;
  {
@@ -4234,7 +4242,7 @@ index 7886e17..6d32dee 100644
      }
  }
  
-@@ -11511,9 +11775,6 @@ rb_thread_select(max, read, write, except, timeout)
+@@ -11523,9 +11785,6 @@ rb_thread_select(max, read, write, except, timeout)
      return curr_thread->select_value;
  }
  
@@ -4244,24 +4252,15 @@ index 7886e17..6d32dee 100644
  static int
  rb_thread_join0(th, limit)
      rb_thread_t th;
-@@ -11566,6 +11827,16 @@ rb_thread_join(thread, limit)
-     return rb_thread_join0(rb_thread_check(thread), limit);
+@@ -11588,7 +11847,6 @@ rb_thread_set_join(thread, join)
+     th->join = jth;
  }
  
-+void
-+rb_thread_set_join(thread, join)
-+    VALUE thread, join;
-+{
-+    rb_thread_t th = rb_thread_check(thread);
-+    rb_thread_t jth = rb_thread_check(join);
-+    th->wait_for = WAIT_JOIN;
-+    th->join = jth;
-+}
-+
- 
+-
  /*
   *  call-seq:
-@@ -11618,8 +11889,8 @@ rb_thread_join_m(argc, argv, thread)
+  *     thr.join          => thr
+@@ -11640,8 +11898,8 @@ rb_thread_join_m(argc, argv, thread)
  
      rb_scan_args(argc, argv, "01", &limit);
      if (!NIL_P(limit)) delay = rb_num2dbl(limit);
@@ -4272,7 +4271,7 @@ index 7886e17..6d32dee 100644
      return thread;
  }
  
-@@ -11825,7 +12096,7 @@ static VALUE
+@@ -11847,7 +12105,7 @@ static VALUE
  rb_thread_kill_bang(thread)
      VALUE thread;
  {
@@ -4281,7 +4280,7 @@ index 7886e17..6d32dee 100644
      rb_kill_thread(th, THREAD_NO_ENSURE);
      return thread;
  }
-@@ -11997,7 +12268,7 @@ static VALUE
+@@ -12019,7 +12277,7 @@ static VALUE
  rb_thread_priority(thread)
      VALUE thread;
  {
@@ -4290,7 +4289,7 @@ index 7886e17..6d32dee 100644
  }
  
  
-@@ -12031,7 +12302,7 @@ rb_thread_priority_set(thread, prio)
+@@ -12053,7 +12311,7 @@ rb_thread_priority_set(thread, prio)
      rb_thread_t th;
  
      rb_secure(4);
@@ -4299,7 +4298,7 @@ index 7886e17..6d32dee 100644
  
      th->priority = NUM2INT(prio);
      rb_thread_schedule();
-@@ -12057,7 +12328,7 @@ rb_thread_safe_level(thread)
+@@ -12079,7 +12337,7 @@ rb_thread_safe_level(thread)
  {
      rb_thread_t th;
  
@@ -4308,7 +4307,7 @@ index 7886e17..6d32dee 100644
      if (th == curr_thread) {
  	return INT2NUM(ruby_safe_level);
      }
-@@ -12134,7 +12405,7 @@ static VALUE
+@@ -12156,7 +12414,7 @@ static VALUE
  rb_thread_abort_exc(thread)
      VALUE thread;
  {
@@ -4317,7 +4316,7 @@ index 7886e17..6d32dee 100644
  }
  
  
-@@ -12152,7 +12423,7 @@ rb_thread_abort_exc_set(thread, val)
+@@ -12174,7 +12432,7 @@ rb_thread_abort_exc_set(thread, val)
      VALUE thread, val;
  {
      rb_secure(4);
@@ -4326,7 +4325,7 @@ index 7886e17..6d32dee 100644
      return val;
  }
  
-@@ -12194,6 +12465,7 @@ rb_thread_group(thread)
+@@ -12216,6 +12474,7 @@ rb_thread_group(thread)
      th->result = 0;\
      th->flags = 0;\
  \
@@ -4334,7 +4333,7 @@ index 7886e17..6d32dee 100644
      th->stk_ptr = 0;\
      th->stk_len = 0;\
      th->stk_max = 0;\
-@@ -12440,6 +12712,15 @@ rb_thread_start_0(fn, arg, th)
+@@ -12462,6 +12721,15 @@ rb_thread_start_0(fn, arg, th)
  		 "can't start a new thread (frozen ThreadGroup)");
      }
  
@@ -4350,7 +4349,7 @@ index 7886e17..6d32dee 100644
      if (THREAD_SAVE_CONTEXT(curr_thread)) {
  	return thread;
      }
-@@ -12467,6 +12748,8 @@ rb_thread_start_0(fn, arg, th)
+@@ -12489,6 +12757,8 @@ rb_thread_start_0(fn, arg, th)
      PUSH_TAG(PROT_THREAD);
      if ((state = EXEC_TAG()) == 0) {
  	if (THREAD_SAVE_CONTEXT(th) == 0) {
@@ -4359,7 +4358,7 @@ index 7886e17..6d32dee 100644
  	    curr_thread = th;
  	    th->result = (*fn)(arg, th);
  	}
-@@ -12578,9 +12861,6 @@ rb_thread_s_new(argc, argv, klass)
+@@ -12600,9 +12870,6 @@ rb_thread_s_new(argc, argv, klass)
      VALUE klass;
  {
      rb_thread_t th = rb_thread_alloc(klass);
@@ -4369,7 +4368,7 @@ index 7886e17..6d32dee 100644
      rb_obj_call_init(th->thread, argc, argv);
      if (th->stk_pos == 0) {
  	rb_raise(rb_eThreadError, "uninitialized thread - check `%s#initialize'",
-@@ -12618,7 +12898,7 @@ rb_thread_initialize(thread, args)
+@@ -12640,7 +12907,7 @@ rb_thread_initialize(thread, args)
      if (!rb_block_given_p()) {
  	rb_raise(rb_eThreadError, "must be called with a block");
      }
@@ -4378,7 +4377,7 @@ index 7886e17..6d32dee 100644
      if (th->stk_max) {
  	NODE *node = th->node;
  	if (!node) {
-@@ -12667,7 +12947,7 @@ static VALUE
+@@ -12689,7 +12956,7 @@ static VALUE
  rb_thread_value(thread)
      VALUE thread;
  {
@@ -4387,7 +4386,7 @@ index 7886e17..6d32dee 100644
  
      while (!rb_thread_join0(th, DELAY_INFTY));
  
-@@ -12702,7 +12982,7 @@ static VALUE
+@@ -12724,7 +12991,7 @@ static VALUE
  rb_thread_status(thread)
      VALUE thread;
  {
@@ -4396,7 +4395,7 @@ index 7886e17..6d32dee 100644
  
      if (rb_thread_dead(th)) {
  	if (!NIL_P(th->errinfo) && (th->flags & RAISED_EXCEPTION))
-@@ -12753,7 +13033,7 @@ static VALUE
+@@ -12775,7 +13042,7 @@ static VALUE
  rb_thread_stop_p(thread)
      VALUE thread;
  {
@@ -4405,7 +4404,7 @@ index 7886e17..6d32dee 100644
  
      if (rb_thread_dead(th)) return Qtrue;
      if (th->status == THREAD_STOPPED) return Qtrue;
-@@ -12987,7 +13267,7 @@ rb_thread_raise_m(argc, argv, thread)
+@@ -13009,7 +13276,7 @@ rb_thread_raise_m(argc, argv, thread)
      VALUE *argv;
      VALUE thread;
  {
@@ -4414,7 +4413,7 @@ index 7886e17..6d32dee 100644
  
      if (ruby_safe_level > th->safe) {
  	rb_secure(4);
-@@ -13103,7 +13383,7 @@ static VALUE
+@@ -13125,7 +13392,7 @@ static VALUE
  rb_thread_key_p(thread, id)
      VALUE thread, id;
  {
@@ -4423,7 +4422,7 @@ index 7886e17..6d32dee 100644
  
      if (!th->locals) return Qfalse;
      if (st_lookup(th->locals, rb_to_id(id), 0))
-@@ -13139,7 +13419,7 @@ static VALUE
+@@ -13161,7 +13428,7 @@ static VALUE
  rb_thread_keys(thread)
      VALUE thread;
  {
@@ -4432,7 +4431,7 @@ index 7886e17..6d32dee 100644
      VALUE ary = rb_ary_new();
  
      if (th->locals) {
-@@ -13160,7 +13440,7 @@ rb_thread_inspect(thread)
+@@ -13182,7 +13449,7 @@ rb_thread_inspect(thread)
      VALUE thread;
  {
      const char *cname = rb_obj_classname(thread);
@@ -4441,7 +4440,7 @@ index 7886e17..6d32dee 100644
      const char *status = thread_status_name(th->status);
      VALUE str;
      size_t len = strlen(cname)+7+16+9+1;
-@@ -13198,10 +13478,10 @@ cc_purge(cc)
+@@ -13220,10 +13487,10 @@ cc_purge(cc)
      rb_thread_t cc;
  {
      /* free continuation's stack if it has just died */
@@ -4456,7 +4455,7 @@ index 7886e17..6d32dee 100644
      }
  }
  
-@@ -13214,16 +13494,6 @@ cc_mark(cc)
+@@ -13236,16 +13503,6 @@ cc_mark(cc)
      thread_mark(cc);
  }
  
@@ -4473,7 +4472,7 @@ index 7886e17..6d32dee 100644
  
  /*
   *  Document-class: Continuation
-@@ -13274,6 +13544,32 @@ rb_cont_check(data)
+@@ -13296,6 +13553,32 @@ rb_cont_check(data)
  
  VALUE rb_cCont;
  
@@ -4506,7 +4505,7 @@ index 7886e17..6d32dee 100644
  /*
   *  call-seq:
   *     callcc {|cont| block }   =>  obj
-@@ -13292,37 +13588,14 @@ static VALUE
+@@ -13314,37 +13597,14 @@ static VALUE
  rb_callcc(self)
      VALUE self;
  {
@@ -4550,7 +4549,7 @@ index 7886e17..6d32dee 100644
  /*
   *  call-seq:
   *     cont.call(args, ...) 
-@@ -13345,7 +13618,7 @@ rb_cont_call(argc, argv, cont)
+@@ -13367,7 +13627,7 @@ rb_cont_call(argc, argv, cont)
      VALUE *argv;
      VALUE cont;
  {
@@ -4559,7 +4558,7 @@ index 7886e17..6d32dee 100644
  
      if (th->thread != curr_thread->thread) {
  	rb_raise(rb_eRuntimeError, "continuation called across threads");
-@@ -13375,6 +13648,35 @@ struct thgroup {
+@@ -13397,6 +13657,35 @@ struct thgroup {
  };
  
  
@@ -4595,7 +4594,7 @@ index 7886e17..6d32dee 100644
  /*
   * Document-class: ThreadGroup
   *
-@@ -13627,8 +13929,9 @@ rb_exec_recursive(func, obj, arg)
+@@ -13649,8 +13938,9 @@ rb_exec_recursive(func, obj, arg)
      VALUE obj;
      VALUE arg;
  {
@@ -4607,7 +4606,7 @@ index 7886e17..6d32dee 100644
  
      if (recursive_check(hash, objid)) {
  	return (*func) (obj, arg, Qtrue);
-@@ -13724,6 +14027,9 @@ Init_Thread()
+@@ -13746,6 +14036,9 @@ Init_Thread()
      rb_undef_method(CLASS_OF(rb_cCont), "new");
      rb_define_method(rb_cCont, "call", rb_cont_call, -1);
      rb_define_method(rb_cCont, "[]", rb_cont_call, -1);
@@ -4617,7 +4616,7 @@ index 7886e17..6d32dee 100644
      rb_define_global_function("callcc", rb_callcc, 0);
      rb_global_variable(&cont_protect);
  
-@@ -13775,14 +14081,15 @@ Init_Thread()
+@@ -13797,14 +14090,15 @@ Init_Thread()
  
  static VALUE
  rb_f_catch(dmy, tag)
@@ -4636,7 +4635,7 @@ index 7886e17..6d32dee 100644
  	val = rb_yield_0(tag, 0, 0, 0, Qfalse);
      }
      else if (state == TAG_THROW && tag == prot_tag->dst) {
-@@ -13791,7 +14098,6 @@ rb_f_catch(dmy, tag)
+@@ -13813,7 +14107,6 @@ rb_f_catch(dmy, tag)
      }
      POP_TAG();
      if (state) JUMP_TAG(state);
@@ -4644,7 +4643,7 @@ index 7886e17..6d32dee 100644
      return val;
  }
  
-@@ -13850,6 +14156,9 @@ rb_f_throw(argc, argv)
+@@ -13872,6 +14165,9 @@ rb_f_throw(argc, argv)
      if (!tt) {
  	rb_name_error(SYM2ID(tag), "uncaught throw `%s'", rb_id2name(SYM2ID(tag)));
      }
@@ -4654,7 +4653,7 @@ index 7886e17..6d32dee 100644
      rb_trap_restore_mask();
      JUMP_TAG(TAG_THROW);
  #ifndef __GNUC__
-@@ -13868,3 +14177,74 @@ rb_throw(tag, val)
+@@ -13890,3 +14186,74 @@ rb_throw(tag, val)
      argv[1] = val;
      rb_f_throw(2, argv);
  }
@@ -4802,7 +4801,7 @@ index 0966e73..c5fd204 100644
  #sdbm
  #socket
 diff --git a/ext/openssl/ossl_ssl.c b/ext/openssl/ossl_ssl.c
-index 00a447d..f5f5868 100644
+index 07c87ed..579ec9b 100644
 --- a/ext/openssl/ossl_ssl.c
 +++ b/ext/openssl/ossl_ssl.c
 @@ -1205,7 +1205,7 @@ ossl_ssl_get_peer_cert_chain(VALUE self)
@@ -5525,60 +5524,6 @@ index 637cb99..57fd521 100644
  	if (RARRAY(result)->len >= 2)
  	    rb_ary_shift(result);
      }
-diff --git a/ext/thread/thread.c b/ext/thread/thread.c
-index 298d7d0..b977fa7 100644
---- a/ext/thread/thread.c
-+++ b/ext/thread/thread.c
-@@ -205,6 +205,16 @@ array_from_list(List const *list)
-     return ary;
- }
- 
-+static void
-+adjust_join(const List *list, VALUE new)
-+{
-+    extern void rb_thread_set_join _((VALUE, VALUE));
-+    Entry *entry;
-+    for (entry = list->entries; entry; entry = entry->next) {
-+	rb_thread_set_join(entry->value, new);
-+    }
-+}
-+
- static VALUE
- wake_thread(VALUE thread)
- {
-@@ -221,7 +231,7 @@ run_thread(VALUE thread)
- }
- 
- static VALUE
--wake_one(List *list)
-+wake_first(List *list)
- {
-     VALUE waking;
- 
-@@ -234,10 +244,22 @@ wake_one(List *list)
- }
- 
- static VALUE
-+wake_one(List *list)
-+{
-+    VALUE waking = wake_first(list);
-+
-+    if (!NIL_P(waking)) {
-+	adjust_join(list, waking);
-+    }
-+
-+    return waking;
-+}
-+
-+static VALUE
- wake_all(List *list)
- {
-     while (list->entries) {
--        wake_one(list);
-+        wake_first(list);
-     }
-     return Qnil;
- }
 diff --git a/fastmarktable.c b/fastmarktable.c
 new file mode 100644
 index 0000000..8f8526d
@@ -5669,7 +5614,7 @@ index 0000000..8f8526d
 +
 +#endif /* _FAST_MARK_TABLE_C_ */
 diff --git a/gc.c b/gc.c
-index fa45cd1..4bfa65d 100644
+index 4b1bd37..0fcd30a 100644
 --- a/gc.c
 +++ b/gc.c
 @@ -20,8 +20,15 @@
@@ -7967,7 +7912,7 @@ index fa45cd1..4bfa65d 100644
      rb_global_variable(&finalizers);
      rb_gc_unregister_address(&rb_mObSpace);
 diff --git a/intern.h b/intern.h
-index 950ae9d..92047e6 100644
+index a982e9b..3fa4d72 100644
 --- a/intern.h
 +++ b/intern.h
 @@ -253,7 +253,7 @@ VALUE rb_file_directory_p _((VALUE,VALUE));
@@ -8862,7 +8807,7 @@ index 39697f1..3facdfe 100644
    auto char	probe;		/* probes stack depth: */
    register char	*depth = &probe;
 diff --git a/node.h b/node.h
-index c209fa5..3e60603 100644
+index 40dc32c..3f54729 100644
 --- a/node.h
 +++ b/node.h
 @@ -409,15 +409,11 @@ struct rb_thread {
@@ -9201,7 +9146,7 @@ index 0000000..bc4733b
 +
 +#endif /* _POINTER_SET_H_ */
 diff --git a/re.c b/re.c
-index 4e909eb..6964d7f 100644
+index b3c7a21..2990e79 100644
 --- a/re.c
 +++ b/re.c
 @@ -1496,19 +1496,17 @@ VALUE
@@ -9233,7 +9178,7 @@ index 4e909eb..6964d7f 100644
  
  static int
 diff --git a/ruby.h b/ruby.h
-index 4129299..b9fe44a 100644
+index 7245329..917d4ff 100644
 --- a/ruby.h
 +++ b/ruby.h
 @@ -480,7 +480,7 @@ struct RBignum {
@@ -9255,7 +9200,7 @@ index 4129299..b9fe44a 100644
  const char *rb_id2name _((ID));
  ID rb_to_id _((VALUE));
 diff --git a/rubysig.h b/rubysig.h
-index 3eb8778..5b006f7 100644
+index e6c3a2a..4719ef1 100644
 --- a/rubysig.h
 +++ b/rubysig.h
 @@ -12,8 +12,80 @@
@@ -9524,7 +9469,7 @@ index 3eb8778..5b006f7 100644
  #endif
  
 diff --git a/signal.c b/signal.c
-index fb21fd3..c8293cd 100644
+index 2d377bd..8b04e79 100644
 --- a/signal.c
 +++ b/signal.c
 @@ -629,8 +629,6 @@ sigsegv(sig)
@@ -13139,81 +13084,8 @@ index 14f59e2..9d66b56 100644
      assert_equal(4, (1.0...6.5).step(1.8).to_a.size)
    end
  end
-diff --git a/test/thread/test_thread.rb b/test/thread/test_thread.rb
-index 699f4fe..e3246d1 100644
---- a/test/thread/test_thread.rb
-+++ b/test/thread/test_thread.rb
-@@ -86,5 +86,68 @@ class TC_Thread < Test::Unit::TestCase
-         assert_nothing_raised("[ruby-dev:37545]") {assert_equal(1, queue.pop)}
-         assert(queue.empty?)
-     end
-+
-+  # This test checks that a thread in Mutex#lock which is raised is
-+  # completely removed from the wait_list of the mutex
-+  def test_mutex_exception_handling
-+    m = Mutex.new
-+    m.lock
-+
-+    sleeping = false
-+    t = Thread.new do
-+      begin
-+        m.lock
-+      rescue
-+      end
-+
-+      sleeping = true
-+      # Keep that thread alive: if the thread returns, the test method
-+      # won't be able to check that +m+ has not been taken (dead mutex
-+      # owners are ignored)
-+      sleep
-+    end
-+
-+    # Wait for t to wait for the mutex and raise it
-+    while true
-+      sleep 0.1
-+      break if t.stop?
-+    end
-+    t.raise ArgumentError
-+    assert(t.alive? || sleeping)
-+
-+    # Wait for +t+ to reach the sleep
-+    while true
-+      sleep 0.1
-+      break if t.stop?
-+    end
-+
-+    # Now unlock. The mutex should be free, so Mutex#unlock should return nil
-+    assert(! m.unlock)
-+  end
-+
-+  def test_mutex_join
-+    m = Mutex.new
-+    m.lock
-+    wt2 = Thread.new do
-+      m.lock
-+      sleep 0.5
-+      m.unlock
-+    end
-+
-+    # Ensure wt2 is waiting on m
-+    sleep 0.1
-+
-+    wt1 = Thread.new do
-+      m.lock
-+      m.unlock
-+    end
-+    # Ensure wt1 is waiting on m
-+    sleep 0.1
-+
-+    # Give it to wt2
-+    m.unlock
-+
-+    assert_nothing_raised {wt1.join}
-+  end
- end
- 
 diff --git a/version.c b/version.c
-index dbc65b0..08d347d 100644
+index 10a0834..fad758d 100644
 --- a/version.c
 +++ b/version.c
 @@ -11,12 +11,14 @@
@@ -13265,13 +13137,13 @@ index dbc65b0..08d347d 100644
      tmp = rb_obj_freeze(rb_str_new2(description));
      rb_define_global_const("RUBY_DESCRIPTION", tmp);
 diff --git a/version.h b/version.h
-index d6f16f5..401776a 100644
+index d90d5b1..35534a3 100644
 --- a/version.h
 +++ b/version.h
 @@ -1,3 +1,4 @@
 +#define RUBY_ENGINE "ruby"
  #define RUBY_VERSION "1.8.7"
- #define RUBY_RELEASE_DATE "2012-02-08"
+ #define RUBY_RELEASE_DATE "2012-06-29"
  #define RUBY_VERSION_CODE 187
 @@ -25,5 +26,17 @@ RUBY_EXTERN const char *ruby_copyright;
  #define RUBY_BIRTH_MONTH 2
