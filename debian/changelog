@@ -1,4 +1,4 @@
-ruby1.8 (1:1.8.7.370-1bbox1) lucid; urgency=low
+ruby1.8 (1:1.8.7.370-1bbox2) lucid; urgency=low
 
   * New upstream release, ruby 1.8.7-p370
   * Removed 110703_CVE-2011-0188.patch (now upstream)
