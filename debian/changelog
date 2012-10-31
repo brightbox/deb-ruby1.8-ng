@@ -1,7 +1,7 @@
 ruby1.8 (1.8.7.358-6) unstable; urgency=low
 
-  * Timeout the execution of the tests after 1h. This should fix the build on
-    kfreebsd-* (Closes: #691793) and hurd.
+  * Timeout the execution of the tests after 2 hours. This should fix the
+    build on kfreebsd-* (Closes: #691793) and hurd.
 
  -- Antonio Terceiro <terceiro@debian.org>  Wed, 31 Oct 2012 22:12:50 +0100
 
