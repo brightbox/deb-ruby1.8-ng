@@ -1,3 +1,17 @@
+ruby1.8 (1.8.7.358-7) unstable; urgency=high
+
+  [ Salvatore Bonaccorso ]
+  * Add CVE-2013-1821.patch patch.
+    CVE-2013-1821: Fix entity expansion DoS vulnerability in REXML. When
+    reading text nodes from an XML document, the REXML parser could be
+    coerced into allocating extremely large string objects which could
+    consume all available memory on the system. (Closes: #702526)
+
+  [ Lucas Nussbaum ]
+  * Reviewed and tested Salvatore's patch.
+
+ -- Lucas Nussbaum <lucas@debian.org>  Tue, 12 Mar 2013 08:34:11 +0100
+
 ruby1.8 (1.8.7.358-6) unstable; urgency=high
 
   * Timeout the execution of the tests after 2 hours. This should fix the
