@@ -3,7 +3,7 @@
   error.c -
 
   $Author: shyouhei $
-  $Date: 2011-02-18 21:32:35 +0900 (Fri, 18 Feb 2011) $
+  $Date: 2012-10-12 13:05:35 +0900 (Fri, 12 Oct 2012) $
   created at: Mon Aug  9 16:11:34 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto
@@ -665,9 +665,6 @@ name_err_to_s(exc)
 
     if (NIL_P(mesg)) return rb_class_name(CLASS_OF(exc));
     StringValue(str);
-    if (str != mesg) {
-	OBJ_INFECT(str, mesg);
-    }
     return str;
 }
 
