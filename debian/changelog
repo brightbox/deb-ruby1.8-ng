@@ -1,6 +1,13 @@
+ruby1.8 (1:1.8.7.374-1bbox1~lucid1) lucid; urgency=high
+
+  * New upstream release, ruby 1.8.7-p374
+  * Fixes security bugs CVE-2013-4073 and CVE-2013-1821
+
+ -- John Leach <john@brightbox.co.uk>  Sat, 06 Jul 2013 12:37:45 +0100
+
 ruby1.8 (1:1.8.7.371-1bbox1) lucid; urgency=high
 
-  * New upstream release, ruby 1.8.7-p370 (CVE-2012-4466)
+  * New upstream release, ruby 1.8.7-p371 (CVE-2012-4466)
 
  -- John Leach <john@brightbox.co.uk>  Wed, 17 Apr 2013 19:25:07 +0100
 
