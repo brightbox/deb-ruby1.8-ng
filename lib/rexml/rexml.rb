@@ -13,7 +13,7 @@
 # Author:: Sean Russell <serATgermaneHYPHENsoftwareDOTcom>
 # Version:: 3.1.7.2
 # Date:: 2007/275
-# Revision:: $Revision: 22842 $
+# Revision:: $Revision: 40812 $
 # 
 # This API documentation can be downloaded from the REXML home page, or can
 # be accessed online[http://www.germane-software.com/software/rexml_doc]
@@ -25,8 +25,20 @@ module REXML
   COPYRIGHT = "Copyright \xC2\xA9 2001-2006 Sean Russell <ser@germane-software.com>"
   VERSION = "3.1.7.3"
   DATE = "2007/275"
-  REVISION = "$Revision: 22842 $".gsub(/\$Revision:|\$/,'').strip
+  REVISION = "$Revision: 40812 $".gsub(/\$Revision:|\$/,'').strip
 
   Copyright = COPYRIGHT
   Version = VERSION
+
+  @@entity_expansion_text_limit = 10_240
+
+  # Set the entity expansion limit. By default the limit is set to 10240.
+  def self.entity_expansion_text_limit=( val )
+    @@entity_expansion_text_limit = val
+  end
+
+  # Get the entity expansion limit. By default the limit is set to 10240.
+  def self.entity_expansion_text_limit
+    return @@entity_expansion_text_limit
+  end
 end
