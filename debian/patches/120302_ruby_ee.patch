@@ -4,11 +4,9 @@ Date:   Sun Oct 21 00:58:14 2012 +0100
 
     Updated ruby EE patch
 
-diff --git a/ChangeLog b/ChangeLog
-index d1ecccf..b2956bf 100644
 --- a/ChangeLog
 +++ b/ChangeLog
-@@ -162,6 +162,22 @@ Mon Oct 17 03:56:12 2011  Yusuke Endoh  <mame@tsg.ne.jp>
+@@ -201,6 +201,22 @@
  	  store->ex_data.sk.  [ruby-core:28907] [ruby-core:23971]
  	  [ruby-core:18121]
  
@@ -31,7 +29,7 @@ index d1ecccf..b2956bf 100644
  Thu Jun 30 12:52:56 2011  WATANABE Hirofumi  <eban@ruby-lang.org>
  
  	* ext/tk/extconf.rb (intptr_t, uintptr_t): support for the latest ActiveTcl with mingw.
-@@ -1108,6 +1124,23 @@ Thu Apr  1 05:32:17 2010  NAKAMURA Usaku  <usa@ruby-lang.org>
+@@ -1147,6 +1163,23 @@
  	* string.c (rb_str_inspect): wrong result of UTF-8 inspect because of
  	  the mistake of calculation.  reported by eban via IRC.
  
@@ -55,7 +53,7 @@ index d1ecccf..b2956bf 100644
  Sun Jan 10 19:00:31 2010  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* lib/webrick/accesslog.rb : Escape needed.
-@@ -1677,6 +1710,11 @@ Tue May 26 20:50:32 2009  Tanaka Akira  <akr@fsij.org>
+@@ -1716,6 +1749,11 @@
  	* eval.c (rb_thread_schedule): handle EBADF of select as well.
  	  [ruby-core:21264]
  
@@ -67,7 +65,7 @@ index d1ecccf..b2956bf 100644
  Wed Apr  8 18:59:52 2009  NAKAMURA Usaku  <usa@ruby-lang.org>
  
  	* win32/win32.c (subtruct): check tv_sec.
-@@ -1778,6 +1816,24 @@ Mon Mar  9 08:54:47 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -1817,6 +1855,24 @@
  	* parse.y (IS_BEG): EXPR_CLASS should be treated like EXPR_BEG.
  	  [ruby-core:21453]
  
@@ -92,7 +90,7 @@ index d1ecccf..b2956bf 100644
  Wed Feb 25 15:15:52 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* node.h (rb_thread_raised_clear): should not clear flags other than
-@@ -1799,6 +1855,16 @@ Wed Feb 25 14:57:18 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -1838,6 +1894,16 @@
  	* win32/win32.c (winnt_stat): gets rid of strange behavior of
  	  GetFileAttributes().  [ruby-core:21269]
  
@@ -109,7 +107,7 @@ index d1ecccf..b2956bf 100644
  Tue Feb 24 02:44:39 2009  Masatoshi SEKI  <m_seki@mva.biglobe.ne.jp>
  
  	* lib/erb.rb (PercentScanner): remove PercentScanner. fixed % after
-@@ -1811,6 +1877,20 @@ Tue Feb 24 02:35:29 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -1850,6 +1916,20 @@
  	* hash.c (rb_hash_s_create): set nil as the value if assoc length
  	  is not enough.  [ruby-core:21249]
  
@@ -130,7 +128,7 @@ index d1ecccf..b2956bf 100644
  Sun Feb 22 22:08:45 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (stack_extend): streamlined rb_thread_restore_context()
-@@ -1950,22 +2030,28 @@ Sun Feb 15 04:21:42 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -1989,22 +2069,28 @@
  	  a patch from Alan Johnson <alan.wayne.johnson at gmail.com> in 
  	  [ruby-core:19982].
  
@@ -164,7 +162,7 @@ index d1ecccf..b2956bf 100644
  Tue Feb 10 20:00:52 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (load_lock): makes circular require deadlock.
-@@ -1985,6 +2071,12 @@ Wed Feb 11 23:37:35 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -2024,6 +2110,12 @@
  	  Shin").  [ruby-talk:273360]
  	  back ported from 1.9. fix [ruby-core:19791]
  
@@ -177,7 +175,7 @@ index d1ecccf..b2956bf 100644
  Mon Feb  9 17:35:38 2009  NAKAMURA Usaku  <usa@ruby-lang.org>
  
  	* win32/win32.c (rb_w32_accept): secure fd before accept because if
-@@ -2003,6 +2095,23 @@ Mon Feb  9 13:40:21 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -2042,6 +2134,23 @@
  	* ext/stringio/stringio.c (strio_ungetc): should allow ungetc at
  	  the top of the buffer.  ref #701
  
@@ -201,7 +199,7 @@ index d1ecccf..b2956bf 100644
  Thu Feb  5 09:38:48 2009  NARUSE, Yui  <naruse@ruby-lang.org>
  
  	* ext/nkf/nkf-utf8/nkf.c (h_conv): can't guess UTF-8 input in
-@@ -2107,6 +2216,15 @@ Fri Jan 23 11:49:45 2009  Shugo Maeda  <shugo@ruby-lang.org>
+@@ -2146,6 +2255,15 @@
  
  	* test/rexml/test_document.rb: ditto.
  
@@ -217,7 +215,7 @@ index d1ecccf..b2956bf 100644
  Thu Jan 22 15:19:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* marshal.c (marshal_load): arg.data is no longer a VALUE but a
-@@ -2157,6 +2275,21 @@ Mon Jan 19 18:25:28 2009  Tanaka Akira  <akr@fsij.org>
+@@ -2196,6 +2314,21 @@
  	  rb_broken_glibc_ia64_erfc.
  	  [ruby-core:18228]
  
@@ -239,7 +237,7 @@ index d1ecccf..b2956bf 100644
  Sat Jan 17 12:16:10 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
  
  	* random.c (Init_Random): always initialize seed.
-@@ -2170,16 +2303,47 @@ Fri Jan 16 10:59:31 2009  Yukihiro Matsumoto  <matz@ruby-lang.org>
+@@ -2209,16 +2342,47 @@
  
  	* eval.c (PUSH_CREF): use NEW_CREF().
  
@@ -287,7 +285,7 @@ index d1ecccf..b2956bf 100644
  Tue Jan 13 04:40:30 2009  Shugo Maeda  <shugo@ruby-lang.org>
  
  	* lib/net/ftp.rb (login): raise FTPReplyError if passwd or acct
-@@ -2193,6 +2357,22 @@ Mon Jan 12 00:23:37 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2232,6 +2396,22 @@
  	* gc.c (rb_gc_call_finalizer_at_exit): self-referencing finalizers
  	  cannot be invoked.  [ruby-dev:35681]
  
@@ -310,7 +308,7 @@ index d1ecccf..b2956bf 100644
  Sun Jan 11 11:33:27 2009  Shugo Maeda  <shugo@ruby-lang.org>
  
  	* lib/net/ftp.rb (chdir): handle 5xx errors correctly.
-@@ -2220,6 +2400,20 @@ Tue Jan  6 09:03:35 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2259,6 +2439,20 @@
  	* parse.y (yylex): 8 and 9 in octal integer should cause compile
  	  error.  [ruby-dev:35729]
  
@@ -331,7 +329,7 @@ index d1ecccf..b2956bf 100644
  Mon Jan  5 11:14:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* eval.c (rb_thread_schedule): runs deferred finalizers.
-@@ -2235,6 +2429,21 @@ Mon Jan  5 11:14:39 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2274,6 +2468,21 @@
  	  finalizers before explicit GC.start or the process termination.
  	  [ruby-core:18045]
  
@@ -353,7 +351,7 @@ index d1ecccf..b2956bf 100644
  Sun Jan  4 04:49:01 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
  
  	* win32/win32.c (rb_w32_telldir): just returns loc.
-@@ -2243,13 +2452,74 @@ Sun Jan  4 04:49:01 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+@@ -2282,13 +2491,74 @@
  	  [ruby-core:18041]
  
  Sun Jan  4 04:45:26 2009  Nobuyoshi Nakada  <nobu@ruby-lang.org>
@@ -429,11 +427,9 @@ index d1ecccf..b2956bf 100644
  
  Tue Nov 11 01:07:32 2008  Kazuhiro NISHIYAMA  <zn@mbf.nifty.com>
  
-diff --git a/NEWS b/NEWS
-index 1ef8a1b..c0f2a80 100644
 --- a/NEWS
 +++ b/NEWS
-@@ -7,6 +7,223 @@ Note that each entry is kept so brief that no reason behind or
+@@ -7,6 +7,223 @@
  reference information is supplied with.  For a full list of changes
  with all sufficient information, see the ChangeLog file.
  
@@ -657,19 +653,14 @@ index 1ef8a1b..c0f2a80 100644
  * REXML
  
    * REXML::Document.entity_expansion_limit=
-diff --git a/Rakefile b/Rakefile
-new file mode 100644
-index 0000000..dec71fc
 --- /dev/null
 +++ b/Rakefile
 @@ -0,0 +1 @@
 +require File.expand_path(File.dirname(__FILE__)) + '/distro/tasks'
 \ No newline at end of file
-diff --git a/common.mk b/common.mk
-index a57cc9b..85e0ce3 100644
 --- a/common.mk
 +++ b/common.mk
-@@ -42,6 +42,7 @@ OBJS	      = array.$(OBJEXT) \
+@@ -42,6 +42,7 @@
  		object.$(OBJEXT) \
  		pack.$(OBJEXT) \
  		parse.$(OBJEXT) \
@@ -677,7 +668,7 @@ index a57cc9b..85e0ce3 100644
  		process.$(OBJEXT) \
  		prec.$(OBJEXT) \
  		random.$(OBJEXT) \
-@@ -397,7 +398,9 @@ file.$(OBJEXT): {$(VPATH)}file.c {$(VPATH)}ruby.h config.h \
+@@ -397,7 +398,9 @@
  gc.$(OBJEXT): {$(VPATH)}gc.c {$(VPATH)}ruby.h config.h \
    {$(VPATH)}defines.h {$(VPATH)}intern.h {$(VPATH)}missing.h \
    {$(VPATH)}rubysig.h {$(VPATH)}st.h {$(VPATH)}node.h \
@@ -688,7 +679,7 @@ index a57cc9b..85e0ce3 100644
  hash.$(OBJEXT): {$(VPATH)}hash.c {$(VPATH)}ruby.h config.h \
    {$(VPATH)}defines.h {$(VPATH)}intern.h {$(VPATH)}missing.h \
    {$(VPATH)}st.h {$(VPATH)}util.h {$(VPATH)}rubysig.h
-@@ -426,6 +429,7 @@ parse.$(OBJEXT): {$(VPATH)}parse.c {$(VPATH)}ruby.h config.h \
+@@ -426,6 +429,7 @@
    {$(VPATH)}defines.h {$(VPATH)}intern.h {$(VPATH)}missing.h \
    {$(VPATH)}env.h {$(VPATH)}node.h {$(VPATH)}st.h \
    {$(VPATH)}regex.h {$(VPATH)}util.h {$(VPATH)}lex.c
@@ -696,7 +687,7 @@ index a57cc9b..85e0ce3 100644
  prec.$(OBJEXT): {$(VPATH)}prec.c {$(VPATH)}ruby.h config.h \
    {$(VPATH)}defines.h {$(VPATH)}intern.h {$(VPATH)}missing.h
  process.$(OBJEXT): {$(VPATH)}process.c {$(VPATH)}ruby.h config.h \
-@@ -463,7 +467,7 @@ variable.$(OBJEXT): {$(VPATH)}variable.c {$(VPATH)}ruby.h config.h \
+@@ -463,7 +467,7 @@
    {$(VPATH)}env.h {$(VPATH)}node.h {$(VPATH)}st.h {$(VPATH)}util.h
  version.$(OBJEXT): {$(VPATH)}version.c {$(VPATH)}ruby.h config.h \
    {$(VPATH)}defines.h {$(VPATH)}intern.h {$(VPATH)}missing.h \
@@ -705,11 +696,9 @@ index a57cc9b..85e0ce3 100644
  
  dist: $(PROGRAM)
  	$(RUNRUBY) $(srcdir)/distruby.rb
-diff --git a/configure.in b/configure.in
-index 62b34a8..ca239ff 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -152,6 +152,25 @@ AC_ARG_ENABLE(frame-address,
+@@ -152,6 +152,25 @@
  if test $frame_address = yes; then
      AC_DEFINE(USE_BUILTIN_FRAME_ADDRESS)
  fi
@@ -735,7 +724,7 @@ index 62b34a8..ca239ff 100644
  
  AC_ARG_PROGRAM
  
-@@ -602,6 +621,40 @@ powerpc-darwin*)
+@@ -602,6 +621,40 @@
    ;;
  *)
    AC_FUNC_ALLOCA
@@ -776,7 +765,7 @@ index 62b34a8..ca239ff 100644
    ;;
  esac
  AC_FUNC_MEMCMP
-@@ -1834,7 +1887,7 @@ AC_DEFINE_UNQUOTED(RUBY_SITE_ARCHLIB, "${RUBY_SITE_LIB_PATH2}/${sitearch}")
+@@ -1866,7 +1919,7 @@
  AC_DEFINE_UNQUOTED(RUBY_VENDOR_ARCHLIB, "${RUBY_VENDOR_LIB_PATH2}/${sitearch}")
  
  AC_ARG_WITH(search-path,
@@ -785,11 +774,9 @@ index 62b34a8..ca239ff 100644
  		[search_path=$withval])
  if test "$search_path" != ""; then
      AC_DEFINE_UNQUOTED(RUBY_SEARCH_PATH,"$search_path")
-diff --git a/defines.h b/defines.h
-index 87b89f4..be467c7 100644
 --- a/defines.h
 +++ b/defines.h
-@@ -51,6 +51,19 @@ void *xcalloc _((long,long));
+@@ -51,6 +51,19 @@
  void *xrealloc _((void*,long));
  void xfree _((void*));
  
@@ -809,11 +796,9 @@ index 87b89f4..be467c7 100644
  #if SIZEOF_LONG_LONG > 0
  # define LONG_LONG long long
  #elif SIZEOF___INT64 > 0
-diff --git a/eval.c b/eval.c
-index b1cbb6c..0ae3e68 100644
 --- a/eval.c
 +++ b/eval.c
-@@ -240,9 +240,9 @@ VALUE rb_cProc;
+@@ -240,9 +240,9 @@
  VALUE rb_cBinding;
  static VALUE proc_invoke _((VALUE,VALUE,VALUE,VALUE));
  static VALUE rb_f_binding _((VALUE));
@@ -825,7 +810,7 @@ index b1cbb6c..0ae3e68 100644
  static void eval_check_tick _((void));
  
  VALUE rb_cMethod;
-@@ -265,6 +265,23 @@ static int scope_vmode;
+@@ -265,6 +265,23 @@
  VALUE (*ruby_sandbox_save)_((rb_thread_t));
  VALUE (*ruby_sandbox_restore)_((rb_thread_t));
  NODE* ruby_current_node;
@@ -849,7 +834,7 @@ index b1cbb6c..0ae3e68 100644
  int ruby_safe_level = 0;
  /* safe-level:
     0 - strings from streams/environment/ARGV are tainted (default)
-@@ -749,6 +766,7 @@ rb_attr(klass, id, read, write, ex)
+@@ -749,6 +766,7 @@
      if (!name) {
  	rb_raise(rb_eArgError, "argument needs to be symbol or string");
      }
@@ -857,7 +842,7 @@ index b1cbb6c..0ae3e68 100644
      len = strlen(name)+2;
      buf = ALLOCA_N(char,len);
      snprintf(buf, len, "@%s", name);
-@@ -789,7 +807,7 @@ static unsigned long frame_unique = 0;
+@@ -789,7 +807,7 @@
      _frame.argc = 0;			\
      _frame.flags = 0;			\
      _frame.uniq = frame_unique++;	\
@@ -866,7 +851,7 @@ index b1cbb6c..0ae3e68 100644
  
  #define POP_FRAME()  			\
      ruby_current_node = _frame.node;	\
-@@ -987,7 +1005,7 @@ rb_svar(cnt)
+@@ -987,7 +1005,7 @@
      ID id;
  
      if (!ruby_scope->local_tbl) return NULL;
@@ -875,7 +860,7 @@ index b1cbb6c..0ae3e68 100644
      id = ruby_scope->local_tbl[cnt+1];
      while (vars) {
  	if (vars->id == id) return &vars->val;
-@@ -1050,7 +1068,26 @@ static struct tag *prot_tag;
+@@ -1050,7 +1068,26 @@
  #define PROT_LAMBDA INT2FIX(2)	/* 5 */
  #define PROT_YIELD  INT2FIX(3)	/* 7 */
  
@@ -903,7 +888,7 @@ index b1cbb6c..0ae3e68 100644
  
  #define JUMP_TAG(st) do {		\
      ruby_frame = prot_tag->frame;	\
-@@ -1126,10 +1163,17 @@ static void scope_dup _((struct SCOPE *));
+@@ -1126,10 +1163,17 @@
  } while (0)
  
  static VALUE rb_eval _((VALUE,NODE*));
@@ -923,7 +908,7 @@ index b1cbb6c..0ae3e68 100644
  
  #define YIELD_LAMBDA_CALL 1
  #define YIELD_PROC_CALL   2
-@@ -1139,7 +1183,7 @@ static VALUE rb_yield_0 _((VALUE, VALUE, VALUE, int, int));
+@@ -1139,7 +1183,7 @@
  #define YIELD_FUNC_LAMBDA 3
  
  static VALUE rb_call _((VALUE,VALUE,ID,int,const VALUE*,int,VALUE));
@@ -932,7 +917,7 @@ index b1cbb6c..0ae3e68 100644
  
  static VALUE massign _((VALUE,NODE*,VALUE,int));
  static void assign _((VALUE,NODE*,VALUE,int));
-@@ -1171,22 +1215,6 @@ static VALUE trace_func = 0;
+@@ -1171,22 +1215,6 @@
  static int tracing = 0;
  static void call_trace_func _((rb_event_t,NODE*,VALUE,ID,VALUE));
  
@@ -955,7 +940,7 @@ index b1cbb6c..0ae3e68 100644
  static void
  #ifdef HAVE_STDARG_PROTOTYPES
  warn_printf(const char *fmt, ...)
-@@ -1248,20 +1276,15 @@ set_backtrace(info, bt)
+@@ -1248,20 +1276,15 @@
  static void
  error_print()
  {
@@ -979,7 +964,7 @@ index b1cbb6c..0ae3e68 100644
      if (EXEC_TAG()) goto error;
      if (NIL_P(errat)){
  	ruby_set_current_source();
-@@ -1444,7 +1467,7 @@ ruby_init()
+@@ -1444,7 +1467,7 @@
  }
  
  static VALUE
@@ -988,7 +973,7 @@ index b1cbb6c..0ae3e68 100644
      VALUE self;
      NODE *node;
  {
-@@ -1593,12 +1616,13 @@ ruby_finalize()
+@@ -1593,12 +1616,13 @@
  }
  
  int
@@ -1005,7 +990,7 @@ index b1cbb6c..0ae3e68 100644
  
      errs[1] = ruby_errinfo;
      ruby_safe_level = 0;
-@@ -1661,7 +1685,7 @@ ruby_exec_internal()
+@@ -1661,7 +1685,7 @@
      /* default visibility is private at toplevel */
      SCOPE_SET(SCOPE_PRIVATE);
      if ((state = EXEC_TAG()) == 0) {
@@ -1014,7 +999,7 @@ index b1cbb6c..0ae3e68 100644
      }
      POP_ITER();
      POP_TAG();
-@@ -1869,8 +1893,8 @@ rb_eval_cmd(cmd, arg, level)
+@@ -1869,8 +1893,8 @@
      int level;
  {
      int state;
@@ -1025,7 +1010,7 @@ index b1cbb6c..0ae3e68 100644
      volatile int safe = ruby_safe_level;
  
      if (OBJ_TAINTED(cmd)) {
-@@ -1901,9 +1925,7 @@ rb_eval_cmd(cmd, arg, level)
+@@ -1901,9 +1925,7 @@
      ruby_safe_level = level;
  
      PUSH_TAG(PROT_NONE);
@@ -1036,7 +1021,7 @@ index b1cbb6c..0ae3e68 100644
      if (ruby_scope->flags & SCOPE_DONT_RECYCLE)
  	scope_dup(saved_scope);
      ruby_scope = saved_scope;
-@@ -1942,6 +1964,10 @@ ev_const_defined(cref, id, self)
+@@ -1942,6 +1964,10 @@
      return rb_const_defined(cref->nd_clss, id);
  }
  
@@ -1047,7 +1032,7 @@ index b1cbb6c..0ae3e68 100644
  static VALUE
  ev_const_get(cref, id, self)
      NODE *cref;
-@@ -2269,7 +2295,10 @@ rb_copy_node_scope(node, rval)
+@@ -2269,7 +2295,10 @@
      NODE *node;
      NODE *rval;
  {
@@ -1059,7 +1044,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (node->nd_tbl) {
  	copy->nd_tbl = ALLOC_N(ID, node->nd_tbl[0]+1);
-@@ -2376,10 +2405,10 @@ arg_defined(self, node, buf, type)
+@@ -2376,10 +2405,10 @@
  static const char*
  is_defined(self, node, buf)
      VALUE self;
@@ -1072,7 +1057,7 @@ index b1cbb6c..0ae3e68 100644
      int state;
  
    again:
-@@ -2724,14 +2753,15 @@ call_trace_func(event, node, self, id, klass)
+@@ -2724,14 +2753,15 @@
      NODE *node;
      VALUE self;
      ID id;
@@ -1092,7 +1077,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (!trace_func) return;
      if (tracing) return;
-@@ -2781,7 +2811,6 @@ call_trace_func(event, node, self, id, klass)
+@@ -2781,7 +2811,6 @@
  
      tracing = 0;
      ruby_current_node = node_save;
@@ -1100,7 +1085,7 @@ index b1cbb6c..0ae3e68 100644
      if (state) JUMP_TAG(state);
  }
  
-@@ -2940,11 +2969,11 @@ class_prefix(self, cpath)
+@@ -2940,11 +2969,11 @@
  NORETURN(static void return_jump _((VALUE)));
  NORETURN(static void break_jump _((VALUE)));
  NORETURN(static void next_jump _((VALUE)));
@@ -1114,7 +1099,7 @@ index b1cbb6c..0ae3e68 100644
  {
      ruby_current_node = 0;
      if (node->flags == 0) {
-@@ -2958,41 +2987,884 @@ unknown_node(node)
+@@ -2958,41 +2987,884 @@
      }
  }
  
@@ -1532,11 +1517,11 @@ index b1cbb6c..0ae3e68 100644
 +{
 +  int argc; VALUE *argv; /* used in SETUP_ARGS */
 +  TMP_PROTECT;
-+
+ 
 +  BEGIN_CALLARGS;
 +  SETUP_ARGS(node->nd_args);
 +  END_CALLARGS;
- 
++
 +  ruby_current_node = node;
 +  return rb_call(CLASS_OF(self),self,node->nd_mid,argc,argv,1,self);
 +}
@@ -2019,7 +2004,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
  	/* begin .. end without clauses */
-@@ -3007,65 +3879,33 @@ rb_eval(self, n)
+@@ -3007,65 +3879,33 @@
  
  	/* nodes for speed-up(literal match) */
        case NODE_MATCH2:
@@ -2096,7 +2081,7 @@ index b1cbb6c..0ae3e68 100644
  
        case NODE_IF:
  	if (RTEST(rb_eval(self, node->nd_cond))) {
-@@ -3083,150 +3923,20 @@ rb_eval(self, n)
+@@ -3083,150 +3923,20 @@
  	goto again;
  
        case NODE_WHEN:
@@ -2255,7 +2240,7 @@ index b1cbb6c..0ae3e68 100644
  
        case NODE_BLOCK_PASS:
  	result = block_pass(self, node);
-@@ -3234,47 +3944,7 @@ rb_eval(self, n)
+@@ -3234,47 +3944,7 @@
  
        case NODE_ITER:
        case NODE_FOR:
@@ -2304,7 +2289,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_BREAK:
-@@ -3282,19 +3952,14 @@ rb_eval(self, n)
+@@ -3282,19 +3952,14 @@
  	break;
  
        case NODE_NEXT:
@@ -2324,7 +2309,7 @@ index b1cbb6c..0ae3e68 100644
  
        case NODE_SPLAT:
  	result = splat_value(rb_eval(self, node->nd_head));
-@@ -3317,78 +3982,19 @@ rb_eval(self, n)
+@@ -3317,78 +3982,19 @@
  	else {
  	    result = Qundef;	/* no arg */
  	}
@@ -2409,7 +2394,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_AND:
-@@ -3404,56 +4010,20 @@ rb_eval(self, n)
+@@ -3404,56 +4010,20 @@
  	goto again;
  
        case NODE_NOT:
@@ -2471,7 +2456,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_RETURN:
-@@ -3461,220 +4031,46 @@ rb_eval(self, n)
+@@ -3461,220 +4031,46 @@
  	break;
  
        case NODE_ARGSCAT:
@@ -2705,7 +2690,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_OP_ASGN_AND:
-@@ -3723,26 +4119,21 @@ rb_eval(self, n)
+@@ -3723,26 +4119,21 @@
  	break;
  
        case NODE_CDECL:
@@ -2738,7 +2723,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_LVAR:
-@@ -3785,26 +4176,21 @@ rb_eval(self, n)
+@@ -3785,26 +4176,21 @@
  	break;
  
        case NODE_COLON2:
@@ -2778,7 +2763,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_COLON3:
-@@ -3835,23 +4221,7 @@ rb_eval(self, n)
+@@ -3835,23 +4221,7 @@
  	break;
  
        case NODE_HASH:
@@ -2803,7 +2788,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_ZARRAY:		/* zero length list */
-@@ -3859,19 +4229,7 @@ rb_eval(self, n)
+@@ -3859,19 +4229,7 @@
  	break;
  
        case NODE_ARRAY:
@@ -2824,7 +2809,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_STR:
-@@ -3887,53 +4245,8 @@ rb_eval(self, n)
+@@ -3887,53 +4245,8 @@
        case NODE_DREGX:
        case NODE_DREGX_ONCE:
        case NODE_DSYM:
@@ -2880,7 +2865,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_XSTR:
-@@ -3945,84 +4258,13 @@ rb_eval(self, n)
+@@ -3945,84 +4258,13 @@
  	break;
  
        case NODE_DEFN:
@@ -2969,7 +2954,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_UNDEF:
-@@ -4030,7 +4272,6 @@ rb_eval(self, n)
+@@ -4030,7 +4272,6 @@
  	    rb_raise(rb_eTypeError, "no class to undef method");
  	}
  	rb_undef(ruby_class, rb_to_id(rb_eval(self, node->u2.node)));
@@ -2977,7 +2962,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_ALIAS:
-@@ -4039,134 +4280,26 @@ rb_eval(self, n)
+@@ -4039,134 +4280,26 @@
  	}
  	rb_alias(ruby_class, rb_to_id(rb_eval(self, node->u1.node)),
  		             rb_to_id(rb_eval(self, node->u2.node)));
@@ -3116,7 +3101,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
  
        case NODE_NEWLINE:
-@@ -4179,25 +4312,19 @@ rb_eval(self, n)
+@@ -4179,25 +4312,19 @@
        default:
  	unknown_node(node);
      }
@@ -3147,7 +3132,7 @@ index b1cbb6c..0ae3e68 100644
      TMP_PROTECT;
  
      frame = *ruby_frame;
-@@ -4588,16 +4715,16 @@ rb_iter_break()
+@@ -4588,16 +4715,16 @@
      break_jump(Qnil);
  }
  
@@ -3168,7 +3153,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (rb_thread_set_raised(th)) {
  	ruby_errinfo = exception_error;
-@@ -4730,14 +4857,12 @@ rb_make_exception(argc, argv)
+@@ -4730,14 +4857,12 @@
      int argc;
      VALUE *argv;
  {
@@ -3184,7 +3169,7 @@ index b1cbb6c..0ae3e68 100644
  	break;
        case 1:
  	if (NIL_P(argv[0])) break;
-@@ -4908,7 +5033,7 @@ break_jump(retval)
+@@ -4908,7 +5033,7 @@
  	    tt->dst = (VALUE)tt->frame->uniq;
  	    tt->retval = retval;
  	    JUMP_TAG(TAG_BREAK);
@@ -3193,7 +3178,7 @@ index b1cbb6c..0ae3e68 100644
  	  case PROT_FUNC:
  	    tt = 0;
  	    continue;
-@@ -4937,7 +5062,7 @@ next_jump(retval)
+@@ -4937,7 +5062,7 @@
  	    tt->dst = (VALUE)tt->frame->uniq;
  	    tt->retval = retval;
  	    JUMP_TAG(TAG_NEXT);
@@ -3202,7 +3187,7 @@ index b1cbb6c..0ae3e68 100644
  	  default:
  	    break;
  	}
-@@ -4956,19 +5081,21 @@ rb_need_block()
+@@ -4956,19 +5081,21 @@
  
  static VALUE
  rb_yield_0(val, self, klass, flags, avalue)
@@ -3229,7 +3214,7 @@ index b1cbb6c..0ae3e68 100644
      int state;
  
      rb_need_block();
-@@ -5078,56 +5205,49 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5078,56 +5205,49 @@
  
      PUSH_ITER(block->iter);
      PUSH_TAG(lambda ? PROT_NONE : PROT_YIELD);
@@ -3325,7 +3310,7 @@ index b1cbb6c..0ae3e68 100644
      }
      POP_TAG();
      POP_ITER();
-@@ -5169,6 +5289,7 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5169,6 +5289,7 @@
  		    tt->retval = result;
  		    JUMP_TAG(TAG_BREAK);
  		}
@@ -3333,7 +3318,7 @@ index b1cbb6c..0ae3e68 100644
  		tt = tt->prev;
  	    }
  	    proc_jump_error(TAG_BREAK, result);
-@@ -5176,7 +5297,6 @@ rb_yield_0(val, self, klass, flags, avalue)
+@@ -5176,7 +5297,6 @@
  	/* fall through */
        default:
  	JUMP_TAG(state);
@@ -3341,7 +3326,7 @@ index b1cbb6c..0ae3e68 100644
      }
      ruby_current_node = cnode;
      return result;
-@@ -5186,6 +5306,7 @@ VALUE
+@@ -5186,6 +5306,7 @@
  rb_yield(val)
      VALUE val;
  {
@@ -3349,7 +3334,7 @@ index b1cbb6c..0ae3e68 100644
      return rb_yield_0(val, 0, 0, 0, Qfalse);
  }
  
-@@ -5234,6 +5355,7 @@ static VALUE
+@@ -5234,6 +5355,7 @@
  loop_i()
  {
      for (;;) {
@@ -3357,7 +3342,7 @@ index b1cbb6c..0ae3e68 100644
  	rb_yield_0(Qundef, 0, 0, 0, Qfalse);
  	CHECK_INTS;
      }
-@@ -5385,7 +5507,6 @@ assign(self, lhs, val, pcall)
+@@ -5385,7 +5507,6 @@
  	    if (!lhs->nd_args) {
  		/* attr set */
  		ruby_current_node = lhs;
@@ -3365,7 +3350,7 @@ index b1cbb6c..0ae3e68 100644
  		rb_call(CLASS_OF(recv), recv, lhs->nd_mid, 1, &val, scope, self);
  	    }
  	    else {
-@@ -5395,7 +5516,6 @@ assign(self, lhs, val, pcall)
+@@ -5395,7 +5516,6 @@
  		args = rb_eval(self, lhs->nd_args);
  		rb_ary_push(args, val);
  		ruby_current_node = lhs;
@@ -3373,7 +3358,7 @@ index b1cbb6c..0ae3e68 100644
  		rb_call(CLASS_OF(recv), recv, lhs->nd_mid,
  			RARRAY(args)->len, RARRAY(args)->ptr, scope, self);
  	    }
-@@ -5414,7 +5534,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
+@@ -5414,7 +5534,7 @@
      VALUE data1, data2;
  {
      int state;
@@ -3382,7 +3367,7 @@ index b1cbb6c..0ae3e68 100644
      NODE *node = NEW_IFUNC(bl_proc, data2);
      VALUE self = ruby_top_self;
  
-@@ -5438,12 +5558,7 @@ rb_iterate(it_proc, data1, bl_proc, data2)
+@@ -5438,12 +5558,7 @@
      POP_BLOCK();
      POP_TAG();
  
@@ -3396,7 +3381,7 @@ index b1cbb6c..0ae3e68 100644
      return retval;
  }
  
-@@ -5475,16 +5590,17 @@ handle_rescue(self, node)
+@@ -5475,16 +5590,17 @@
  
  VALUE
  #ifdef HAVE_STDARG_PROTOTYPES
@@ -3418,7 +3403,7 @@ index b1cbb6c..0ae3e68 100644
      volatile VALUE e_info = ruby_errinfo;
      volatile int handle = Qfalse;
      VALUE eclass;
-@@ -5543,9 +5659,9 @@ VALUE
+@@ -5543,9 +5659,9 @@
  rb_protect(proc, data, state)
      VALUE (*proc) _((VALUE));
      VALUE data;
@@ -3430,7 +3415,7 @@ index b1cbb6c..0ae3e68 100644
      int status;
  
      PUSH_TAG(PROT_NONE);
-@@ -5558,10 +5674,6 @@ rb_protect(proc, data, state)
+@@ -5558,10 +5674,6 @@
      if (state) {
  	*state = status;
      }
@@ -3441,7 +3426,7 @@ index b1cbb6c..0ae3e68 100644
      return result;
  }
  
-@@ -5569,19 +5681,18 @@ VALUE
+@@ -5569,19 +5681,18 @@
  rb_ensure(b_proc, data1, e_proc, data2)
      VALUE (*b_proc)();
      VALUE data1;
@@ -3450,9 +3435,10 @@ index b1cbb6c..0ae3e68 100644
 +    VALUE (* volatile e_proc)();
 +    volatile VALUE data2;
  {
-     int state;
+-    int state;
 -    volatile VALUE result = Qnil;
 -    VALUE retval;
++    int state;
 +    VALUE result, retval;
  
      PUSH_TAG(PROT_NONE);
@@ -3465,7 +3451,7 @@ index b1cbb6c..0ae3e68 100644
      if (!thread_no_ensure()) {
  	(*e_proc)(data2);
      }
-@@ -5595,7 +5706,7 @@ rb_with_disable_interrupt(proc, data)
+@@ -5595,7 +5706,7 @@
      VALUE (*proc)();
      VALUE data;
  {
@@ -3474,7 +3460,7 @@ index b1cbb6c..0ae3e68 100644
      int status;
  
      DEFER_INTS;
-@@ -5612,7 +5723,6 @@ rb_with_disable_interrupt(proc, data)
+@@ -5612,7 +5723,6 @@
      }
      ENABLE_INTS;
      if (status) JUMP_TAG(status);
@@ -3482,7 +3468,7 @@ index b1cbb6c..0ae3e68 100644
      return result;
  }
  
-@@ -5681,7 +5791,6 @@ rb_method_missing(argc, argv, obj)
+@@ -5681,7 +5791,6 @@
      VALUE *argv;
      VALUE obj;
  {
@@ -3490,7 +3476,7 @@ index b1cbb6c..0ae3e68 100644
      VALUE exc = rb_eNoMethodError;
      const char *format = 0;
      NODE *cnode = ruby_current_node;
-@@ -5692,8 +5801,6 @@ rb_method_missing(argc, argv, obj)
+@@ -5692,8 +5801,6 @@
  
      stack_check();
  
@@ -3499,7 +3485,7 @@ index b1cbb6c..0ae3e68 100644
      if (last_call_status & CSTAT_PRIV) {
  	format = "private method `%s' called for %s";
      }
-@@ -5858,16 +5965,16 @@ call_cfunc(func, recv, len, argc, argv)
+@@ -5858,16 +5965,16 @@
  
  static VALUE
  rb_call0(klass, recv, id, oid, argc, argv, body, flags)
@@ -3523,7 +3509,7 @@ index b1cbb6c..0ae3e68 100644
      int itr;
      TMP_PROTECT;
      volatile int safe = -1;
-@@ -5969,9 +6076,10 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -5969,9 +6076,10 @@
  	    Data_Get_Struct(body->nd_cval, struct BLOCK, data);
  	    EXEC_EVENT_HOOK(RUBY_EVENT_CALL, data->body, recv, id, klass);
  	}
@@ -3536,7 +3522,7 @@ index b1cbb6c..0ae3e68 100644
  	}
  	break;
  
-@@ -5979,7 +6087,7 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -5979,7 +6087,7 @@
  	{
  	    int state;
  	    VALUE *local_vars;	/* OK */
@@ -3545,7 +3531,7 @@ index b1cbb6c..0ae3e68 100644
  
  	    PUSH_SCOPE();
  	    if (body->nd_rval) {
-@@ -6025,8 +6133,9 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6025,8 +6133,9 @@
  
  		    i = node->nd_cnt;
  		    if (i > argc) {
@@ -3557,7 +3543,7 @@ index b1cbb6c..0ae3e68 100644
  		    }
  		    if (!node->nd_rest) {
  			NODE *optnode = node->nd_opt;
-@@ -6094,7 +6203,8 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6094,7 +6203,8 @@
  	    }
  	    POP_TAG();
  	    if (event_hooks) {
@@ -3567,7 +3553,7 @@ index b1cbb6c..0ae3e68 100644
  	    }
  	    POP_VARS();
  	    POP_CLASS();
-@@ -6108,21 +6218,18 @@ rb_call0(klass, recv, id, oid, argc, argv, body, flags)
+@@ -6108,21 +6218,18 @@
  	      case TAG_BREAK:
  	      case TAG_RETURN:
  		JUMP_TAG(state);
@@ -3589,7 +3575,7 @@ index b1cbb6c..0ae3e68 100644
      }
      POP_FRAME();
      POP_ITER();
-@@ -6291,7 +6398,7 @@ rb_funcall_rescue(recv, mid, n, va_alist)
+@@ -6291,7 +6398,7 @@
      va_dcl
  #endif
  {
@@ -3598,7 +3584,7 @@ index b1cbb6c..0ae3e68 100644
      int status;
      va_list ar;
  
-@@ -6507,12 +6614,13 @@ compile(src, file, line)
+@@ -6507,12 +6614,13 @@
  
  static VALUE
  eval(self, src, scope, file, line)
@@ -3615,7 +3601,7 @@ index b1cbb6c..0ae3e68 100644
      struct SCOPE * volatile old_scope;
      struct BLOCK * volatile old_block;
      struct RVarmap * volatile old_dyna_vars;
-@@ -6520,7 +6628,7 @@ eval(self, src, scope, file, line)
+@@ -6520,7 +6628,7 @@
      int volatile old_vmode;
      volatile VALUE old_wrapper;
      struct FRAME frame;
@@ -3624,7 +3610,7 @@ index b1cbb6c..0ae3e68 100644
      volatile int iter = ruby_frame->iter;
      volatile int safe = ruby_safe_level;
      int state;
-@@ -6585,7 +6693,7 @@ eval(self, src, scope, file, line)
+@@ -6585,7 +6693,7 @@
  	    compile_error(0);
  	}
  	if (!NIL_P(result)) ruby_errinfo = result;
@@ -3633,7 +3619,7 @@ index b1cbb6c..0ae3e68 100644
      }
      POP_TAG();
      POP_CLASS();
-@@ -6607,6 +6715,7 @@ eval(self, src, scope, file, line)
+@@ -6607,6 +6715,7 @@
  
  	    scope_dup(ruby_scope);
  	    for (tag=prot_tag; tag; tag=tag->prev) {
@@ -3641,7 +3627,7 @@ index b1cbb6c..0ae3e68 100644
  		scope_dup(tag->scope);
  	    }
  	    for (vars = ruby_dyna_vars; vars; vars = vars->next) {
-@@ -6718,12 +6827,13 @@ rb_f_eval(argc, argv, self)
+@@ -6718,12 +6827,13 @@
  static VALUE
  exec_under(func, under, cbase, args)
      VALUE (*func)();
@@ -3658,7 +3644,7 @@ index b1cbb6c..0ae3e68 100644
      struct FRAME *f = ruby_frame;
  
      PUSH_CLASS(under);
-@@ -6749,7 +6859,6 @@ exec_under(func, under, cbase, args)
+@@ -6749,7 +6859,6 @@
      POP_FRAME();
      POP_CLASS();
      if (state) JUMP_TAG(state);
@@ -3666,7 +3652,7 @@ index b1cbb6c..0ae3e68 100644
      return val;
  }
  
-@@ -7009,9 +7118,9 @@ rb_load(fname, wrap)
+@@ -7009,9 +7118,9 @@
      volatile int prohibit_int = rb_prohibit_interrupt;
      volatile ID last_func;
      volatile VALUE wrapper = ruby_wrapper;
@@ -3678,7 +3664,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (wrap && ruby_safe_level >= 4) {
  	StringValue(fname);
-@@ -7061,7 +7170,7 @@ rb_load(fname, wrap)
+@@ -7061,7 +7170,7 @@
      ruby_current_node = 0;
      if (state == 0) {
  	NODE *node;
@@ -3687,7 +3673,7 @@ index b1cbb6c..0ae3e68 100644
  
  	DEFER_INTS;
  	ruby_in_eval++;
-@@ -7073,7 +7182,7 @@ rb_load(fname, wrap)
+@@ -7073,7 +7182,7 @@
  	rb_thread_critical = critical;
  	ALLOW_INTS;
  	if (ruby_nerrs == 0) {
@@ -3696,7 +3682,7 @@ index b1cbb6c..0ae3e68 100644
  	}
      }
      ruby_frame->last_func = last_func;
-@@ -7106,7 +7215,7 @@ void
+@@ -7106,7 +7215,7 @@
  rb_load_protect(fname, wrap, state)
      VALUE fname;
      int wrap;
@@ -3705,7 +3691,7 @@ index b1cbb6c..0ae3e68 100644
  {
      int status;
  
-@@ -7175,16 +7284,8 @@ rb_feature_p(ftptr, ext, rb)
+@@ -7175,16 +7284,8 @@
  {
      VALUE v;
      const char *f, *e, *feature = *ftptr;
@@ -3723,7 +3709,7 @@ index b1cbb6c..0ae3e68 100644
      for (i = 0; i < RARRAY_LEN(rb_features); ++i) {
  	v = RARRAY_PTR(rb_features)[i];
  	f = StringValuePtr(v);
-@@ -7264,6 +7365,9 @@ rb_provide(feature)
+@@ -7264,6 +7365,9 @@
      rb_provide_feature(rb_str_new2(feature));
  }
  
@@ -3733,7 +3719,7 @@ index b1cbb6c..0ae3e68 100644
  static char *
  load_lock(ftptr)
      const char *ftptr;
-@@ -8135,7 +8239,7 @@ rb_f_at_exit()
+@@ -8135,7 +8239,7 @@
  void
  rb_exec_end_proc()
  {
@@ -3742,7 +3728,7 @@ index b1cbb6c..0ae3e68 100644
      int status;
      volatile int safe = ruby_safe_level;
  
-@@ -8209,6 +8313,17 @@ rb_f_method_name()
+@@ -8209,6 +8313,17 @@
      }
  }
  
@@ -3760,7 +3746,7 @@ index b1cbb6c..0ae3e68 100644
  void
  Init_eval()
  {
-@@ -8254,6 +8369,7 @@ Init_eval()
+@@ -8254,6 +8369,7 @@
      rb_define_global_function("fail", rb_f_raise, -1);
  
      rb_define_global_function("caller", rb_f_caller, -1);
@@ -3768,7 +3754,7 @@ index b1cbb6c..0ae3e68 100644
  
      rb_define_global_function("exit", rb_f_exit, -1);
      rb_define_global_function("abort", rb_f_abort, -1);
-@@ -8858,8 +8974,9 @@ proc_invoke(proc, args, self, klass)
+@@ -8858,8 +8974,9 @@
      int state;
      volatile int safe = ruby_safe_level;
      volatile VALUE old_wrapper = ruby_wrapper;
@@ -3780,7 +3766,7 @@ index b1cbb6c..0ae3e68 100644
      VALUE bvar = Qnil;
  
      if (rb_block_given_p() && ruby_frame->last_func) {
-@@ -8921,7 +9038,7 @@ proc_invoke(proc, args, self, klass)
+@@ -8921,7 +9038,7 @@
        case TAG_RETRY:
  	proc_jump_error(TAG_RETRY, Qnil); /* xxx */
  	JUMP_TAG(state);
@@ -3789,7 +3775,7 @@ index b1cbb6c..0ae3e68 100644
        case TAG_NEXT:
        case TAG_BREAK:
  	if (!pcall && result != Qundef) {
-@@ -9165,15 +9282,15 @@ proc_binding(proc)
+@@ -9165,15 +9282,15 @@
  
  static VALUE
  block_pass(self, node)
@@ -3809,7 +3795,7 @@ index b1cbb6c..0ae3e68 100644
      int state;
      volatile int orphan;
      volatile int safe = ruby_safe_level;
-@@ -9220,20 +9337,24 @@ block_pass(self, node)
+@@ -9220,20 +9337,24 @@
  
      PUSH_TAG(PROT_LOOP);
      state = EXEC_TAG();
@@ -3844,7 +3830,7 @@ index b1cbb6c..0ae3e68 100644
      }
      POP_TAG();
      POP_ITER();
-@@ -9250,7 +9371,6 @@ block_pass(self, node)
+@@ -9250,7 +9371,6 @@
        default:
  	JUMP_TAG(state);
      }
@@ -3852,7 +3838,7 @@ index b1cbb6c..0ae3e68 100644
      return result;
  }
  
-@@ -9584,7 +9704,7 @@ method_call(argc, argv, method)
+@@ -9584,7 +9704,7 @@
      VALUE *argv;
      VALUE method;
  {
@@ -3861,7 +3847,7 @@ index b1cbb6c..0ae3e68 100644
      struct METHOD *data;
      int safe;
  
-@@ -9879,12 +9999,9 @@ static VALUE
+@@ -9879,12 +9999,9 @@
  bmcall(args, method)
      VALUE args, method;
  {
@@ -3877,7 +3863,7 @@ index b1cbb6c..0ae3e68 100644
      return ret;
  }
  
-@@ -10001,6 +10118,7 @@ rb_mod_define_method(argc, argv, mod)
+@@ -10001,6 +10118,7 @@
  	rb_raise(rb_eArgError, "wrong number of arguments (%d for 1)", argc);
      }
      orig = body;
@@ -3885,7 +3871,7 @@ index b1cbb6c..0ae3e68 100644
      if (RDATA(body)->dmark == (RUBY_DATA_FUNC)bm_mark) {
  	node = NEW_DMETHOD(method_unbind(body));
      }
-@@ -10032,6 +10150,111 @@ rb_mod_define_method(argc, argv, mod)
+@@ -10032,6 +10150,111 @@
      return orig;
  }
  
@@ -3997,7 +3983,7 @@ index b1cbb6c..0ae3e68 100644
  /*
   *  <code>Proc</code> objects are blocks of code that have been bound to
   *  a set of local variables. Once bound, the code may be called in
-@@ -10116,6 +10339,15 @@ Init_Proc()
+@@ -10116,6 +10339,15 @@
      rb_define_method(rb_cUnboundMethod, "owner", method_owner, 0);
      rb_define_method(rb_cUnboundMethod, "bind", umethod_bind, 1);
      rb_define_method(rb_cModule, "instance_method", rb_mod_method, 1);
@@ -4013,7 +3999,7 @@ index b1cbb6c..0ae3e68 100644
  }
  
  /*
-@@ -10441,14 +10673,19 @@ timeofday()
+@@ -10441,14 +10673,19 @@
      return (double)tv.tv_sec + (double)tv.tv_usec * 1e-6;
  }
  
@@ -4035,7 +4021,7 @@ index b1cbb6c..0ae3e68 100644
  
      rb_gc_mark(th->result);
      rb_gc_mark(th->thread);
-@@ -10483,15 +10720,26 @@ thread_mark(th)
+@@ -10483,15 +10720,26 @@
  	}
  #endif
      }
@@ -4064,7 +4050,7 @@ index b1cbb6c..0ae3e68 100644
  		rb_gc_mark_frame(tmp);
  		tmp = tmp->prev;
  	    }
-@@ -10500,7 +10748,7 @@ thread_mark(th)
+@@ -10500,7 +10748,7 @@
      }
      block = th->block;
      while (block) {
@@ -4073,7 +4059,7 @@ index b1cbb6c..0ae3e68 100644
  	rb_gc_mark_frame(&block->frame);
  	block = block->prev;
      }
-@@ -10551,7 +10799,7 @@ rb_gc_abort_threads()
+@@ -10551,7 +10799,7 @@
          return;
  
      FOREACH_THREAD_FROM(main_thread, th) {
@@ -4082,7 +4068,7 @@ index b1cbb6c..0ae3e68 100644
  	if (th->status == THREAD_STOPPED) {
  	    th->status = THREAD_TO_KILL;
  	    rb_gc_mark(th->thread);
-@@ -10559,15 +10807,20 @@ rb_gc_abort_threads()
+@@ -10559,15 +10807,20 @@
      } END_FOREACH_FROM(main_thread, th);
  }
  
@@ -4107,7 +4093,7 @@ index b1cbb6c..0ae3e68 100644
  #endif
  }
  
-@@ -10584,6 +10837,8 @@ thread_free(th)
+@@ -10584,6 +10837,8 @@
      if (th != main_thread) free(th);
  }
  
@@ -4116,7 +4102,7 @@ index b1cbb6c..0ae3e68 100644
  static rb_thread_t
  rb_thread_check(data)
      VALUE data;
-@@ -10592,7 +10847,7 @@ rb_thread_check(data)
+@@ -10592,7 +10847,7 @@
  	rb_raise(rb_eTypeError, "wrong argument type %s (expected Thread)",
  		 rb_obj_classname(data));
      }
@@ -4125,7 +4111,7 @@ index b1cbb6c..0ae3e68 100644
  }
  
  static VALUE rb_thread_raise _((int, VALUE*, rb_thread_t));
-@@ -10609,6 +10864,7 @@ static int   th_sig, th_safe;
+@@ -10609,6 +10864,7 @@
  #define RESTORE_RAISE		5
  #define RESTORE_SIGNAL		6
  #define RESTORE_EXIT		7
@@ -4133,7 +4119,7 @@ index b1cbb6c..0ae3e68 100644
  
  extern VALUE *rb_gc_stack_start;
  #ifdef __ia64
-@@ -10619,13 +10875,10 @@ static void
+@@ -10619,13 +10875,10 @@
  rb_thread_save_context(th)
      rb_thread_t th;
  {
@@ -4148,7 +4134,7 @@ index b1cbb6c..0ae3e68 100644
      if (len > th->stk_max) {
  	VALUE *ptr = realloc(th->stk_ptr, sizeof(VALUE) * len);
  	if (!ptr) rb_memerror();
-@@ -10686,13 +10939,16 @@ static int
+@@ -10686,13 +10939,16 @@
  rb_thread_switch(n)
      int n;
  {
@@ -4166,7 +4152,7 @@ index b1cbb6c..0ae3e68 100644
        case RESTORE_INTERRUPT:
  	rb_interrupt();
  	break;
-@@ -10715,6 +10971,15 @@ rb_thread_switch(n)
+@@ -10715,6 +10971,15 @@
  	}
  	rb_exc_raise(th_raise_exception);
  	break;
@@ -4182,7 +4168,7 @@ index b1cbb6c..0ae3e68 100644
        case RESTORE_NORMAL:
        default:
  	break;
-@@ -10722,8 +10987,8 @@ rb_thread_switch(n)
+@@ -10722,8 +10987,8 @@
      return 1;
  }
  
@@ -4193,7 +4179,7 @@ index b1cbb6c..0ae3e68 100644
  
  NORETURN(static void rb_thread_restore_context _((rb_thread_t,int)));
  NORETURN(NOINLINE(static void rb_thread_restore_context_0(rb_thread_t,int)));
-@@ -10814,8 +11079,8 @@ static void
+@@ -10814,8 +11079,8 @@
  stack_extend(rb_thread_t th, int exit)
  {
  #define STACK_PAD_SIZE 1024
@@ -4204,7 +4190,7 @@ index b1cbb6c..0ae3e68 100644
  #if !STACK_GROW_DIRECTION
      if (space < rb_gc_stack_start) {
          /* Stack grows downward */
-@@ -10823,8 +11088,8 @@ stack_extend(rb_thread_t th, int exit)
+@@ -10823,8 +11088,8 @@
  #if STACK_GROW_DIRECTION <= 0
  	if (space > th->stk_pos) {
  # ifdef HAVE_ALLOCA
@@ -4215,7 +4201,7 @@ index b1cbb6c..0ae3e68 100644
  # else
  	    stack_extend(th, exit);
  # endif
-@@ -10838,8 +11103,8 @@ stack_extend(rb_thread_t th, int exit)
+@@ -10838,8 +11103,8 @@
  #if STACK_GROW_DIRECTION >= 0
  	if (&space[STACK_PAD_SIZE] < th->stk_pos + th->stk_len) {
  # ifdef HAVE_ALLOCA
@@ -4226,7 +4212,7 @@ index b1cbb6c..0ae3e68 100644
  # else
  	    stack_extend(th, exit);
  # endif
-@@ -10959,14 +11224,11 @@ copy_fds(dst, src, max)
+@@ -10959,14 +11224,11 @@
      fd_set *dst, *src;
      int max;
  {
@@ -4242,7 +4228,7 @@ index b1cbb6c..0ae3e68 100644
      }
  }
  
-@@ -11523,9 +11785,6 @@ rb_thread_select(max, read, write, except, timeout)
+@@ -11523,9 +11785,6 @@
      return curr_thread->select_value;
  }
  
@@ -4252,7 +4238,7 @@ index b1cbb6c..0ae3e68 100644
  static int
  rb_thread_join0(th, limit)
      rb_thread_t th;
-@@ -11588,7 +11847,6 @@ rb_thread_set_join(thread, join)
+@@ -11588,7 +11847,6 @@
      th->join = jth;
  }
  
@@ -4260,7 +4246,7 @@ index b1cbb6c..0ae3e68 100644
  /*
   *  call-seq:
   *     thr.join          => thr
-@@ -11640,8 +11898,8 @@ rb_thread_join_m(argc, argv, thread)
+@@ -11640,8 +11898,8 @@
  
      rb_scan_args(argc, argv, "01", &limit);
      if (!NIL_P(limit)) delay = rb_num2dbl(limit);
@@ -4271,7 +4257,7 @@ index b1cbb6c..0ae3e68 100644
      return thread;
  }
  
-@@ -11847,7 +12105,7 @@ static VALUE
+@@ -11847,7 +12105,7 @@
  rb_thread_kill_bang(thread)
      VALUE thread;
  {
@@ -4280,7 +4266,7 @@ index b1cbb6c..0ae3e68 100644
      rb_kill_thread(th, THREAD_NO_ENSURE);
      return thread;
  }
-@@ -12019,7 +12277,7 @@ static VALUE
+@@ -12019,7 +12277,7 @@
  rb_thread_priority(thread)
      VALUE thread;
  {
@@ -4289,7 +4275,7 @@ index b1cbb6c..0ae3e68 100644
  }
  
  
-@@ -12053,7 +12311,7 @@ rb_thread_priority_set(thread, prio)
+@@ -12053,7 +12311,7 @@
      rb_thread_t th;
  
      rb_secure(4);
@@ -4298,7 +4284,7 @@ index b1cbb6c..0ae3e68 100644
  
      th->priority = NUM2INT(prio);
      rb_thread_schedule();
-@@ -12079,7 +12337,7 @@ rb_thread_safe_level(thread)
+@@ -12079,7 +12337,7 @@
  {
      rb_thread_t th;
  
@@ -4307,7 +4293,7 @@ index b1cbb6c..0ae3e68 100644
      if (th == curr_thread) {
  	return INT2NUM(ruby_safe_level);
      }
-@@ -12156,7 +12414,7 @@ static VALUE
+@@ -12156,7 +12414,7 @@
  rb_thread_abort_exc(thread)
      VALUE thread;
  {
@@ -4316,7 +4302,7 @@ index b1cbb6c..0ae3e68 100644
  }
  
  
-@@ -12174,7 +12432,7 @@ rb_thread_abort_exc_set(thread, val)
+@@ -12174,7 +12432,7 @@
      VALUE thread, val;
  {
      rb_secure(4);
@@ -4325,7 +4311,7 @@ index b1cbb6c..0ae3e68 100644
      return val;
  }
  
-@@ -12216,6 +12474,7 @@ rb_thread_group(thread)
+@@ -12216,6 +12474,7 @@
      th->result = 0;\
      th->flags = 0;\
  \
@@ -4333,7 +4319,7 @@ index b1cbb6c..0ae3e68 100644
      th->stk_ptr = 0;\
      th->stk_len = 0;\
      th->stk_max = 0;\
-@@ -12462,6 +12721,15 @@ rb_thread_start_0(fn, arg, th)
+@@ -12462,6 +12721,15 @@
  		 "can't start a new thread (frozen ThreadGroup)");
      }
  
@@ -4349,7 +4335,7 @@ index b1cbb6c..0ae3e68 100644
      if (THREAD_SAVE_CONTEXT(curr_thread)) {
  	return thread;
      }
-@@ -12489,6 +12757,8 @@ rb_thread_start_0(fn, arg, th)
+@@ -12489,6 +12757,8 @@
      PUSH_TAG(PROT_THREAD);
      if ((state = EXEC_TAG()) == 0) {
  	if (THREAD_SAVE_CONTEXT(th) == 0) {
@@ -4358,7 +4344,7 @@ index b1cbb6c..0ae3e68 100644
  	    curr_thread = th;
  	    th->result = (*fn)(arg, th);
  	}
-@@ -12600,9 +12870,6 @@ rb_thread_s_new(argc, argv, klass)
+@@ -12600,9 +12870,6 @@
      VALUE klass;
  {
      rb_thread_t th = rb_thread_alloc(klass);
@@ -4368,7 +4354,7 @@ index b1cbb6c..0ae3e68 100644
      rb_obj_call_init(th->thread, argc, argv);
      if (th->stk_pos == 0) {
  	rb_raise(rb_eThreadError, "uninitialized thread - check `%s#initialize'",
-@@ -12640,7 +12907,7 @@ rb_thread_initialize(thread, args)
+@@ -12640,7 +12907,7 @@
      if (!rb_block_given_p()) {
  	rb_raise(rb_eThreadError, "must be called with a block");
      }
@@ -4377,7 +4363,7 @@ index b1cbb6c..0ae3e68 100644
      if (th->stk_max) {
  	NODE *node = th->node;
  	if (!node) {
-@@ -12689,7 +12956,7 @@ static VALUE
+@@ -12689,7 +12956,7 @@
  rb_thread_value(thread)
      VALUE thread;
  {
@@ -4386,7 +4372,7 @@ index b1cbb6c..0ae3e68 100644
  
      while (!rb_thread_join0(th, DELAY_INFTY));
  
-@@ -12724,7 +12991,7 @@ static VALUE
+@@ -12724,7 +12991,7 @@
  rb_thread_status(thread)
      VALUE thread;
  {
@@ -4395,7 +4381,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (rb_thread_dead(th)) {
  	if (!NIL_P(th->errinfo) && (th->flags & RAISED_EXCEPTION))
-@@ -12775,7 +13042,7 @@ static VALUE
+@@ -12775,7 +13042,7 @@
  rb_thread_stop_p(thread)
      VALUE thread;
  {
@@ -4404,7 +4390,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (rb_thread_dead(th)) return Qtrue;
      if (th->status == THREAD_STOPPED) return Qtrue;
-@@ -13009,7 +13276,7 @@ rb_thread_raise_m(argc, argv, thread)
+@@ -13009,7 +13276,7 @@
      VALUE *argv;
      VALUE thread;
  {
@@ -4413,7 +4399,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (ruby_safe_level > th->safe) {
  	rb_secure(4);
-@@ -13125,7 +13392,7 @@ static VALUE
+@@ -13125,7 +13392,7 @@
  rb_thread_key_p(thread, id)
      VALUE thread, id;
  {
@@ -4422,7 +4408,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (!th->locals) return Qfalse;
      if (st_lookup(th->locals, rb_to_id(id), 0))
-@@ -13161,7 +13428,7 @@ static VALUE
+@@ -13161,7 +13428,7 @@
  rb_thread_keys(thread)
      VALUE thread;
  {
@@ -4431,7 +4417,7 @@ index b1cbb6c..0ae3e68 100644
      VALUE ary = rb_ary_new();
  
      if (th->locals) {
-@@ -13182,7 +13449,7 @@ rb_thread_inspect(thread)
+@@ -13182,7 +13449,7 @@
      VALUE thread;
  {
      const char *cname = rb_obj_classname(thread);
@@ -4440,7 +4426,7 @@ index b1cbb6c..0ae3e68 100644
      const char *status = thread_status_name(th->status);
      VALUE str;
      size_t len = strlen(cname)+7+16+9+1;
-@@ -13220,10 +13487,10 @@ cc_purge(cc)
+@@ -13220,10 +13487,10 @@
      rb_thread_t cc;
  {
      /* free continuation's stack if it has just died */
@@ -4455,7 +4441,7 @@ index b1cbb6c..0ae3e68 100644
      }
  }
  
-@@ -13236,16 +13503,6 @@ cc_mark(cc)
+@@ -13236,16 +13503,6 @@
      thread_mark(cc);
  }
  
@@ -4472,7 +4458,7 @@ index b1cbb6c..0ae3e68 100644
  
  /*
   *  Document-class: Continuation
-@@ -13296,6 +13553,32 @@ rb_cont_check(data)
+@@ -13296,6 +13553,32 @@
  
  VALUE rb_cCont;
  
@@ -4505,7 +4491,7 @@ index b1cbb6c..0ae3e68 100644
  /*
   *  call-seq:
   *     callcc {|cont| block }   =>  obj
-@@ -13314,37 +13597,14 @@ static VALUE
+@@ -13314,37 +13597,14 @@
  rb_callcc(self)
      VALUE self;
  {
@@ -4549,7 +4535,7 @@ index b1cbb6c..0ae3e68 100644
  /*
   *  call-seq:
   *     cont.call(args, ...) 
-@@ -13367,7 +13627,7 @@ rb_cont_call(argc, argv, cont)
+@@ -13367,7 +13627,7 @@
      VALUE *argv;
      VALUE cont;
  {
@@ -4558,7 +4544,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (th->thread != curr_thread->thread) {
  	rb_raise(rb_eRuntimeError, "continuation called across threads");
-@@ -13397,6 +13657,35 @@ struct thgroup {
+@@ -13397,6 +13657,35 @@
  };
  
  
@@ -4594,7 +4580,7 @@ index b1cbb6c..0ae3e68 100644
  /*
   * Document-class: ThreadGroup
   *
-@@ -13649,8 +13938,9 @@ rb_exec_recursive(func, obj, arg)
+@@ -13649,8 +13938,9 @@
      VALUE obj;
      VALUE arg;
  {
@@ -4606,7 +4592,7 @@ index b1cbb6c..0ae3e68 100644
  
      if (recursive_check(hash, objid)) {
  	return (*func) (obj, arg, Qtrue);
-@@ -13746,6 +14036,9 @@ Init_Thread()
+@@ -13746,6 +14036,9 @@
      rb_undef_method(CLASS_OF(rb_cCont), "new");
      rb_define_method(rb_cCont, "call", rb_cont_call, -1);
      rb_define_method(rb_cCont, "[]", rb_cont_call, -1);
@@ -4616,7 +4602,7 @@ index b1cbb6c..0ae3e68 100644
      rb_define_global_function("callcc", rb_callcc, 0);
      rb_global_variable(&cont_protect);
  
-@@ -13797,14 +14090,15 @@ Init_Thread()
+@@ -13797,14 +14090,15 @@
  
  static VALUE
  rb_f_catch(dmy, tag)
@@ -4635,7 +4621,7 @@ index b1cbb6c..0ae3e68 100644
  	val = rb_yield_0(tag, 0, 0, 0, Qfalse);
      }
      else if (state == TAG_THROW && tag == prot_tag->dst) {
-@@ -13813,7 +14107,6 @@ rb_f_catch(dmy, tag)
+@@ -13813,7 +14107,6 @@
      }
      POP_TAG();
      if (state) JUMP_TAG(state);
@@ -4643,7 +4629,7 @@ index b1cbb6c..0ae3e68 100644
      return val;
  }
  
-@@ -13872,6 +14165,9 @@ rb_f_throw(argc, argv)
+@@ -13872,6 +14165,9 @@
      if (!tt) {
  	rb_name_error(SYM2ID(tag), "uncaught throw `%s'", rb_id2name(SYM2ID(tag)));
      }
@@ -4653,7 +4639,7 @@ index b1cbb6c..0ae3e68 100644
      rb_trap_restore_mask();
      JUMP_TAG(TAG_THROW);
  #ifndef __GNUC__
-@@ -13890,3 +14186,74 @@ rb_throw(tag, val)
+@@ -13890,3 +14186,74 @@
      argv[1] = val;
      rb_f_throw(2, argv);
  }
@@ -4728,8 +4714,6 @@ index b1cbb6c..0ae3e68 100644
 +	rb_thread_critical = critical;
 +    return result;
 +}
-diff --git a/ext/Setup b/ext/Setup
-index d0d6317..c7c419f 100644
 --- a/ext/Setup
 +++ b/ext/Setup
 @@ -20,6 +20,7 @@
@@ -4740,11 +4724,9 @@ index d0d6317..c7c419f 100644
  #readline
  #sdbm
  #socket
-diff --git a/ext/Setup.atheos b/ext/Setup.atheos
-index 6bda3a4..07cfd9b 100644
 --- a/ext/Setup.atheos
 +++ b/ext/Setup.atheos
-@@ -20,6 +20,7 @@ nkf
+@@ -20,6 +20,7 @@
  pty
  #openssl
  racc/parse
@@ -4752,11 +4734,9 @@ index 6bda3a4..07cfd9b 100644
  readline
  sdbm
  socket
-diff --git a/ext/Setup.dj b/ext/Setup.dj
-index 4f94788..ebc433f 100644
 --- a/ext/Setup.dj
 +++ b/ext/Setup.dj
-@@ -20,6 +20,7 @@ nkf
+@@ -20,6 +20,7 @@
  #pty
  #openssl
  racc/cparse
@@ -4764,11 +4744,9 @@ index 4f94788..ebc433f 100644
  readline
  sdbm
  #socket
-diff --git a/ext/Setup.emx b/ext/Setup.emx
-index afc5923..a50a18e 100644
 --- a/ext/Setup.emx
 +++ b/ext/Setup.emx
-@@ -20,6 +20,7 @@ nkf
+@@ -20,6 +20,7 @@
  #pty
  #openssl
  racc/cparse
@@ -4776,11 +4754,9 @@ index afc5923..a50a18e 100644
  #readline
  #sdbm
  socket
-diff --git a/ext/Setup.nt b/ext/Setup.nt
-index 9f8abf9..2e699c0 100644
 --- a/ext/Setup.nt
 +++ b/ext/Setup.nt
-@@ -20,6 +20,7 @@ nkf
+@@ -20,6 +20,7 @@
  #pty
  #openssl
  racc/cparse
@@ -4788,11 +4764,9 @@ index 9f8abf9..2e699c0 100644
  #readline
  sdbm
  socket
-diff --git a/ext/Setup.x68 b/ext/Setup.x68
-index 0966e73..c5fd204 100644
 --- a/ext/Setup.x68
 +++ b/ext/Setup.x68
-@@ -20,6 +20,7 @@ nkf
+@@ -20,6 +20,7 @@
  #pty
  #openssl
  racc/cparse
@@ -4800,11 +4774,9 @@ index 0966e73..c5fd204 100644
  #readline
  #sdbm
  #socket
-diff --git a/ext/openssl/ossl_ssl.c b/ext/openssl/ossl_ssl.c
-index 07c87ed..579ec9b 100644
 --- a/ext/openssl/ossl_ssl.c
 +++ b/ext/openssl/ossl_ssl.c
-@@ -1205,7 +1205,7 @@ ossl_ssl_get_peer_cert_chain(VALUE self)
+@@ -1205,7 +1205,7 @@
      num = sk_X509_num(chain);
      ary = rb_ary_new2(num);
      for (i = 0; i < num; i++){
@@ -4813,18 +4785,12 @@ index 07c87ed..579ec9b 100644
  	rb_ary_push(ary, ossl_x509_new(cert));
      }
  
-diff --git a/ext/rational/extconf.rb b/ext/rational/extconf.rb
-new file mode 100644
-index 0000000..bc4c835
 --- /dev/null
 +++ b/ext/rational/extconf.rb
 @@ -0,0 +1,3 @@
 +require 'mkmf'
 +
 +create_makefile('rational')
-diff --git a/ext/rational/lib/rational.rb b/ext/rational/lib/rational.rb
-new file mode 100644
-index 0000000..f5d7d42
 --- /dev/null
 +++ b/ext/rational/lib/rational.rb
 @@ -0,0 +1,560 @@
@@ -5388,9 +5354,6 @@ index 0000000..f5d7d42
 +    alias ** rpower
 +  end
 +end
-diff --git a/ext/rational/rational.c b/ext/rational/rational.c
-new file mode 100644
-index 0000000..18024e9
 --- /dev/null
 +++ b/ext/rational/rational.c
 @@ -0,0 +1,42 @@
@@ -5436,11 +5399,9 @@ index 0000000..18024e9
 +{
 +    rb_define_method(rb_cFixnum, "gcd", fix_gcd, 1);
 +}
-diff --git a/ext/readline/readline.c b/ext/readline/readline.c
-index 637cb99..57fd521 100644
 --- a/ext/readline/readline.c
 +++ b/ext/readline/readline.c
-@@ -119,7 +119,7 @@ readline_readline(argc, argv, self)
+@@ -119,7 +119,7 @@
  	result = rb_tainted_str_new2(buff);
      else
  	result = Qnil;
@@ -5449,7 +5410,7 @@ index 637cb99..57fd521 100644
      return result;
  }
  
-@@ -169,6 +169,7 @@ readline_attempted_completion_function(text, start, end)
+@@ -169,6 +169,7 @@
      char **result;
      int case_fold;
      int i, matches;
@@ -5457,7 +5418,7 @@ index 637cb99..57fd521 100644
  
      proc = rb_attr_get(mReadline, completion_proc);
      if (NIL_P(proc))
-@@ -183,16 +184,19 @@ readline_attempted_completion_function(text, start, end)
+@@ -183,16 +184,19 @@
      matches = RARRAY(ary)->len;
      if (matches == 0)
  	return NULL;
@@ -5480,7 +5441,7 @@ index 637cb99..57fd521 100644
      }
      else {
  	register int i = 1;
-@@ -218,7 +222,7 @@ readline_attempted_completion_function(text, start, end)
+@@ -218,7 +222,7 @@
  	    if (low > si) low = si;
  	    i++;
  	}
@@ -5489,7 +5450,7 @@ index 637cb99..57fd521 100644
  	strncpy(result[0], result[1], low);
  	result[0][low] = '\0';
      }
-@@ -605,8 +609,8 @@ rb_remove_history(index)
+@@ -605,8 +609,8 @@
      entry = remove_history(index);
      if (entry) {
          val = rb_tainted_str_new2(entry->line);
@@ -5500,7 +5461,7 @@ index 637cb99..57fd521 100644
          return val;
      }
      return Qnil;
-@@ -705,9 +709,9 @@ filename_completion_proc_call(self, str)
+@@ -705,9 +709,9 @@
  	result = rb_ary_new();
  	for (i = 0; matches[i]; i++) {
  	    rb_ary_push(result, rb_tainted_str_new2(matches[i]));
@@ -5512,7 +5473,7 @@ index 637cb99..57fd521 100644
  	if (RARRAY(result)->len >= 2)
  	    rb_ary_shift(result);
      }
-@@ -732,9 +736,9 @@ username_completion_proc_call(self, str)
+@@ -732,9 +736,9 @@
  	result = rb_ary_new();
  	for (i = 0; matches[i]; i++) {
  	    rb_ary_push(result, rb_tainted_str_new2(matches[i]));
@@ -5524,9 +5485,6 @@ index 637cb99..57fd521 100644
  	if (RARRAY(result)->len >= 2)
  	    rb_ary_shift(result);
      }
-diff --git a/fastmarktable.c b/fastmarktable.c
-new file mode 100644
-index 0000000..8f8526d
 --- /dev/null
 +++ b/fastmarktable.c
 @@ -0,0 +1,83 @@
@@ -5613,8 +5571,6 @@ index 0000000..8f8526d
 +}
 +
 +#endif /* _FAST_MARK_TABLE_C_ */
-diff --git a/gc.c b/gc.c
-index 4b1bd37..0fcd30a 100644
 --- a/gc.c
 +++ b/gc.c
 @@ -20,8 +20,15 @@
@@ -5633,7 +5589,7 @@ index 4b1bd37..0fcd30a 100644
  #ifdef HAVE_SYS_TIME_H
  #include <sys/time.h>
  #endif
-@@ -43,72 +50,115 @@ void rb_io_fptr_finalize _((struct rb_io_t*));
+@@ -43,72 +50,115 @@
  int _setjmp(), _longjmp();
  #endif
  
@@ -5789,7 +5745,7 @@ index 4b1bd37..0fcd30a 100644
  }
  
  /*
-@@ -121,6 +171,7 @@ gc_stress_get(self)
+@@ -121,6 +171,7 @@
   *  all memory and object allocation.
   *
   *  Since it makes Ruby very slow, it is only for debugging.
@@ -5797,7 +5753,7 @@ index 4b1bd37..0fcd30a 100644
   */
  
  static VALUE
-@@ -128,10 +179,57 @@ gc_stress_set(self, bool)
+@@ -128,10 +179,57 @@
      VALUE self, bool;
  {
      rb_secure(2);
@@ -5856,7 +5812,7 @@ index 4b1bd37..0fcd30a 100644
  void *
  ruby_xmalloc(size)
      long size;
-@@ -143,8 +241,9 @@ ruby_xmalloc(size)
+@@ -143,8 +241,9 @@
      }
      if (size == 0) size = 1;
  
@@ -5867,7 +5823,7 @@ index 4b1bd37..0fcd30a 100644
      }
      RUBY_CRITICAL(mem = malloc(size));
      if (!mem) {
-@@ -154,8 +253,15 @@ ruby_xmalloc(size)
+@@ -154,8 +253,15 @@
  	    rb_memerror();
  	}
      }
@@ -5884,7 +5840,7 @@ index 4b1bd37..0fcd30a 100644
      return mem;
  }
  
-@@ -183,7 +289,10 @@ ruby_xrealloc(ptr, size)
+@@ -183,7 +289,10 @@
      }
      if (!ptr) return xmalloc(size);
      if (size == 0) size = 1;
@@ -5896,7 +5852,7 @@ index 4b1bd37..0fcd30a 100644
      RUBY_CRITICAL(mem = realloc(ptr, size));
      if (!mem) {
  	garbage_collect();
-@@ -192,8 +301,9 @@ ruby_xrealloc(ptr, size)
+@@ -192,8 +301,9 @@
  	    rb_memerror();
          }
      }
@@ -5908,7 +5864,7 @@ index 4b1bd37..0fcd30a 100644
      return mem;
  }
  
-@@ -205,13 +315,167 @@ ruby_xfree(x)
+@@ -205,13 +315,167 @@
  	RUBY_CRITICAL(free(x));
  }
  
@@ -6076,7 +6032,7 @@ index 4b1bd37..0fcd30a 100644
  /*
   *  call-seq:
   *     GC.enable    => true or false
-@@ -255,6 +519,140 @@ rb_gc_disable()
+@@ -255,6 +519,140 @@
      return old;
  }
  
@@ -6217,7 +6173,7 @@ index 4b1bd37..0fcd30a 100644
  VALUE rb_mGC;
  
  static struct gc_list {
-@@ -346,22 +744,181 @@ typedef struct RVALUE {
+@@ -346,22 +744,181 @@
  static RVALUE *freelist = 0;
  static RVALUE *deferred_final_list = 0;
  
@@ -6403,7 +6359,7 @@ index 4b1bd37..0fcd30a 100644
  static void
  add_heap()
  {
-@@ -372,7 +929,7 @@ add_heap()
+@@ -372,7 +929,7 @@
  	struct heaps_slot *p;
  	int length;
  
@@ -6412,7 +6368,7 @@ index 4b1bd37..0fcd30a 100644
  	length = heaps_length*sizeof(struct heaps_slot);
  	RUBY_CRITICAL(
  	    if (heaps_used > 0) {
-@@ -386,12 +943,12 @@ add_heap()
+@@ -386,12 +943,12 @@
      }
  
      for (;;) {
@@ -6428,7 +6384,7 @@ index 4b1bd37..0fcd30a 100644
  	    continue;
  	}
          heaps[heaps_used].membase = p;
-@@ -401,14 +958,18 @@ add_heap()
+@@ -401,14 +958,18 @@
              p = (RVALUE*)((VALUE)p + sizeof(RVALUE) - ((VALUE)p % sizeof(RVALUE)));
          heaps[heaps_used].slot = p;
          heaps[heaps_used].limit = heap_slots;
@@ -6449,7 +6405,7 @@ index 4b1bd37..0fcd30a 100644
  
      while (p < pend) {
  	p->as.free.flags = 0;
-@@ -433,7 +994,7 @@ rb_newobj()
+@@ -433,7 +994,7 @@
      if (during_gc)
  	rb_bug("object allocation during garbage collection phase");
  
@@ -6458,7 +6414,7 @@ index 4b1bd37..0fcd30a 100644
  
      obj = (VALUE)freelist;
      freelist = freelist->as.free.next;
-@@ -442,6 +1003,8 @@ rb_newobj()
+@@ -442,6 +1003,8 @@
      RANY(obj)->file = ruby_sourcefile;
      RANY(obj)->line = ruby_sourceline;
  #endif
@@ -6467,7 +6423,7 @@ index 4b1bd37..0fcd30a 100644
      return obj;
  }
  
-@@ -468,6 +1031,9 @@ VALUE *rb_gc_stack_start = 0;
+@@ -468,6 +1031,9 @@
  VALUE *rb_gc_register_stack_start = 0;
  #endif
  
@@ -6477,7 +6433,7 @@ index 4b1bd37..0fcd30a 100644
  #ifdef DJGPP
  /* set stack size (http://www.delorie.com/djgpp/v2faq/faq15_9.html) */
  unsigned int _stklen = 0x180000; /* 1.5 kB */
-@@ -485,77 +1051,90 @@ static size_t STACK_LEVEL_MAX = 655300;
+@@ -485,77 +1051,90 @@
  # define STACK_LEVEL_MAX 655300
  #endif
  
@@ -6611,7 +6567,7 @@ index 4b1bd37..0fcd30a 100644
  
  #define MARK_STACK_MAX 1024
  static VALUE mark_stack[MARK_STACK_MAX];
-@@ -571,6 +1150,17 @@ init_mark_stack()
+@@ -571,6 +1150,17 @@
  
  #define MARK_STACK_EMPTY (mark_stack_ptr == mark_stack)
  
@@ -6629,7 +6585,7 @@ index 4b1bd37..0fcd30a 100644
  static st_table *source_filenames;
  
  char *
-@@ -596,7 +1186,7 @@ mark_source_filename(f)
+@@ -596,7 +1186,7 @@
      char *f;
  {
      if (f) {
@@ -6638,7 +6594,7 @@ index 4b1bd37..0fcd30a 100644
      }
  }
  
-@@ -604,32 +1194,33 @@ static int
+@@ -604,32 +1194,33 @@
  sweep_source_filename(key, value)
      char *key, *value;
  {
@@ -6682,7 +6638,7 @@ index 4b1bd37..0fcd30a 100644
  	    }
  	    p++;
  	}
-@@ -639,194 +1230,145 @@ gc_mark_all()
+@@ -639,194 +1230,145 @@
  static void
  gc_mark_rest()
  {
@@ -6887,7 +6843,9 @@ index 4b1bd37..0fcd30a 100644
      if (obj->as.basic.flags == 0) return;       /* free cell */
 -    if (obj->as.basic.flags & FL_MARK) return;  /* already marked */
 -    obj->as.basic.flags |= FL_MARK;
--
++    if (rb_mark_table_contains(obj)) return;  /* already marked */
++    rb_mark_table_add(obj);
+ 
 -    if (lev > GC_LEVEL_MAX || (lev == 0 && ruby_stack_check())) {
 -	if (!mark_stack_overflow) {
 -	    if (mark_stack_ptr - mark_stack < MARK_STACK_MAX) {
@@ -6899,22 +6857,19 @@ index 4b1bd37..0fcd30a 100644
 -	    }
 -	}
 -	return;
--    }
++    if (__stack_past(gc_stack_limit, STACK_END))
++      push_mark_stack(ptr);
++    else{
++      gc_mark_children(ptr);
+     }
 -    gc_mark_children(ptr, lev+1);
 -}
-+    if (rb_mark_table_contains(obj)) return;  /* already marked */
-+    rb_mark_table_add(obj);
- 
+-
 -void
 -rb_gc_mark(ptr)
 -    VALUE ptr;
 -{
 -    gc_mark(ptr, 0);
-+    if (__stack_past(gc_stack_limit, STACK_END))
-+      push_mark_stack(ptr);
-+    else{
-+      gc_mark_children(ptr);
-+    }
  }
  
  static void
@@ -6928,7 +6883,7 @@ index 4b1bd37..0fcd30a 100644
  
      goto marking;		/* skip */
  
-@@ -834,8 +1376,8 @@ gc_mark_children(ptr, lev)
+@@ -834,8 +1376,8 @@
      obj = RANY(ptr);
      if (rb_special_const_p(ptr)) return; /* special const not marked */
      if (obj->as.basic.flags == 0) return;       /* free cell */
@@ -6939,7 +6894,7 @@ index 4b1bd37..0fcd30a 100644
  
    marking:
      if (FL_TEST(obj, FL_EXIVAR)) {
-@@ -860,7 +1402,7 @@ gc_mark_children(ptr, lev)
+@@ -860,7 +1402,7 @@
  	  case NODE_RESCUE:
  	  case NODE_RESBODY:
  	  case NODE_CLASS:
@@ -6948,7 +6903,7 @@ index 4b1bd37..0fcd30a 100644
  	    /* fall through */
  	  case NODE_BLOCK:	/* 1,3 */
  	  case NODE_ARRAY:
-@@ -873,7 +1415,7 @@ gc_mark_children(ptr, lev)
+@@ -873,7 +1415,7 @@
  	  case NODE_CALL:
  	  case NODE_DEFS:
  	  case NODE_OP_ASGN1:
@@ -6957,7 +6912,7 @@ index 4b1bd37..0fcd30a 100644
  	    /* fall through */
  	  case NODE_SUPER:	/* 3 */
  	  case NODE_FCALL:
-@@ -900,7 +1442,7 @@ gc_mark_children(ptr, lev)
+@@ -900,7 +1442,7 @@
  	  case NODE_ALIAS:
  	  case NODE_VALIAS:
  	  case NODE_ARGS:
@@ -6966,7 +6921,7 @@ index 4b1bd37..0fcd30a 100644
  	    /* fall through */
  	  case NODE_METHOD:	/* 2 */
  	  case NODE_NOT:
-@@ -938,7 +1480,7 @@ gc_mark_children(ptr, lev)
+@@ -938,7 +1480,7 @@
  	  case NODE_SCOPE:	/* 2,3 */
  	  case NODE_BLOCK_PASS:
  	  case NODE_CDECL:
@@ -6975,7 +6930,7 @@ index 4b1bd37..0fcd30a 100644
  	    ptr = (VALUE)obj->as.node.u2.node;
  	    goto again;
  
-@@ -971,25 +1513,26 @@ gc_mark_children(ptr, lev)
+@@ -971,25 +1513,26 @@
  
  	  default:		/* unlisted NODE */
  	    if (is_pointer_to_heap(obj->as.node.u1.node)) {
@@ -7009,7 +6964,7 @@ index 4b1bd37..0fcd30a 100644
  	ptr = obj->as.klass.super;
  	goto again;
  
-@@ -999,17 +1542,16 @@ gc_mark_children(ptr, lev)
+@@ -999,17 +1542,16 @@
  	    goto again;
  	}
  	else {
@@ -7031,7 +6986,7 @@ index 4b1bd37..0fcd30a 100644
  	ptr = obj->as.hash.ifnone;
  	goto again;
  
-@@ -1026,7 +1568,7 @@ gc_mark_children(ptr, lev)
+@@ -1026,7 +1568,7 @@
  	break;
  
        case T_OBJECT:
@@ -7040,7 +6995,7 @@ index 4b1bd37..0fcd30a 100644
  	break;
  
        case T_FILE:
-@@ -1044,7 +1586,7 @@ gc_mark_children(ptr, lev)
+@@ -1044,7 +1586,7 @@
  	break;
  
        case T_VARMAP:
@@ -7049,7 +7004,7 @@ index 4b1bd37..0fcd30a 100644
  	ptr = (VALUE)obj->as.varmap.next;
  	goto again;
  
-@@ -1054,19 +1596,17 @@ gc_mark_children(ptr, lev)
+@@ -1054,19 +1596,17 @@
  	    VALUE *vars = &obj->as.scope.local_vars[-1];
  
  	    while (n--) {
@@ -7073,7 +7028,7 @@ index 4b1bd37..0fcd30a 100644
  	}
  	break;
  
-@@ -1083,8 +1623,13 @@ static inline void
+@@ -1083,8 +1623,13 @@
  add_freelist(p)
      RVALUE *p;
  {
@@ -7089,7 +7044,7 @@ index 4b1bd37..0fcd30a 100644
      freelist = p;
  }
  
-@@ -1095,13 +1640,51 @@ finalize_list(p)
+@@ -1095,13 +1640,51 @@
      while (p) {
  	RVALUE *tmp = p->as.free.next;
  	run_final((VALUE)p);
@@ -7142,7 +7097,7 @@ index 4b1bd37..0fcd30a 100644
  static void
  free_unused_heaps()
  {
-@@ -1109,7 +1692,8 @@ free_unused_heaps()
+@@ -1109,7 +1692,8 @@
  
      for (i = j = 1; j < heaps_used; i++) {
  	if (heaps[i].limit == 0) {
@@ -7152,7 +7107,7 @@ index 4b1bd37..0fcd30a 100644
  	    heaps_used--;
  	}
  	else {
-@@ -1121,8 +1705,6 @@ free_unused_heaps()
+@@ -1121,8 +1705,6 @@
      }
  }
  
@@ -7161,7 +7116,7 @@ index 4b1bd37..0fcd30a 100644
  void rb_gc_abort_threads(void);
  
  static void
-@@ -1131,24 +1713,38 @@ gc_sweep()
+@@ -1131,24 +1713,38 @@
      RVALUE *p, *pend, *final_list;
      int freed = 0;
      int i;
@@ -7207,7 +7162,7 @@ index 4b1bd37..0fcd30a 100644
  		p++;
  	    }
  	}
-@@ -1168,21 +1764,42 @@ gc_sweep()
+@@ -1168,21 +1764,42 @@
  	RVALUE *final = final_list;
  	int deferred;
  
@@ -7261,7 +7216,7 @@ index 4b1bd37..0fcd30a 100644
  		    add_freelist(p);
  		}
  		n++;
-@@ -1192,8 +1809,11 @@ gc_sweep()
+@@ -1192,8 +1809,11 @@
  		/* do nothing remain marked */
  	    }
  	    else {
@@ -7275,7 +7230,7 @@ index 4b1bd37..0fcd30a 100644
  	    }
  	    p++;
  	}
-@@ -1201,6 +1821,7 @@ gc_sweep()
+@@ -1201,6 +1821,7 @@
  	    RVALUE *pp;
  
  	    heaps[i].limit = 0;
@@ -7283,7 +7238,7 @@ index 4b1bd37..0fcd30a 100644
  	    for (pp = final_list; pp != final; pp = pp->as.free.next) {
  		pp->as.free.flags |= FL_SINGLETON; /* freeing page mark */
  	    }
-@@ -1210,15 +1831,26 @@ gc_sweep()
+@@ -1210,15 +1831,26 @@
  	    freed += n;
  	}
      }
@@ -7314,7 +7269,7 @@ index 4b1bd37..0fcd30a 100644
  
      /* clear finalization list */
      if (final_list) {
-@@ -1241,6 +1873,7 @@ void
+@@ -1241,6 +1873,7 @@
  rb_gc_force_recycle(p)
      VALUE p;
  {
@@ -7322,7 +7277,7 @@ index 4b1bd37..0fcd30a 100644
      add_freelist(RANY(p));
  }
  
-@@ -1387,7 +2020,7 @@ void
+@@ -1387,7 +2020,7 @@
  rb_gc_mark_frame(frame)
      struct FRAME *frame;
  {
@@ -7331,7 +7286,7 @@ index 4b1bd37..0fcd30a 100644
  }
  
  #ifdef __GNUC__
-@@ -1425,12 +2058,14 @@ int rb_setjmp (rb_jmp_buf);
+@@ -1425,12 +2058,14 @@
  #endif /* __human68k__ or DJGPP */
  #endif /* __GNUC__ */
  
@@ -7349,7 +7304,7 @@ index 4b1bd37..0fcd30a 100644
      SET_STACK_END;
  
  #ifdef HAVE_NATIVETHREAD
-@@ -1447,9 +2082,19 @@ garbage_collect()
+@@ -1447,9 +2082,19 @@
      if (during_gc) return;
      during_gc++;
  
@@ -7370,7 +7325,7 @@ index 4b1bd37..0fcd30a 100644
  
      /* mark frame stack */
      for (frame = ruby_frame; frame; frame = frame->prev) {
-@@ -1462,25 +2107,21 @@ garbage_collect()
+@@ -1462,25 +2107,21 @@
  	    }
  	}
      }
@@ -7404,7 +7359,7 @@ index 4b1bd37..0fcd30a 100644
  #endif
  #ifdef __ia64
      /* mark backing store (flushed register window on the stack) */
-@@ -1489,7 +2130,7 @@ garbage_collect()
+@@ -1489,7 +2130,7 @@
  #endif
  #if defined(__human68k__) || defined(__mc68000__)
      rb_gc_mark_locations((VALUE*)((char*)STACK_END + 2),
@@ -7413,7 +7368,7 @@ index 4b1bd37..0fcd30a 100644
  #endif
      rb_gc_mark_threads();
  
-@@ -1520,8 +2161,51 @@ garbage_collect()
+@@ -1520,8 +2161,51 @@
  	}
  	rb_gc_abort_threads();
      } while (!MARK_STACK_EMPTY);
@@ -7466,7 +7421,7 @@ index 4b1bd37..0fcd30a 100644
  }
  
  void
-@@ -1548,6 +2232,18 @@ rb_gc_start()
+@@ -1548,6 +2232,18 @@
      return Qnil;
  }
  
@@ -7485,7 +7440,7 @@ index 4b1bd37..0fcd30a 100644
  void
  ruby_set_stack_size(size)
      size_t size;
-@@ -1555,6 +2251,29 @@ ruby_set_stack_size(size)
+@@ -1555,6 +2251,29 @@
  #ifndef STACK_LEVEL_MAX
      STACK_LEVEL_MAX = size / sizeof(VALUE);
  #endif
@@ -7515,7 +7470,7 @@ index 4b1bd37..0fcd30a 100644
  }
  
  void
-@@ -1588,7 +2307,7 @@ Init_stack(addr)
+@@ -1588,7 +2307,7 @@
      memset(&m, 0, sizeof(m));
      VirtualQuery(&m, &m, sizeof(m));
      rb_gc_stack_start =
@@ -7524,7 +7479,7 @@ index 4b1bd37..0fcd30a 100644
  		    (VALUE *)((char *)m.BaseAddress + m.RegionSize) - 1);
  #elif defined(STACK_END_ADDRESS)
      {
-@@ -1597,28 +2316,16 @@ Init_stack(addr)
+@@ -1597,28 +2316,16 @@
      }
  #else
      if (!addr) addr = (void *)&addr;
@@ -7556,7 +7511,7 @@ index 4b1bd37..0fcd30a 100644
  }
  
  void ruby_init_stack(VALUE *addr
-@@ -1628,8 +2335,7 @@ void ruby_init_stack(VALUE *addr
+@@ -1628,8 +2335,7 @@
      )
  {
      if (!rb_gc_stack_start ||
@@ -7566,7 +7521,7 @@ index 4b1bd37..0fcd30a 100644
                      rb_gc_stack_start < addr)) {
          rb_gc_stack_start = addr;
      }
-@@ -1640,16 +2346,7 @@ void ruby_init_stack(VALUE *addr
+@@ -1640,16 +2346,7 @@
      }
  #endif
  #ifdef HAVE_GETRLIMIT
@@ -7584,7 +7539,7 @@ index 4b1bd37..0fcd30a 100644
  #elif defined _WIN32
      {
  	MEMORY_BASIC_INFORMATION mi;
-@@ -1660,7 +2357,7 @@ void ruby_init_stack(VALUE *addr
+@@ -1660,7 +2357,7 @@
  	    size = (char *)mi.BaseAddress - (char *)mi.AllocationBase;
  	    space = size / 5;
  	    if (space > 1024*1024) space = 1024*1024;
@@ -7593,7 +7548,7 @@ index 4b1bd37..0fcd30a 100644
  	}
      }
  #endif
-@@ -1700,9 +2397,13 @@ void ruby_init_stack(VALUE *addr
+@@ -1700,9 +2397,13 @@
  void
  Init_heap()
  {
@@ -7607,7 +7562,7 @@ index 4b1bd37..0fcd30a 100644
      add_heap();
  }
  
-@@ -1989,6 +2690,7 @@ void
+@@ -1989,6 +2690,7 @@
  rb_gc_call_finalizer_at_exit()
  {
      RVALUE *p, *pend;
@@ -7615,7 +7570,7 @@ index 4b1bd37..0fcd30a 100644
      int i;
  
      /* run finalizers */
-@@ -2013,12 +2715,14 @@ rb_gc_call_finalizer_at_exit()
+@@ -2013,12 +2715,14 @@
      }
      /* run data object's finalizers */
      for (i = 0; i < heaps_used; i++) {
@@ -7631,7 +7586,7 @@ index 4b1bd37..0fcd30a 100644
  		if ((long)RANY(p)->as.data.dfree == -1) {
  		    RUBY_CRITICAL(free(DATA_PTR(p)));
  		}
-@@ -2028,6 +2732,7 @@ rb_gc_call_finalizer_at_exit()
+@@ -2028,6 +2732,7 @@
  	    }
  	    else if (BUILTIN_TYPE(p) == T_FILE) {
  		p->as.free.flags = 0;
@@ -7639,7 +7594,7 @@ index 4b1bd37..0fcd30a 100644
  		rb_io_fptr_finalize(RANY(p)->as.file.fptr);
  	    }
  	    p++;
-@@ -2147,6 +2852,218 @@ rb_obj_id(VALUE obj)
+@@ -2147,6 +2852,218 @@
      return (VALUE)((long)obj|FIXNUM_FLAG);
  }
  
@@ -7858,7 +7813,7 @@ index 4b1bd37..0fcd30a 100644
  /*
   *  The <code>GC</code> module provides an interface to Ruby's mark and
   *  sweep garbage collection mechanism. Some of the underlying methods
-@@ -2158,13 +3075,35 @@ Init_GC()
+@@ -2158,13 +3075,35 @@
  {
      VALUE rb_mObSpace;
  
@@ -7894,7 +7849,7 @@ index 4b1bd37..0fcd30a 100644
  
      rb_mObSpace = rb_define_module("ObjectSpace");
      rb_define_module_function(rb_mObSpace, "each_object", os_each_obj, -1);
-@@ -2173,12 +3112,16 @@ Init_GC()
+@@ -2173,12 +3112,16 @@
      rb_define_module_function(rb_mObSpace, "remove_finalizer", rm_final, 1);
      rb_define_module_function(rb_mObSpace, "finalizers", finals, 0);
      rb_define_module_function(rb_mObSpace, "call_finalizer", call_final, 1);
@@ -7911,11 +7866,9 @@ index 4b1bd37..0fcd30a 100644
      rb_gc_register_address(&rb_mObSpace);
      rb_global_variable(&finalizers);
      rb_gc_unregister_address(&rb_mObSpace);
-diff --git a/intern.h b/intern.h
-index a982e9b..3fa4d72 100644
 --- a/intern.h
 +++ b/intern.h
-@@ -253,7 +253,7 @@ VALUE rb_file_directory_p _((VALUE,VALUE));
+@@ -253,7 +253,7 @@
  /* gc.c */
  NORETURN(void rb_memerror __((void)));
  int ruby_stack_check _((void));
@@ -7924,7 +7877,7 @@ index a982e9b..3fa4d72 100644
  int rb_during_gc _((void));
  char *rb_source_filename _((const char*));
  void rb_gc_mark_locations _((VALUE*, VALUE*));
-@@ -270,6 +270,16 @@ void rb_gc_call_finalizer_at_exit _((void));
+@@ -270,6 +270,16 @@
  VALUE rb_gc_enable _((void));
  VALUE rb_gc_disable _((void));
  VALUE rb_gc_start _((void));
@@ -7941,11 +7894,9 @@ index a982e9b..3fa4d72 100644
  /* hash.c */
  void st_foreach_safe _((struct st_table *, int (*)(ANYARGS), unsigned long));
  void rb_hash_foreach _((VALUE, int (*)(ANYARGS), VALUE));
-diff --git a/lib/mkmf.rb b/lib/mkmf.rb
-index c9e738a..b3feb60 100644
 --- a/lib/mkmf.rb
 +++ b/lib/mkmf.rb
-@@ -1314,7 +1314,7 @@ LIBRUBYARG_STATIC = #$LIBRUBYARG_STATIC
+@@ -1314,7 +1314,7 @@
  
  RUBY_EXTCONF_H = #{$extconf_h}
  CFLAGS   = #{$static ? '' : CONFIG['CCDLFLAGS']} #$CFLAGS #$ARCH_FLAG
@@ -7954,7 +7905,7 @@ index c9e738a..b3feb60 100644
  DEFS     = #{CONFIG['DEFS']}
  CPPFLAGS = #{extconf_h}#{$CPPFLAGS}
  CXXFLAGS = $(CFLAGS) #{CONFIG['CXXFLAGS']}
-@@ -1702,11 +1702,11 @@ def init_mkmf(config = CONFIG)
+@@ -1702,11 +1702,11 @@
    $ARCH_FLAG = with_config("arch_flag", arg_config("ARCH_FLAG", config["ARCH_FLAG"])).dup
    $CPPFLAGS = with_config("cppflags", arg_config("CPPFLAGS", config["CPPFLAGS"])).dup
    $LDFLAGS = with_config("ldflags", arg_config("LDFLAGS", config["LDFLAGS"])).dup
@@ -7968,9 +7919,6 @@ index c9e738a..b3feb60 100644
    $LIBRUBYARG = ""
    $LIBRUBYARG_STATIC = config['LIBRUBYARG_STATIC']
    $LIBRUBYARG_SHARED = config['LIBRUBYARG_SHARED']
-diff --git a/lib/rational.rb b/lib/rational.rb
-deleted file mode 100644
-index 6f61f14..0000000
 --- a/lib/rational.rb
 +++ /dev/null
 @@ -1,564 +0,0 @@
@@ -8538,9 +8486,6 @@ index 6f61f14..0000000
 -    alias ** rpower
 -  end
 -end
-diff --git a/marktable.c b/marktable.c
-new file mode 100644
-index 0000000..82c79a5
 --- /dev/null
 +++ b/marktable.c
 @@ -0,0 +1,205 @@
@@ -8749,9 +8694,6 @@ index 0000000..82c79a5
 +}
 +
 +#endif /* _MARK_TABLE_C_ */
-diff --git a/marktable.h b/marktable.h
-new file mode 100644
-index 0000000..3904fd6
 --- /dev/null
 +++ b/marktable.h
 @@ -0,0 +1,17 @@
@@ -8772,8 +8714,6 @@ index 0000000..3904fd6
 +static void (*rb_mark_table_remove_filename)(char *filename);
 +
 +#endif /* _MARK_TABLE_H_ */
-diff --git a/missing/alloca.c b/missing/alloca.c
-index 39697f1..3facdfe 100644
 --- a/missing/alloca.c
 +++ b/missing/alloca.c
 @@ -29,6 +29,7 @@
@@ -8784,7 +8724,7 @@ index 39697f1..3facdfe 100644
  #include "config.h"
  #ifdef emacs
  #ifdef static
-@@ -44,11 +45,7 @@ lose
+@@ -44,11 +45,7 @@
  #endif /* static */
  #endif /* emacs */
  
@@ -8796,7 +8736,7 @@ index 39697f1..3facdfe 100644
  
  #define	NULL	0			/* null pointer constant */
  
-@@ -140,8 +137,7 @@ typedef union hdr
+@@ -140,8 +137,7 @@
  static header *last_alloca_header = NULL; /* -> last alloca header */
  
  pointer
@@ -8806,11 +8746,9 @@ index 39697f1..3facdfe 100644
  {
    auto char	probe;		/* probes stack depth: */
    register char	*depth = &probe;
-diff --git a/node.h b/node.h
-index 40dc32c..3f54729 100644
 --- a/node.h
 +++ b/node.h
-@@ -409,15 +409,11 @@ struct rb_thread {
+@@ -409,15 +409,11 @@
  
      VALUE result;
  
@@ -8830,9 +8768,6 @@ index 40dc32c..3f54729 100644
  #endif
  
      struct FRAME *frame;
-diff --git a/pointerset.c b/pointerset.c
-new file mode 100644
-index 0000000..3d31ef9
 --- /dev/null
 +++ b/pointerset.c
 @@ -0,0 +1,247 @@
@@ -9083,9 +9018,6 @@ index 0000000..3d31ef9
 +{
 +	return set->num_bins;
 +}
-diff --git a/pointerset.h b/pointerset.h
-new file mode 100644
-index 0000000..bc4733b
 --- /dev/null
 +++ b/pointerset.h
 @@ -0,0 +1,56 @@
@@ -9145,11 +9077,9 @@ index 0000000..bc4733b
 +unsigned int pointer_set_get_capacity(PointerSet *set);
 +
 +#endif /* _POINTER_SET_H_ */
-diff --git a/re.c b/re.c
-index b3c7a21..2990e79 100644
 --- a/re.c
 +++ b/re.c
-@@ -1496,19 +1496,17 @@ VALUE
+@@ -1496,19 +1496,17 @@
  rb_reg_regcomp(str)
      VALUE str;
  {
@@ -9177,11 +9107,9 @@ index b3c7a21..2990e79 100644
  }
  
  static int
-diff --git a/ruby.h b/ruby.h
-index 7245329..917d4ff 100644
 --- a/ruby.h
 +++ b/ruby.h
-@@ -480,7 +480,7 @@ struct RBignum {
+@@ -480,7 +480,7 @@
  #define FL_EXIVAR    (1<<9)
  #define FL_FREEZE    (1<<10)
  
@@ -9190,7 +9118,7 @@ index 7245329..917d4ff 100644
  
  #define FL_USER0     (1<<(FL_USHIFT+0))
  #define FL_USER1     (1<<(FL_USHIFT+1))
-@@ -557,6 +557,8 @@ void rb_global_variable _((VALUE*));
+@@ -557,6 +557,8 @@
  void rb_gc_register_address _((VALUE*));
  void rb_gc_unregister_address _((VALUE*));
  
@@ -9199,8 +9127,6 @@ index 7245329..917d4ff 100644
  ID rb_intern _((const char*));
  const char *rb_id2name _((ID));
  ID rb_to_id _((VALUE));
-diff --git a/rubysig.h b/rubysig.h
-index e6c3a2a..4719ef1 100644
 --- a/rubysig.h
 +++ b/rubysig.h
 @@ -12,8 +12,80 @@
@@ -9284,7 +9210,7 @@ index e6c3a2a..4719ef1 100644
  #ifdef _WIN32
  typedef LONG rb_atomic_t;
  
-@@ -78,12 +150,163 @@ RUBY_EXTERN rb_atomic_t rb_trap_pending;
+@@ -78,12 +150,163 @@
  void rb_trap_restore_mask _((void));
  
  RUBY_EXTERN int rb_thread_critical;
@@ -9450,7 +9376,7 @@ index e6c3a2a..4719ef1 100644
  	if (rb_trap_pending) rb_trap_exec();\
      }\
  } while (0)
-@@ -92,13 +315,14 @@ void rb_thread_schedule _((void));
+@@ -92,13 +315,14 @@
  RUBY_EXTERN int rb_thread_tick;
  #define THREAD_TICK 500
  #define CHECK_INTS do {\
@@ -9468,11 +9394,9 @@ index e6c3a2a..4719ef1 100644
  } while (0)
  #endif
  
-diff --git a/signal.c b/signal.c
-index 2d377bd..8b04e79 100644
 --- a/signal.c
 +++ b/signal.c
-@@ -629,8 +629,6 @@ sigsegv(sig)
+@@ -629,8 +629,6 @@
      }
  #endif
  
@@ -9481,9 +9405,6 @@ index 2d377bd..8b04e79 100644
      rb_bug("Segmentation fault");
  }
  #endif
-diff --git a/system_allocator.c b/system_allocator.c
-new file mode 100644
-index 0000000..e8eb7fe
 --- /dev/null
 +++ b/system_allocator.c
 @@ -0,0 +1,50 @@
@@ -9537,9 +9458,6 @@ index 0000000..e8eb7fe
 +{
 +    free(ptr);
 +}
-diff --git a/test/callerforallthreads/test_caller_for_each_thread.rb b/test/callerforallthreads/test_caller_for_each_thread.rb
-new file mode 100644
-index 0000000..6aebaed
 --- /dev/null
 +++ b/test/callerforallthreads/test_caller_for_each_thread.rb
 @@ -0,0 +1,95 @@
@@ -9638,9 +9556,6 @@ index 0000000..6aebaed
 +  
 +end
 +
-diff --git a/test/rational/test_fixnum_gcd.rb b/test/rational/test_fixnum_gcd.rb
-new file mode 100644
-index 0000000..d995295
 --- /dev/null
 +++ b/test/rational/test_fixnum_gcd.rb
 @@ -0,0 +1,811 @@
@@ -10455,9 +10370,6 @@ index 0000000..d995295
 +    end
 +  end
 +end
-diff --git a/test/rational/test_rational.rb b/test/rational/test_rational.rb
-new file mode 100644
-index 0000000..ac4319d
 --- /dev/null
 +++ b/test/rational/test_rational.rb
 @@ -0,0 +1,1205 @@
@@ -11666,9 +11578,6 @@ index 0000000..ac4319d
 +  end
 +
 +end
-diff --git a/test/rational/test_rational2.rb b/test/rational/test_rational2.rb
-new file mode 100644
-index 0000000..598c1ff
 --- /dev/null
 +++ b/test/rational/test_rational2.rb
 @@ -0,0 +1,1387 @@
@@ -13059,8 +12968,6 @@ index 0000000..598c1ff
 +  end
 +
 +end
-diff --git a/test/ruby/suicide.rb b/test/ruby/suicide.rb
-index 2687ed0..c7a0a67 100644
 --- a/test/ruby/suicide.rb
 +++ b/test/ruby/suicide.rb
 @@ -1,2 +1,4 @@
@@ -13069,11 +12976,9 @@ index 2687ed0..c7a0a67 100644
 +at_exit{Process.kill(:INT, $$); sleep 0}
 +# brent@mbari.org says
 +#  sleep 0 avoids race between process termination and signal reception
-diff --git a/test/ruby/test_range.rb b/test/ruby/test_range.rb
-index 14f59e2..9d66b56 100644
 --- a/test/ruby/test_range.rb
 +++ b/test/ruby/test_range.rb
-@@ -20,7 +20,9 @@ class TestRange < Test::Unit::TestCase
+@@ -20,7 +20,9 @@
      assert_equal(5, (1.1...6).step.to_a.size)
      assert_equal(5, (1...6).step(1.1).to_a.size)
      assert_equal(3, (1.0...6.3).step(1.8).to_a.size)
@@ -13084,8 +12989,6 @@ index 14f59e2..9d66b56 100644
      assert_equal(4, (1.0...6.5).step(1.8).to_a.size)
    end
  end
-diff --git a/version.c b/version.c
-index 10a0834..fad758d 100644
 --- a/version.c
 +++ b/version.c
 @@ -11,12 +11,14 @@
@@ -13103,7 +13006,7 @@ index 10a0834..fad758d 100644
  const char ruby_version[] = RUBY_VERSION;
  const char ruby_release_date[] = RUBY_RELEASE_DATE;
  const char ruby_platform[] = RUBY_PLATFORM;
-@@ -24,24 +26,30 @@ const int ruby_patchlevel = RUBY_PATCHLEVEL;
+@@ -24,24 +26,30 @@
  const char *ruby_description;
  const char *ruby_copyright;
  
@@ -13136,16 +13039,14 @@ index 10a0834..fad758d 100644
      ruby_description = description;
      tmp = rb_obj_freeze(rb_str_new2(description));
      rb_define_global_const("RUBY_DESCRIPTION", tmp);
-diff --git a/version.h b/version.h
-index d90d5b1..35534a3 100644
 --- a/version.h
 +++ b/version.h
 @@ -1,3 +1,4 @@
 +#define RUBY_ENGINE "ruby"
  #define RUBY_VERSION "1.8.7"
- #define RUBY_RELEASE_DATE "2012-06-29"
+ #define RUBY_RELEASE_DATE "2013-06-27"
  #define RUBY_VERSION_CODE 187
-@@ -25,5 +26,17 @@ RUBY_EXTERN const char *ruby_copyright;
+@@ -25,5 +26,17 @@
  #define RUBY_BIRTH_MONTH 2
  #define RUBY_BIRTH_DAY 24
  
