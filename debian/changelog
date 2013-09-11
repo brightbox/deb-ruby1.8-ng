@@ -1,3 +1,14 @@
+ruby1.8 (1.8.7.358-8) unstable; urgency=low
+
+  * This is hopefully the last upload ever of ruby1.8
+  * debian/control:
+    + ruby1.8: drop `Provides: ruby` (Closes: #710022)
+    + ruby1.8-dev: drop `Provides: ruby-dev`
+    + ri1.8: drop `Provides: ri`
+    + Build-Depends: add versioned depends on coreutils
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 10 Sep 2013 22:50:01 -0300
+
 ruby1.8 (1.8.7.358-7.1) unstable; urgency=high
 
   * Non-maintainer upload.

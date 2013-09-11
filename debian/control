@@ -3,7 +3,7 @@ Section: ruby
 Priority: optional
 Maintainer: akira yamada <akira@debian.org>
 Uploaders: Daigo Moriwaki <daigo@debian.org>, Lucas Nussbaum <lucas@debian.org>, Antonio Terceiro <terceiro@debian.org>
-Build-Depends: cdbs (>= 0.4.106), debhelper (>= 5), autotools-dev, autoconf, m4, quilt (>= 0.40), patch, bison, binutils (>= 2.14.90.0.7), libgdbm-dev, libncurses5-dev, libreadline-gplv2-dev, tcl-dev, tk-dev, zlib1g-dev, libssl-dev (>= 0.9.6b), file, coreutils, gcc-4.6
+Build-Depends: cdbs (>= 0.4.106), debhelper (>= 5), autotools-dev, autoconf, m4, quilt (>= 0.40), patch, bison, binutils (>= 2.14.90.0.7), libgdbm-dev, libncurses5-dev, libreadline-gplv2-dev, tcl-dev, tk-dev, zlib1g-dev, libssl-dev (>= 0.9.6b), file, coreutils (>= 7.5), gcc-4.6
 Standards-Version: 3.9.2
 Homepage: http://www.ruby-lang.org/
 Vcs-Git: git://git.debian.org/collab-maint/ruby1.8.git
@@ -14,7 +14,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libruby1.8 (= ${binary:Version})
 Conflicts: irb1.8 (<< 1.8.7.249-3~), rdoc1.8 (<< 1.8.7.249-3~), ri1.8 (<< 1.8.7.334-4~), ruby (<= 4.5), ri (<= 4.5)
 Replaces: irb1.8, rdoc1.8
-Provides: irb1.8, rdoc1.8, ruby, ruby-interpreter
+Provides: irb1.8, rdoc1.8, ruby-interpreter
 Suggests: ruby1.8-examples, ri1.8, ruby-switch
 Description: Interpreter of object-oriented scripting language Ruby 1.8
  Ruby is the interpreted scripting language for quick and easy
@@ -60,7 +60,6 @@ Package: ruby1.8-dev
 Architecture: any
 Depends: libruby1.8 (= ${binary:Version}), libc6-dev, ${misc:Depends}, gcc-4.6
 Recommends: ruby1.8 (= ${binary:Version})
-Provides: ruby-dev
 Description: Header files for compiling extension modules for the Ruby 1.8
  Ruby is the interpreted scripting language for quick and easy
  object-oriented programming.  It has many features to process text
@@ -95,7 +94,6 @@ Description: Examples for Ruby 1.8
 Package: ri1.8
 Architecture: all
 Depends: ruby1.8 (>= ${source:Version}), ${misc:Depends}
-Provides: ri
 Description: Ruby Interactive reference (for Ruby 1.8)
  ri is a command line tool that displays descriptions of built-in Ruby
  methods, classes, and modules. For methods, it shows you the calling
@@ -110,7 +108,6 @@ Package: ruby1.8-full
 Architecture: all
 Depends: ruby1.8, ri1.8, ruby1.8-dev, ${misc:Depends}
 Recommends: libtcltk-ruby1.8
-Provides: ruby-full
 Description: Ruby 1.8 full installation
  For many good reasons, the Ruby programming language is split in many
  small different packages. Installing this package will make sure you have
