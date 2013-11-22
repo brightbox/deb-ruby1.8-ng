@@ -1,3 +1,9 @@
+ruby1.8 (1:1.8.7.374-1bbox2~lucid1) lucid; urgency=high
+
+  * Fix for security bug CVE-2013-4164.
+
+ -- Graeme Mathieson <mathie@woss.name>  Fri, 22 Nov 2013 11:32:10 +0000
+
 ruby1.8 (1:1.8.7.374-1bbox1~lucid1) lucid; urgency=high
 
   * New upstream release, ruby 1.8.7-p374
