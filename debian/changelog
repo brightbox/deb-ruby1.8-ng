@@ -1,3 +1,11 @@
+ruby1.8 (1:1.8.7.375-1bbox1~lucid1) lucid; urgency=high
+
+  * Fix a problem with the patch for CVE-2013-4164.
+  * Fix building on Raring and Saucy
+  * Bumped patch level to 375
+
+ -- John Leach <john@brightbox.co.uk>  Sun, 24 Nov 2013 13:25:07 +0000
+
 ruby1.8 (1:1.8.7.374-1bbox2~lucid1) lucid; urgency=high
 
   * Fix for security bug CVE-2013-4164.
