@@ -13,3 +13,4 @@
 tcltk-no-rpath.patch
 120302_ruby_ee.patch
 use-ldflags.patch
+131122_float_parsing_overflow.patch
