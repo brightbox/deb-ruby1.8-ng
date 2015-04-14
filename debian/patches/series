@@ -14,5 +14,5 @@ tcltk-no-rpath.patch
 120302_ruby_ee.patch
 use-ldflags.patch
 131122_float_parsing_overflow.patch
-131124_version.patch
 ruby_1_8_7-p374-fixes-2015-04-14.patch
+version_update.patch
