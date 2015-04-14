@@ -1,3 +1,9 @@
+ruby1.8 (1:1.8.7.375-2bbox2~lucid1) lucid; urgency=medium
+
+  *  Fix for CVE-2015-1855, backported by tobias.kraze@makandra.de
+
+ -- John Leach <john@brightbox.co.uk>  Tue, 14 Apr 2015 23:18:51 +0100
+
 ruby1.8 (1:1.8.7.375-1bbox2~trusty1) trusty; urgency=high
 
   * Fix a problem with the patch for CVE-2013-4164.
