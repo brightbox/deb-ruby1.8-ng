@@ -50,14 +50,7 @@ ifeq ($(DEB_BUILD_GNU_CPU),i486)
 
 endif
 DEB_CONFIGURE_USER_FLAGS += --program-suffix=$(ruby_ver)
-# For some reason, builds on raring and saucy end up with pthread needing linking in
-# Hacky fix, but a fix.
-lsbcodename := $(shell lsb_release -cs)
-ifneq (,$(filter $(lsbcodename),raring saucy trusty))
-	DEB_CONFIGURE_USER_FLAGS += --enable-pthread
-else
-	DEB_CONFIGURE_USER_FLAGS += --disable-pthread
-endif
+DEB_CONFIGURE_USER_FLAGS += --enable-pthread
 DEB_CONFIGURE_USER_FLAGS += --enable-shared
 DEB_CONFIGURE_USER_FLAGS += --enable-mbari-api
 DEB_CONFIGURE_USER_FLAGS += --enable-ipv6
