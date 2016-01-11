@@ -6,7 +6,7 @@ if [ "$1" = "configure" ]
 then
         RUBYVER=1.8
         update-alternatives \
-        --install /usr/bin/ruby ruby /usr/bin/ruby${RUBYVER} 50 \
+        --install /usr/bin/ruby ruby /usr/bin/ruby${RUBYVER} 51 \
         --slave /usr/bin/erb erb /usr/bin/erb${RUBYVER} \
         --slave /usr/bin/testrb testrb /usr/bin/testrb${RUBYVER} \
         --slave /usr/bin/irb irb /usr/bin/irb${RUBYVER} \
