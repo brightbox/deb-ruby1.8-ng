@@ -101,7 +101,13 @@ DEB_COMPRESS_EXCLUDE = .rb .pl .py .scm .awk .dat
 DEB_SHLIBDEPS_INCLUDE = $(CURDIR)/debian/libruby$(ruby_ver)/usr/lib
 DEB_DH_MAKESHLIBS_ARGS_ALL = -m$(ruby_ver)
 
+common-binary-arch::
+	cd $(CURDIR)/debian/ && tar zxf rubygems-1.8.30.tgz
+
 binary-install/libruby$(ruby_ver):: $(patsubst %,binary-install/%,$(filter-out libruby$(ruby_ver),$(DEB_PACKAGES)))
+	mv $(CURDIR)/debian/rubygems-1.8.30/lib/rubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
+	mv $(CURDIR)/debian/rubygems-1.8.30/lib/ubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
+
 	install -d $(CURDIR)/debian/$(cdbs_curpkg)/$(ruby_archdir)
 	for s in $(CURDIR)/debian/$(cdbs_curpkg).*.in; do \
 	    sed -e 's/@@arch@@/$(arch_name)/g' \
@@ -113,6 +119,7 @@ binary-install/libruby$(ruby_ver):: $(patsubst %,binary-install/%,$(filter-out l
 		echo usr/lib/$$f; \
 	    done) | xargs dh_movefiles -p$(cdbs_curpkg) 
 	dh_movefiles -p$(cdbs_curpkg) usr/lib/ruby/$(ruby_ver)
+
 
 	cd $(DEB_SRCDIR)/ext && \
 	for dir in \
@@ -145,6 +152,8 @@ binary-install/ruby$(ruby_ver)-dev::
 	    done) | xargs dh_movefiles -p$(cdbs_curpkg)
 
 binary-install/ruby$(ruby_ver)::
+	mv $(CURDIR)/debian/rubygems-1.8.30/bin/gem $(CURDIR)/debian/tmp/usr/bin/gem1.8
+
 	dh_movefiles -p$(cdbs_curpkg) \
 	    usr/bin/ruby$(ruby_ver) \
 	    usr/bin/erb$(ruby_ver) \
@@ -152,6 +161,7 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/rdoc$(ruby_ver) \
 	    usr/bin/irb$(ruby_ver) \
 	    usr/bin/ri$(ruby_ver) \
+        usr/bin/gem$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
 
 binary-post-install/ri$(ruby_ver)::
@@ -205,6 +215,7 @@ clean::
 	    parse.c \
 	    debian/libruby$(ruby_ver).postinst \
 	    debian/libruby$(ruby_ver).prerm
+	rm -rf debian/rubygems-1.8.30/
 
 	if [ -f $(DEB_SRCDIR)/config.guess.cdbs-orig ]; \
 	then \
