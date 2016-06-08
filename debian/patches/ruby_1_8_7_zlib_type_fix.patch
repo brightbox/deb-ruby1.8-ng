@@ -1,0 +1,13 @@
+diff --git a/ext/zlib/zlib.c b/ext/zlib/zlib.c
+index ae21f03..9d29ffd 100644
+--- a/ext/zlib/zlib.c
++++ b/ext/zlib/zlib.c
+@@ -342,7 +342,7 @@ static VALUE
+ rb_zlib_crc_table(obj)
+     VALUE obj;
+ {
+-    const unsigned long *crctbl;
++    const z_crc_t *crctbl;
+     VALUE dst;
+     int i;
+ 

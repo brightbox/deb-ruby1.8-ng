@@ -29,7 +29,7 @@ CXXFLAGS += -fno-strict-aliasing -g
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -g -O0
 else
-	CFLAGS += -g -O2
+	CFLAGS = -g -O2 -fno-stack-protector  -D_FORTIFY_SOURCE=0
 # Workaround for #634260. Can be removed when #635126 is fixed.
 ifeq ($(DEB_BUILD_ARCH),armel)
 	CFLAGS += -fno-tree-sra
