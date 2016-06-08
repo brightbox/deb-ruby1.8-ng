@@ -11,8 +11,9 @@
 100730_verbose-tests.patch
 100901_threading_fixes.patch
 tcltk-no-rpath.patch
-120302_ruby_ee.patch
+#120302_ruby_ee.patch
 use-ldflags.patch
 131122_float_parsing_overflow.patch
 ruby_1_8_7-p374-fixes-2015-04-14.patch
 version_update.patch
+ruby_1_8_7_zlib_type_fix.patch
