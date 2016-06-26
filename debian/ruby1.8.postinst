@@ -4,7 +4,7 @@ set -e
 
 if [ "$1" = "configure" ]
 then
-        update-alternatives --install /usr/bin/gem gem /usr/bin/gem2.2 181
+        update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.8 181
         RUBYVER=1.8
         update-alternatives \
         --install /usr/bin/ruby ruby /usr/bin/ruby${RUBYVER} 51 \
