@@ -2,8 +2,8 @@
 
   string.c -
 
-  $Author: shyouhei $
-  $Date: 2011-12-28 21:47:15 +0900 (Wed, 28 Dec 2011) $
+  $Author$
+  $Date$
   created at: Mon Aug  9 17:12:58 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

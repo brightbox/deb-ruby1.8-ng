@@ -5,7 +5,7 @@
 #  Copyright (c) 2004 Googie
 #  Copyright (c) 2005 Pat Thoyts <patthoyts@users.sourceforge.net>
 #
-# $Id: plastik.tcl 11708 2007-02-12 23:01:19Z shyouhei $
+# $Id$
 
 package require Tk 8.4
 package require tile 0.5

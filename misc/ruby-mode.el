@@ -1,12 +1,12 @@
 ;;;
 ;;;  ruby-mode.el -
 ;;;
-;;;  $Author: knu $
-;;;  $Date: 2008-05-19 00:02:36 +0900 (Mon, 19 May 2008) $
+;;;  $Author$
+;;;  $Date$
 ;;;  created at: Fri Feb  4 14:49:13 JST 1994
 ;;;
 
-(defconst ruby-mode-revision "$Revision: 16458 $")
+(defconst ruby-mode-revision "$Revision$")
 
 (defconst ruby-mode-version
   (progn

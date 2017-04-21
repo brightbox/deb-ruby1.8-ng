@@ -2,8 +2,8 @@
 
   eval.c -
 
-  $Author: shyouhei $
-  $Date: 2012-06-29 21:31:25 +0900 (Fri, 29 Jun 2012) $
+  $Author$
+  $Date$
   created at: Thu Jun 10 14:22:17 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

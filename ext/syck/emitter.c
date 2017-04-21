@@ -1,8 +1,8 @@
 /*
  * emitter.c
  *
- * $Author: shyouhei $
- * $Date: 2007-02-13 08:01:19 +0900 (Tue, 13 Feb 2007) $
+ * $Author$
+ * $Date$
  *
  * Copyright (C) 2003 why the lucky stiff
  * 

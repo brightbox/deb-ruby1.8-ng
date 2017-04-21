@@ -2,8 +2,8 @@
 
   random.c -
 
-  $Author: shyouhei $
-  $Date: 2011-12-28 21:47:15 +0900 (Wed, 28 Dec 2011) $
+  $Author$
+  $Date$
   created at: Fri Dec 24 16:39:21 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

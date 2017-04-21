@@ -1,5 +1,5 @@
 #
-# $Id: repeater.tcl 11708 2007-02-12 23:01:19Z shyouhei $
+# $Id$
 #
 # Demonstration of custom classes.
 #

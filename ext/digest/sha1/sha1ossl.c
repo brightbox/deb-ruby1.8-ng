@@ -1,4 +1,4 @@
-/* $Id: sha1ossl.c 11905 2007-02-27 10:38:32Z knu $ */
+/* $Id$ */
 
 #include "defs.h"
 #include "sha1ossl.h"

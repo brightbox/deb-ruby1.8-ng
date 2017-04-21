@@ -1,8 +1,8 @@
 #
 #   irb.rb - irb main module
 #   	$Release Version: 0.9.5 $
-#   	$Revision: 24483 $
-#   	$Date: 2009-08-09 17:44:15 +0900 (Sun, 09 Aug 2009) $
+#   	$Revision$
+#   	$Date$
 #   	by Keiju ISHITSUKA(keiju@ruby-lang.org)
 #
 # --
@@ -23,7 +23,7 @@ require "irb/locale"
 STDOUT.sync = true
 
 module IRB
-  @RCS_ID='-$Id: irb.rb 24483 2009-08-09 08:44:15Z shyouhei $-'
+  @RCS_ID='-$Id$-'
 
   class Abort < Exception;end
 

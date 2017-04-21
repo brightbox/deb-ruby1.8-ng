@@ -2,8 +2,8 @@
 
   marshal.c -
 
-  $Author: nobu $
-  $Date: 2012-03-02 11:45:35 +0900 (Fri, 02 Mar 2012) $
+  $Author$
+  $Date$
   created at: Thu Apr 27 16:30:01 JST 1995
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

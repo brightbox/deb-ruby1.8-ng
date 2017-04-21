@@ -5,7 +5,7 @@
  * in public domain. You can freely use, copy, modify, and redistribute
  * the whole contents, without this notice.
  * --------------------------------------------------------------------
- * $Id: _dtos18.c 11708 2007-02-12 23:01:19Z shyouhei $
+ * $Id$
  */
 
 /* System headers */

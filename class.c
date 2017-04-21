@@ -2,8 +2,8 @@
 
   class.c -
 
-  $Author: shyouhei $
-  $Date: 2009-09-11 12:23:37 +0900 (Fri, 11 Sep 2009) $
+  $Author$
+  $Date$
   created at: Tue Aug 10 15:05:44 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

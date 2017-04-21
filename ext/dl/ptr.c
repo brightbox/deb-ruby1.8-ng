@@ -1,5 +1,5 @@
 /* -*- C -*-
- * $Id: ptr.c 15471 2008-02-14 08:46:06Z matz $
+ * $Id$
  */
 
 #include <ruby.h>

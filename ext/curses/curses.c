@@ -1,5 +1,5 @@
 /* -*- C -*-
- * $Id: curses.c 25899 2009-11-24 07:02:04Z shyouhei $
+ * $Id$
  *
  * ext/curses/curses.c
  * 

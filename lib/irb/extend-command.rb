@@ -1,8 +1,8 @@
 #
 #   irb/extend-command.rb - irb extend command 
 #   	$Release Version: 0.9.5$
-#   	$Revision: 25814 $
-#   	$Date: 2009-11-17 15:51:29 +0900 (Tue, 17 Nov 2009) $
+#   	$Revision$
+#   	$Date$
 #   	by Keiju ISHITSUKA(keiju@ruby-lang.org)
 #
 # --

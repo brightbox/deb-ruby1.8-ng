@@ -2,8 +2,8 @@
 
   node.h -
 
-  $Author: shyouhei $
-  $Date: 2009-02-25 15:15:55 +0900 (Wed, 25 Feb 2009) $
+  $Author$
+  $Date$
   created at: Fri May 28 15:14:02 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

@@ -2,8 +2,8 @@
 
   main.c -
 
-  $Author: shyouhei $
-  $Date: 2007-02-13 08:01:19 +0900 (Tue, 13 Feb 2007) $
+  $Author$
+  $Date$
   created at: Fri Aug 19 13:19:58 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

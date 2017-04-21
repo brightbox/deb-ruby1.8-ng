@@ -2,12 +2,12 @@
 
   bubblebabble.c - BubbleBabble encoding support
 
-  $Author: shyouhei $
+  $Author$
   created at: Fri Oct 13 18:31:42 JST 2006
 
   Copyright (C) 2006 Akinori MUSHA
 
-  $Id: bubblebabble.c 11708 2007-02-12 23:01:19Z shyouhei $
+  $Id$
 
 ************************************************/
 

@@ -1,5 +1,5 @@
 /*
- * $Id: ossl_digest.c 36126 2012-06-18 09:53:29Z shyouhei $
+ * $Id$
  * 'OpenSSL for Ruby' project
  * Copyright (C) 2001-2002  Michal Rokos <m.rokos@sh.cvut.cz>
  * All rights reserved.

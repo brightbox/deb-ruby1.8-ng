@@ -2,8 +2,8 @@
 
   error.c -
 
-  $Author: shyouhei $
-  $Date: 2012-10-12 13:05:35 +0900 (Fri, 12 Oct 2012) $
+  $Author$
+  $Date$
   created at: Mon Aug  9 16:11:34 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

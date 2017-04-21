@@ -39,7 +39,7 @@
 **        E-Mail: furukawa@tcp-ip.or.jp
 **    まで御連絡をお願いします。
 ***********************************************************************/
-/* $Id: nkf.c 28195 2010-06-07 10:45:46Z shyouhei $ */
+/* $Id$ */
 #define NKF_VERSION "2.0.8"
 #define NKF_RELEASE_DATE "2008-11-08"
 #include "config.h"

@@ -1,4 +1,4 @@
-/* $Id: sha1ossl.h 11708 2007-02-12 23:01:19Z shyouhei $ */
+/* $Id$ */
 
 #ifndef SHA1OSSL_H_INCLUDED
 #define SHA1OSSL_H_INCLUDED

@@ -2,8 +2,8 @@
 
   io/wait.c -
 
-  $Author: nobu $
-  $Date: 2008-04-15 12:35:55 +0900 (Tue, 15 Apr 2008) $
+  $Author$
+  $Date$
   created at: Tue Aug 28 09:08:06 JST 2001
 
   All the files in this distribution are covered under the Ruby's

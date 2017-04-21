@@ -1,5 +1,5 @@
 /*
- * $Id: ossl_bn.c 31657 2011-05-20 22:25:35Z shyouhei $
+ * $Id$
  * 'OpenSSL for Ruby' project
  * Copyright (C) 2001-2002  Technorama team <oss-ruby@technorama.net>
  * All rights reserved.

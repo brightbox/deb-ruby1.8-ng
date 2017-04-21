@@ -7,7 +7,7 @@
 # All rights reserved.  You can redistribute and/or modify it under the same
 # terms as Ruby.
 #
-#   $Id: sha2.rb 11708 2007-02-12 23:01:19Z shyouhei $
+#   $Id$
 
 require 'digest'
 
