@@ -8,8 +8,6 @@ Subject: [PATCH 4/4] backport [Backport #9644]
  test/openssl/test_ssl.rb                | 152 +++++++++++++++++++++++++++++++-
  2 files changed, 204 insertions(+), 3 deletions(-)
 
-diff --git a/ext/openssl/lib/openssl/ssl-internal.rb b/ext/openssl/lib/openssl/ssl-internal.rb
-index 9ef6f92..4ff6d72 100644
 --- a/ext/openssl/lib/openssl/ssl-internal.rb
 +++ b/ext/openssl/lib/openssl/ssl-internal.rb
 @@ -97,7 +97,7 @@ module OpenSSL
@@ -88,11 +86,9 @@ index 9ef6f92..4ff6d72 100644
      class SSLSocket
        include Buffering
        include SocketForwarder
-diff --git a/test/openssl/test_ssl.rb b/test/openssl/test_ssl.rb
-index 2e014f1..125f057 100644
 --- a/test/openssl/test_ssl.rb
 +++ b/test/openssl/test_ssl.rb
-@@ -569,6 +569,156 @@ class OpenSSL::TestSSL < Test::Unit::TestCase
+@@ -569,6 +569,156 @@ class OpenSSL::TestSSL < Test::Unit::Tes
      assert_equal(false, OpenSSL::SSL.verify_certificate_identity(cert, '13::17'))
      assert_equal(true,  OpenSSL::SSL.verify_certificate_identity(cert, '13:0:0:0:0:0:0:17'))
    end
@@ -250,6 +246,3 @@ index 2e014f1..125f057 100644
 +
 +end
  end
--- 
-2.3.5
-

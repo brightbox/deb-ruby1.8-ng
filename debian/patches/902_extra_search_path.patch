@@ -2,7 +2,7 @@ Author: akira yamada <akira@debian.org>
 Description: Debian specific patch
 --- a/configure.in
 +++ b/configure.in
-@@ -1858,6 +1858,19 @@ if test "$search_path" != ""; then
+@@ -1859,6 +1859,19 @@ if test "$search_path" != ""; then
      AC_DEFINE_UNQUOTED(RUBY_SEARCH_PATH,"$search_path")
  fi
  
