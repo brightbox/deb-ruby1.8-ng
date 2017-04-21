@@ -1,0 +1,54 @@
+From 836af4e5dc7ef3293a68e07fea47385e2e5942ed Mon Sep 17 00:00:00 2001
+From: emboss <emboss@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+Date: Thu, 29 Mar 2012 00:32:09 +0000
+Subject: [PATCH] * test/openssl/test_x509cert.rb: Exclude test that fails when
+ issuing   a certificate with RSA signature and DSS1 digest for earlier  
+ OpenSSL versions when used in conjunction with OpenSSL 1.0.1.   Thanks, Vit
+ Ondruch, for reporting the issue.   [ruby-core:42949][Bug #6089]
+
+git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@35162 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+---
+ ChangeLog                     | 8 ++++++++
+ test/openssl/test_x509cert.rb | 2 +-
+ test/openssl/test_x509req.rb  | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletion(-)
+
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -161,6 +161,14 @@ Sat Apr 14 18:51:41 2012  Nobuyoshi Naka
+ 	  GC. [exerb-dev:0578].  patched by MURASE Masamitsu
+ 	  <masamitsu.murase AT gmail.com> at [exerb-dev:0580]
+ 
++Thu Mar 29 09:26:17 2012  Martin Bosslet  <Martin.Bosslet@googlemail.com>
++
++	* test/openssl/test_x509cert.rb: Exclude test that fails when issuing
++	  a certificate with RSA signature and DSS1 digest for earlier
++	  OpenSSL versions when used in conjunction with OpenSSL 1.0.1.
++	  Thanks, Vit Ondruch, for reporting the issue.
++	  [ruby-core:42949][Bug #6089]
++
+ Fri Mar  2 11:44:33 2012  Nobuyoshi Nakada  <nobu@ruby-lang.org>
+ 
+ 	* marshal.c (mark_dump_arg): mark destination string.  patch by
+--- a/test/openssl/test_x509cert.rb
++++ b/test/openssl/test_x509cert.rb
+@@ -176,7 +176,7 @@ class OpenSSL::TestX509Certificate < Tes
+     assert_raises(OpenSSL::X509::CertificateError){
+       cert = issue_cert(@ca, @rsa2048, 1, Time.now, Time.now+3600, [],
+                         nil, nil, OpenSSL::Digest::DSS1.new) 
+-    }
++    } if OpenSSL::OPENSSL_VERSION_NUMBER < 0x10001000 # [ruby-core:42949]
+     end
+   end
+ end
+--- a/test/openssl/test_x509req.rb
++++ b/test/openssl/test_x509req.rb
+@@ -144,7 +144,7 @@ class OpenSSL::TestX509Request < Test::U
+   def test_dsig_algorithm_mismatch
+     assert_raise(OpenSSL::X509::RequestError) do
+       issue_csr(0, @dn, @rsa1024, OpenSSL::Digest::DSS1.new)
+-    end
++    end if OpenSSL::OPENSSL_VERSION_NUMBER < 0x10001000 # [ruby-core:42949]
+     assert_raise(OpenSSL::X509::RequestError) do
+       issue_csr(0, @dn, @dsa512, OpenSSL::Digest::MD5.new)
+     end
