@@ -15,3 +15,4 @@ tcltk-no-rpath.patch
 use-ldflags.patch
 ruby_1_8_7-p374-fixes-2015-04-14.patch
 ruby_1_8_7_zlib_type_fix.patch
+ruby-1.8.7-p374-Replace-md5-by-sha256-to-fix-SSL-server-FIPS-compatibility.patch

@@ -1,0 +1,11 @@
+--- a/ext/openssl/lib/openssl/ssl-internal.rb
++++ b/ext/openssl/lib/openssl/ssl-internal.rb
+@@ -199,7 +199,7 @@ module OpenSSL
+         @svr = svr
+         @ctx = ctx
+         unless ctx.session_id_context
+-          session_id = OpenSSL::Digest::MD5.hexdigest($0)
++          session_id = OpenSSL::Digest::SHA256.hexdigest($0)[0...32]
+           @ctx.session_id_context = session_id
+         end
+         @start_immediately = true
