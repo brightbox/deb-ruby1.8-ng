@@ -23,3 +23,4 @@ ruby-1.8.7-p374-Replace-md5-by-sha256-to-fix-SSL-server-FIPS-compatibility.patch
 ruby-2.0.0-p594-CVE-2014-8080-REXML-billion-laughs-attack.patch
 ruby-2.0.0-p598-CVE-2014-8090-REXML-incomplete-fix-for-CVE-2014-8080.patch
 ruby-2.0.0-p607-DNS-Resolv-fall-back-if-canonicalization-fails.patch
+ruby-1.9.3-p0-lib-resolv.rb-retry-via-TCP-if-UDP-reply-is-truncate.patch
