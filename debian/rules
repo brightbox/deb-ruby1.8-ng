@@ -64,13 +64,16 @@ DEB_CONFIGURE_USER_FLAGS += --with-bundled-md5
 DEB_CONFIGURE_USER_FLAGS += --with-bundled-rmd160
 
 DEB_MAKE_BUILD_TARGET = all
-#DEB_MAKE_CHECK_TARGET = check
+DEB_MAKE_CHECK_TARGET = check
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-common-build-arch common-build-indep:: disable-drb $(cdbs_make_check_stamps) restore-drb
-disable-drb::
+common-build-arch common-build-indep:: disable-tests $(cdbs_make_check_stamps) restore-tests
+$(cdbs_make_check_stamps): disable-tests
+disable-tests:
 	mv test/drb _test_drb
-restore-drb::
+	mv test/soap _test_soap
+restore-tests: $(cdbs_make_check_stamps)
+	mv _test_soap test/soap
 	mv _test_drb test/drb
 endif
 
