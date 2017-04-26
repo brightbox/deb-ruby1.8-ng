@@ -15,7 +15,7 @@ examples_dir = $(CURDIR)/debian/ruby$(ruby_ver)-examples/usr/share/doc/ruby$(rub
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+#include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_AUTO_UPDATE_AUTOCONF = YES
 gcc46 := $(shell which gcc-4.6)
@@ -63,13 +63,14 @@ DEB_CONFIGURE_USER_FLAGS += --with-bundled-sha1
 DEB_CONFIGURE_USER_FLAGS += --with-bundled-md5
 DEB_CONFIGURE_USER_FLAGS += --with-bundled-rmd160
 
-DEB_MAKE_BUILD_TARGET = all test
+DEB_MAKE_BUILD_TARGET = all
+#DEB_MAKE_CHECK_TARGET = check
 
-common-post-build-arch::
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	# avoid running drb tests -- they make buildds hang forever
+common-build-arch common-build-indep:: disable-drb $(cdbs_make_check_stamps) restore-drb
+disable-drb::
 	mv test/drb _test_drb
-	-make test-all
+restore-drb::
 	mv _test_drb test/drb
 endif
 
@@ -102,11 +103,11 @@ DEB_SHLIBDEPS_INCLUDE = $(CURDIR)/debian/libruby$(ruby_ver)/usr/lib
 DEB_DH_MAKESHLIBS_ARGS_ALL = -m$(ruby_ver)
 
 common-binary-arch::
-	cd $(CURDIR)/debian/ && tar zxf rubygems-1.8.30.tgz
+	cd $(CURDIR)/debian/
 
 binary-install/libruby$(ruby_ver):: $(patsubst %,binary-install/%,$(filter-out libruby$(ruby_ver),$(DEB_PACKAGES)))
-	mv $(CURDIR)/debian/rubygems-1.8.30/lib/rubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
-	mv $(CURDIR)/debian/rubygems-1.8.30/lib/ubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
+	mv $(CURDIR)/rubygems/lib/rubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
+	mv $(CURDIR)/rubygems/lib/ubygems* $(CURDIR)/debian/tmp/usr/lib/ruby/$(ruby_ver)/
 
 	install -d $(CURDIR)/debian/$(cdbs_curpkg)/$(ruby_archdir)
 	for s in $(CURDIR)/debian/$(cdbs_curpkg).*.in; do \
@@ -152,7 +153,7 @@ binary-install/ruby$(ruby_ver)-dev::
 	    done) | xargs dh_movefiles -p$(cdbs_curpkg)
 
 binary-install/ruby$(ruby_ver)::
-	mv $(CURDIR)/debian/rubygems-1.8.30/bin/gem $(CURDIR)/debian/tmp/usr/bin/gem1.8
+	mv $(CURDIR)/rubygems/bin/gem $(CURDIR)/debian/tmp/usr/bin/gem1.8
 
 	dh_movefiles -p$(cdbs_curpkg) \
 	    usr/bin/ruby$(ruby_ver) \
@@ -161,7 +162,7 @@ binary-install/ruby$(ruby_ver)::
 	    usr/bin/rdoc$(ruby_ver) \
 	    usr/bin/irb$(ruby_ver) \
 	    usr/bin/ri$(ruby_ver) \
-        usr/bin/gem$(ruby_ver) \
+            usr/bin/gem$(ruby_ver) \
 	    usr/share/man/man1/ruby$(ruby_ver).1
 
 binary-post-install/ri$(ruby_ver)::
@@ -215,7 +216,6 @@ clean::
 	    parse.c \
 	    debian/libruby$(ruby_ver).postinst \
 	    debian/libruby$(ruby_ver).prerm
-	rm -rf debian/rubygems-1.8.30/
 
 	if [ -f $(DEB_SRCDIR)/config.guess.cdbs-orig ]; \
 	then \

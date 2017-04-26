@@ -1,3 +1,25 @@
+ruby1.8 (1:1.8.7.376-0ubuntu1~1.gbp29a9ba) UNRELEASED; urgency=medium
+
+  ** SNAPSHOT build @29a9ba6681fb5c2d6bc327f762bd10759a8b3689 **
+
+  * Refresh patches
+  * Replace hardcoded MD5 by sha256 to prevent SSL server failure in FIPS mode
+  * Fix regression introduced by CVE-2013-4073
+  * OpenSSL 1.0.1 requires longer RSA key.
+  * Fix build against OpenSSL with enabled ECC curves.
+  * Exclude failing OpenSSL tests
+  * Fix REXML billion laughs attack
+  * DNS Resolv broken when resolv.conf has option ndots > 1
+  * Prevent Resolv::DNS from returning truncated dns replies
+  * Switch to 3.0 quilt format
+  * Add rubygems extraction
+  * Use framework rules for testing
+  * Update rules to support tarball rubygem component
+  * Snapshot build
+  * Move gem from right location
+
+ -- Neil Wilson <neil@aldur.co.uk>  Tue, 25 Apr 2017 14:10:07 +0100
+
 ruby1.8 (1:1.8.7.375-1bbox1~xenial2) xenial; urgency=low
 
   * Fix compiling with newer zlib
