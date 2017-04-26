@@ -25,3 +25,4 @@ ruby-2.0.0-p598-CVE-2014-8090-REXML-incomplete-fix-for-CVE-2014-8080.patch
 ruby-2.0.0-p607-DNS-Resolv-fall-back-if-canonicalization-fails.patch
 ruby-1.9.3-p0-lib-resolv.rb-retry-via-TCP-if-UDP-reply-is-truncate.patch
 ruby-2.0.0-OpenSSL-cipher-test-does-not-allow-wrap-mode.patch
+disable-cgi-tests-if-interpreter-missing.patch
