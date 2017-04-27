@@ -1,0 +1,148 @@
+From c1f9c88dcc0048e1a069d5c38a04d436f3de5da0 Mon Sep 17 00:00:00 2001
+From: usa <usa@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+Date: Thu, 31 Oct 2013 14:31:52 +0000
+Subject: [PATCH] merge revision(s) 41808: [Backport #9066]
+
+	* ext/openssl/ossl_pkey_ec.c: Ensure compatibility to builds of
+	  OpenSSL with OPENSSL_NO_EC2M defined, but OPENSSL_NO_EC not
+	  defined.
+
+	* test/openssl/test_pkey_ec.rb: Iterate over built-in curves
+	  (and assert their non-emptiness!) instead of hard-coding them, as
+	  this may cause problems with respect to the different availability
+	  of individual curves in individual OpenSSL builds.
+	  [ruby-core:54881] [Bug #8384]
+	  Thanks to Vit Ondruch for providing the patch!
+
+git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/branches/ruby_1_9_3@43486 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+merge revision(s) 41829: [Backport #8384]
+
+	* test/openssl/test_pkey_ec.rb: Skip tests for "Oakley" curves as
+	  they are not suitable for ECDSA.
+	  [ruby-core:54881] [Bug #8384]
+
+git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/branches/ruby_1_9_3@43494 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+---
+ ChangeLog                    | 19 +++++++++++++++++++
+ ext/openssl/ossl_pkey_ec.c   |  4 ++++
+ test/openssl/test_pkey_ec.rb | 32 ++++++++++++++++++--------------
+ 3 files changed, 41 insertions(+), 14 deletions(-)
+
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -10,6 +10,25 @@ Fri Nov 22 12:43:52 2013  Nobuyoshi Naka
+ 	* util.c (ruby_strtod): ignore too long fraction part, which does not
+ 	  affect the result.
+ 
++Fri Nov  1 00:08:21 2013  Martin Bosslet  <Martin.Bosslet@gmail.com>
++
++	* test/openssl/test_pkey_ec.rb: Skip tests for "Oakley" curves as
++	  they are not suitable for ECDSA.
++	  [ruby-core:54881] [Bug #8384]
++
++Thu Oct 31 23:25:25 2013  Martin Bosslet  <Martin.Bosslet@gmail.com>
++
++	* ext/openssl/ossl_pkey_ec.c: Ensure compatibility to builds of
++	  OpenSSL with OPENSSL_NO_EC2M defined, but OPENSSL_NO_EC not
++	  defined.
++	* test/openssl/test_pkey_ec.rb: Iterate over built-in curves
++	  (and assert their non-emptiness!) instead of hard-coding them, as
++	  this may cause problems with respect to the different availability
++	  of individual curves in individual OpenSSL builds.
++	  [ruby-core:54881] [Bug #8384]
++
++	  Thanks to Vit Ondruch for providing the patch!
++
+ Sat Jul  6 06:06:16 2013  Martin Bosslet  <Martin.Bosslet@gmail.com>
+ 
+ 	* lib/openssl/ssl.rb: Fix SSL client connection crash for SAN marked
+--- a/ext/openssl/ossl_pkey_ec.c
++++ b/ext/openssl/ossl_pkey_ec.c
+@@ -757,8 +757,10 @@ static VALUE ossl_ec_group_initialize(in
+                 method = EC_GFp_mont_method();
+             } else if (id == s_GFp_nist) {
+                 method = EC_GFp_nist_method();
++#if !defined(OPENSSL_NO_EC2M)
+             } else if (id == s_GF2m_simple) {
+                 method = EC_GF2m_simple_method();
++#endif
+             }
+ 
+             if (method) {
+@@ -811,8 +813,10 @@ static VALUE ossl_ec_group_initialize(in
+ 
+             if (id == s_GFp) {
+                 new_curve = EC_GROUP_new_curve_GFp;
++#if !defined(OPENSSL_NO_EC2M)
+             } else if (id == s_GF2m) {
+                 new_curve = EC_GROUP_new_curve_GF2m;
++#endif
+             } else {
+                 rb_raise(rb_eArgError, "unknown symbol, must be :GFp or :GF2m");
+             }
+--- a/test/openssl/test_ec.rb
++++ b/test/openssl/test_ec.rb
+@@ -12,24 +12,29 @@ class OpenSSL::TestEC < Test::Unit::Test
+     @data1 = 'foo'
+     @data2 = 'bar' * 1000 # data too long for DSA sig
+ 
+-    @group1 = OpenSSL::PKey::EC::Group.new('secp112r1')
+-    @group2 = OpenSSL::PKey::EC::Group.new('sect163k1')
++    @groups = []
++    @keys = []
+ 
+-    @key1 = OpenSSL::PKey::EC.new
+-    @key1.group = @group1
+-    @key1.generate_key
++    OpenSSL::PKey::EC.builtin_curves.each do |curve, comment|
++      next if curve.start_with?("Oakley") # Oakley curves are not suitable for ECDSA
++      group = OpenSSL::PKey::EC::Group.new(curve)
+ 
+-    @key2 = OpenSSL::PKey::EC.new(@group2.curve_name)
+-    @key2.generate_key
++      key = OpenSSL::PKey::EC.new(group)
++      key.generate_key
+ 
+-    @groups = [@group1, @group2]
+-    @keys = [@key1, @key2]
++      @groups << group
++      @keys << key
++    end
+   end
+ 
+   def compare_keys(k1, k2)
+     assert_equal(k1.to_pem, k2.to_pem)
+   end
+ 
++  def test_builtin_curves
++    assert(!OpenSSL::PKey::EC.builtin_curves.empty?)
++  end
++
+   def test_curve_names
+     @groups.each_with_index do |group, idx|
+       key = @keys[idx]
+@@ -45,11 +50,12 @@ class OpenSSL::TestEC < Test::Unit::Test
+     end
+   end
+ 
+-  def test_encoding
++  def test_group_encoding
+     for group in @groups
+       for meth in [:to_der, :to_pem]
+         txt = group.send(meth)
+         gr = OpenSSL::PKey::EC::Group.new(txt)
++
+         assert_equal(txt, gr.send(meth))
+ 
+         assert_equal(group.generator.to_bn, gr.generator.to_bn)
+@@ -59,7 +65,9 @@ class OpenSSL::TestEC < Test::Unit::Test
+         assert_equal(group.degree, gr.degree)
+       end
+     end
++  end
+ 
++  def test_key_encoding
+     for key in @keys
+       group = key.group
+ 

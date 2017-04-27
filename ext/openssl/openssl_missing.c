@@ -1,5 +1,5 @@
 /*
- * $Id: openssl_missing.c 16467 2008-05-19 03:00:52Z knu $
+ * $Id$
  * 'OpenSSL for Ruby' project
  * Copyright (C) 2001-2002  Michal Rokos <m.rokos@sh.cvut.cz>
  * All rights reserved.

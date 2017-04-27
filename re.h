@@ -2,8 +2,8 @@
 
   re.h -
 
-  $Author: shyouhei $
-  $Date: 2011-05-21 07:29:10 +0900 (Sat, 21 May 2011) $
+  $Author$
+  $Date$
   created at: Thu Sep 30 14:18:32 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

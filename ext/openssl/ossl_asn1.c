@@ -1,5 +1,5 @@
 /*
- * $Id: ossl_asn1.c 29861 2010-11-22 07:22:05Z shyouhei $
+ * $Id$
  * 'OpenSSL for Ruby' team members
  * Copyright (C) 2003
  * All rights reserved.

@@ -2,8 +2,8 @@
 
   gc.c -
 
-  $Author: shyouhei $
-  $Date: 2009-12-24 17:28:08 +0900 (Thu, 24 Dec 2009) $
+  $Author$
+  $Date$
   created at: Tue Oct  5 09:44:46 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

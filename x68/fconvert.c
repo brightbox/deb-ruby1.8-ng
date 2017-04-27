@@ -5,7 +5,7 @@
  * in public domain. You can freely use, copy, modify, and redistribute
  * the whole contents, without this notice.
  * --------------------------------------------------------------------
- * $Id: fconvert.c 11708 2007-02-12 23:01:19Z shyouhei $
+ * $Id$
  */
 /* changed 1997.2.3 by K.Okabe */
 

@@ -2,8 +2,8 @@
 
   util.h -
 
-  $Author: shyouhei $
-  $Date: 2007-02-13 08:01:19 +0900 (Tue, 13 Feb 2007) $
+  $Author$
+  $Date$
   created at: Thu Mar  9 11:55:53 JST 1995
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

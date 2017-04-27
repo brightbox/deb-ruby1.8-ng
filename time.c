@@ -2,8 +2,8 @@
 
   time.c -
 
-  $Author: shyouhei $
-  $Date: 2009-07-13 01:42:27 +0900 (Mon, 13 Jul 2009) $
+  $Author$
+  $Date$
   created at: Tue Dec 28 14:31:59 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

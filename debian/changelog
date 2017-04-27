@@ -1,3 +1,28 @@
+ruby1.8 (1:1.8.7.376-1bbox1) xenial; urgency=medium
+
+  * Update to latest upstream - patchlevel 376
+  * Refresh remaining patches
+  * Replace hardcoded MD5 by sha256 to prevent SSL server failure in FIPS mode
+  * Fix regression introduced by CVE-2013-4073
+  * OpenSSL 1.0.1 requires longer RSA key.
+  * Fix build against OpenSSL with enabled ECC curves.
+  * Exclude failing OpenSSL tests
+  * Fix REXML billion laughs attack
+  * DNS Resolv broken when resolv.conf has option ndots > 1
+  * Prevent Resolv::DNS from returning truncated dns replies
+  * Switch to 3.0 quilt format
+  * Add rubygems extraction
+  * Use framework rules for testing
+  * Update rules to support tarball rubygem component
+  * Move gem from new location
+  * Add rubygem component tarball
+  * OpenSSL-cipher-test-does-not-allow-wrap-mode
+  * Disable CGI tests if interpreter missing
+  * Disable SOAP tests due to missing interpreter
+  * Enable full tests
+
+ -- Neil Wilson <neil@aldur.co.uk>  Thu, 27 Apr 2017 10:20:59 +0100
+
 ruby1.8 (1:1.8.7.375-1bbox1~xenial2) xenial; urgency=low
 
   * Fix compiling with newer zlib

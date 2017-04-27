@@ -3,7 +3,7 @@
 #                       Date: 2000/11/27 09:23:36
 #                       by Yukihiro Matsumoto <matz@caelum.co.jp>
 #
-#                       $Id: tkclass.rb 11708 2007-02-12 23:01:19Z shyouhei $
+#                       $Id$
 
 require "tk"
 

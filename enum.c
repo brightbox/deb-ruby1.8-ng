@@ -2,8 +2,8 @@
 
   enum.c -
 
-  $Author: shyouhei $
-  $Date: 2009-07-25 21:36:29 +0900 (Sat, 25 Jul 2009) $
+  $Author$
+  $Date$
   created at: Fri Oct  1 15:15:19 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

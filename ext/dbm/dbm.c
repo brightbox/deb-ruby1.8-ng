@@ -2,8 +2,8 @@
 
   dbm.c -
 
-  $Author: knu $
-  $Date: 2008-05-19 00:02:36 +0900 (Mon, 19 May 2008) $
+  $Author$
+  $Date$
   created at: Mon Jan 24 15:59:52 JST 1994
 
   Copyright (C) 1995-2001 Yukihiro Matsumoto

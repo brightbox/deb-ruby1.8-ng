@@ -2,8 +2,8 @@
 
   numeric.c -
 
-  $Author: shyouhei $
-  $Date: 2011-12-10 21:17:27 +0900 (Sat, 10 Dec 2011) $
+  $Author$
+  $Date$
   created at: Fri Aug 13 18:33:09 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

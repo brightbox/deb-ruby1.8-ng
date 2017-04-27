@@ -1,8 +1,8 @@
 /*
  * syck.h
  *
- * $Author: nobu $
- * $Date: 2007-07-15 22:24:51 +0900 (Sun, 15 Jul 2007) $
+ * $Author$
+ * $Date$
  *
  * Copyright (C) 2003 why the lucky stiff
  */

@@ -1,5 +1,3 @@
-diff --git a/ext/zlib/zlib.c b/ext/zlib/zlib.c
-index ae21f03..9d29ffd 100644
 --- a/ext/zlib/zlib.c
 +++ b/ext/zlib/zlib.c
 @@ -342,7 +342,7 @@ static VALUE

@@ -1,5 +1,5 @@
 /* -*- C -*-
- * $Id: sym.c 18479 2008-08-11 00:37:21Z shyouhei $
+ * $Id$
  */
 
 #include <ruby.h>

@@ -2,8 +2,8 @@
 
   process.c -
 
-  $Author: shyouhei $
-  $Date: 2010-06-08 18:02:21 +0900 (Tue, 08 Jun 2010) $
+  $Author$
+  $Date$
   created at: Tue Aug 10 14:30:50 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

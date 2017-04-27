@@ -13,7 +13,7 @@
 = Requirements
 
 = Version
-  $Id: ftptls.rb 13657 2007-10-08 11:16:54Z gotoyuzo $
+  $Id$
   
 = Notes
   Tested on FreeBSD 5-CURRENT and 4-STABLE

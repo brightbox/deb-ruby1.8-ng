@@ -1,5 +1,5 @@
 /*
- * $Id: ossl_bio.c 12496 2007-06-08 15:02:04Z technorama $
+ * $Id$
  * 'OpenSSL for Ruby' team members
  * Copyright (C) 2003
  * All rights reserved.

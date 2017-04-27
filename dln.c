@@ -2,8 +2,8 @@
 
   dln.c -
 
-  $Author: knu $
-  $Date: 2008-06-06 19:39:57 +0900 (Fri, 06 Jun 2008) $
+  $Author$
+  $Date$
   created at: Tue Jan 18 17:05:06 JST 1994
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

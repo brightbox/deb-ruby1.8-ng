@@ -5,7 +5,7 @@
 #  Copyright (c) 2004 Googie
 #  Copyright (c) 2004 Pat Thoyts <patthoyts@users.sourceforge.net>
 #
-# $Id: keramik.tcl 11708 2007-02-12 23:01:19Z shyouhei $
+# $Id$
 
 package require Tk 8.4;                 # minimum version for Tile
 package require tile 0.5;               # depends upon tile 0.5

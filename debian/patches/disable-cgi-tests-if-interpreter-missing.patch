@@ -1,0 +1,30 @@
+--- a/test/webrick/test_cgi.rb
++++ b/test/webrick/test_cgi.rb
+@@ -4,6 +4,12 @@ require "test/unit"
+ 
+ class TestWEBrickCGI < Test::Unit::TestCase
+   def test_cgi
++    return unless File.exists?(
++      File.join(
++        ::Config::CONFIG['bindir'],
++	::Config::CONFIG['ruby_install_name']
++      )
++    )
+     accepted = started = stopped = 0
+     requested0 = requested1 = 0
+     config = {
+--- a/test/webrick/test_filehandler.rb
++++ b/test/webrick/test_filehandler.rb
+@@ -233,6 +233,12 @@ class WEBrick::TestFileHandler < Test::U
+   end
+ 
+   def test_script_disclosure
++    return unless File.exists?(
++      File.join(
++        ::Config::CONFIG['bindir'],
++	::Config::CONFIG['ruby_install_name']
++      )
++    )
+     config = {
+       :CGIInterpreter => TestWEBrick::RubyBin,
+       :DocumentRoot => File.dirname(__FILE__),

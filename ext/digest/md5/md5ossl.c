@@ -1,4 +1,4 @@
-/* $Id: md5ossl.c 11708 2007-02-12 23:01:19Z shyouhei $ */
+/* $Id$ */
 
 #include "md5ossl.h"
 

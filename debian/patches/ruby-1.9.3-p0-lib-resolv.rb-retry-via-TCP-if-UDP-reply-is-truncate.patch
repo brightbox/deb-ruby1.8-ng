@@ -1,0 +1,67 @@
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -581,6 +581,11 @@ Fri Nov 19 19:28:00 2010  URABE Shyouhei
+ 	* Makefile.in (fake.rb): hook needed to fake mkmf.rb.
+ 	  #2531 [ruby-core:27327]
+ 
++Sat Oct 30 05:58:54 2010  Tanaka Akira  <akr@fsij.org>
++
++	* lib/resolv.rb: retry via TCP if UDP reply is truncated.
++	  fixed by Julian Mehnle.  [ruby-core:32407]
++
+ Mon Oct 18 10:21:01 2010  NARUSE, Yui  <naruse@ruby-lang.org>
+ 
+ 	* lib/net/http.rb (transport_request): @socket may be nil.
+--- a/lib/resolv.rb
++++ b/lib/resolv.rb
+@@ -475,7 +475,7 @@ class Resolv
+   
+     def each_resource(name, typeclass, &proc)
+       lazy_initialize
+-      requester = make_requester
++      requester = make_udp_requester
+       senders = {}
+       begin
+         @config.resolv(name) {|candidate, tout, nameserver|
+@@ -489,7 +489,19 @@ class Resolv
+           reply, reply_name = requester.request(sender, tout)
+           case reply.rcode
+           when RCode::NoError
+-            extract_resources(reply, reply_name, typeclass, &proc)
++            if reply.tc == 1 and not Requester::TCP === requester
++              requester.close
++              # Retry via TCP:
++              requester = make_tcp_requester
++              senders = {}
++              # This will use TCP for all remaining candidates (assuming the
++              # current candidate does not already respond successfully via
++              # TCP).  This makes sense because we already know the full
++              # response will not fit in an untruncated UDP packet.
++              redo
++            else
++              extract_resources(reply, reply_name, typeclass, &proc)
++            end
+             return
+           when RCode::NXDomain
+             raise Config::NXDomain.new(reply_name.to_s)
+@@ -502,7 +514,7 @@ class Resolv
+       end
+     end
+ 
+-    def make_requester # :nodoc:
++    def make_udp_requester # :nodoc:
+       nameserver_port = @config.nameserver_port
+       if nameserver_port.length == 1
+         Requester::ConnectedUDP.new(*nameserver_port[0])
+@@ -511,6 +523,11 @@ class Resolv
+       end
+     end
+ 
++    def make_tcp_requester # :nodoc:
++      nameserver_port = @config.nameserver_port
++      return Requester::TCP.new(*nameserver_port[0])
++    end
++
+     def extract_resources(msg, name, typeclass) # :nodoc:
+       if typeclass < Resource::ANY
+         n0 = Name.create(name)

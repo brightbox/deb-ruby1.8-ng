@@ -39,7 +39,7 @@
 ###  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ###  SUCH DAMAGE.
 ###
-### $Id: mdoc2man.rb 11708 2007-02-12 23:01:19Z shyouhei $
+### $Id$
 ###
 
 class Mdoc2Man

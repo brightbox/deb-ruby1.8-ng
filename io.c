@@ -2,8 +2,8 @@
 
   io.c -
 
-  $Author: shyouhei $
-  $Date: 2011-05-23 13:49:40 +0900 (Mon, 23 May 2011) $
+  $Author$
+  $Date$
   created at: Fri Oct 15 18:08:59 JST 1993
 
   Copyright (C) 1993-2003 Yukihiro Matsumoto

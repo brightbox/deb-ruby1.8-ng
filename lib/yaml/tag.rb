@@ -1,5 +1,5 @@
 # -*- mode: ruby; ruby-indent-level: 4; tab-width: 4 -*- vim: sw=4 ts=4
-# $Id: tag.rb 16084 2008-04-19 11:45:39Z knu $
+# $Id$
 #
 # = yaml/tag.rb: methods for associating a taguri to a class.
 #

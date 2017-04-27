@@ -3,7 +3,7 @@ Description: patch for Debian bug #341256
 replace AC_FUNC_SETPGRP with something that works when cross-compiling
 --- a/configure.in
 +++ b/configure.in
-@@ -831,7 +831,25 @@ main()
+@@ -832,7 +832,25 @@ main()
  fi
  
  AC_FUNC_GETPGRP
