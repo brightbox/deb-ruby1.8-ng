@@ -1,6 +1,31 @@
 --- a/ext/zlib/zlib.c
 +++ b/ext/zlib/zlib.c
-@@ -342,7 +342,7 @@ static VALUE
+@@ -335,6 +335,24 @@ rb_zlib_crc32(argc, argv, klass)
+     return do_checksum(argc, argv, crc32);
+ }
+ 
++/* As reported by sammyx, z_crc_t and z_const are not defined in pre-1.2.70 releases of zlib */
++/* See <https://github.com/madler/zlib/commit/6c9bd474aa08312ef2e2e9655a80e18db24a1680#diff-d466aa66f7e453e0c8a7719229cff391R391> */
++#if ZLIB_VERNUM < 0x1270
++
++#ifdef Z_U4
++   typedef Z_U4 z_crc_t;
++#else
++   typedef unsigned long z_crc_t;
++#endif
++
++#if defined(ZLIB_CONST) && !defined(z_const)
++#  define z_const const
++#else
++#  define z_const
++#endif
++
++#endif
++
+ /*
+  * Returns the table for calculating CRC checksum as an array.
+  */
+@@ -342,7 +360,7 @@ static VALUE
  rb_zlib_crc_table(obj)
      VALUE obj;
  {
