@@ -1,3 +1,9 @@
+ruby1.8 (1:1.8.7.376-1bbox2) xenial; urgency=medium
+
+  * Fixup check stamp
+
+ -- Neil Wilson <neil@aldur.co.uk>  Thu, 27 Apr 2017 12:02:13 +0100
+
 ruby1.8 (1:1.8.7.376-1bbox1) xenial; urgency=medium
 
   * Update to latest upstream - patchlevel 376
