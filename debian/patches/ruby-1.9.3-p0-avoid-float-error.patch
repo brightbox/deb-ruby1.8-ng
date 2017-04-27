@@ -1,0 +1,28 @@
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -457,6 +457,11 @@ Fri May 20 23:06:31 2011  NAKAMURA, Hiro
+ 	  accepts only Strings, so call Integer#to_s(16).
+ 	  16 is for an optimization. [ruby-dev:42336]
+ 
++Mon Apr 18 12:15:46 2011  NAKAMURA Usaku  <usa@ruby-lang.org>
++
++	* test/ruby/test_range.rb (TestRange#test_step_ruby_core_35753):
++	  avoid float error. [ruby-core:35804]
++
+ Fri Feb 18 21:18:55 2011  Shugo Maeda  <shugo@ruby-lang.org>
+ 
+ 	* test/ruby/test_exception.rb (TestException::test_to_s_taintness_propagation):
+--- a/test/ruby/test_range.rb
++++ b/test/ruby/test_range.rb
+@@ -19,8 +19,8 @@ class TestRange < Test::Unit::TestCase
+     assert_equal(6, (1...6.3).step.to_a.size)
+     assert_equal(5, (1.1...6).step.to_a.size)
+     assert_equal(5, (1...6).step(1.1).to_a.size)
+-    assert_equal(3, (1.0...6.3).step(1.8).to_a.size)
+-    assert_equal(3, (1.0...6.4).step(1.8).to_a.size)
+-    assert_equal(4, (1.0...6.5).step(1.8).to_a.size)
++    assert_equal(3, (1.0...5.4).step(1.5).to_a.size)
++    assert_equal(3, (1.0...5.5).step(1.5).to_a.size)
++    assert_equal(4, (1.0...5.6).step(1.5).to_a.size)
+   end
+ end
