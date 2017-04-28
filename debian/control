@@ -2,7 +2,6 @@ Source: ruby1.8
 Section: ruby
 Priority: optional
 Maintainer: John Leach <john@brightbox.co.uk>
-Uploaders: John Leach <john@brightbox.co.uk>
 Build-Depends: cdbs, debhelper (>= 5), autotools-dev, autoconf,
  m4, quilt (>= 0.40), patch, bison, binutils (>= 2.14.90.0.7),
  libgdbm-dev, libncurses5-dev,
