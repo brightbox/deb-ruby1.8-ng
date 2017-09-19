@@ -13,10 +13,6 @@ module WEBrick
   module HTTPStatus
 
     class Status      < StandardError
-      def initialize(*args)
-        args[0] = AccessLog.escape(args[0]) unless args.empty?
-        super(*args)
-      end
       class << self
         attr_reader :code, :reason_phrase
       end
