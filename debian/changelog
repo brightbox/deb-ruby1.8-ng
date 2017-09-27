@@ -1,4 +1,4 @@
-ruby1.8 (1:1.8.7.376-1bbox3~xenial1) xenial; urgency=low
+ruby1.8 (1:1.8.7.376-1bbox5~xenial1) xenial; urgency=low
 
   * Fix replacing rubygems/rubygems1.8 packages
 
