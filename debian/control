@@ -12,9 +12,9 @@ Vcs-Browser: https://github.com/brightbox/deb-ruby1.8-ng
 Package: ruby1.8
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libruby1.8 (= ${binary:Version})
-Conflicts: irb1.8 (<< 1.8.7.249-3~), rdoc1.8 (<< 1.8.7.249-3~), ri1.8 (<< 1.8.7.334-4~), ruby (<= 4.5), ri (<= 4.5)
-Replaces: irb1.8, rdoc1.8
-Provides: irb1.8, rdoc1.8, ruby, ruby-interpreter
+Conflicts: irb1.8 (<< 1.8.7.249-3~), rdoc1.8 (<< 1.8.7.249-3~), ri1.8 (<< 1.8.7.334-4~), ruby (<= 4.5), ri (<= 4.5), rubygems, rubygems1.8
+Replaces: irb1.8, rdoc1.8, rubygems, rubygems1.8
+Provides: irb1.8, rdoc1.8, ruby, ruby-interpreter, rubygems1.8
 Suggests: ruby1.8-examples, ri1.8, ruby-switch
 Description: Interpreter of object-oriented scripting language Ruby 1.8
  Ruby is the interpreted scripting language for quick and easy
@@ -33,8 +33,8 @@ Package: libruby1.8
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: libsdbm-ruby1.8, libdl-ruby1.8, libpty-ruby1.8, libbigdecimal-ruby1.8, libsyslog-ruby1.8, libstrscan-ruby1.8, libiconv-ruby1.8, libracc-runtime-ruby1.8, libdrb-ruby1.8, liberb-ruby1.8, libtest-unit-ruby1.8, librexml-ruby1.8, libxmlrpc-ruby1.8, libsoap-ruby1.8, libwebrick-ruby1.8, libyaml-ruby1.8, libzlib-ruby1.8, libcurses-ruby1.8, libopenssl-ruby1.8 (<< 1.8.6), libdbm-ruby1.8, libgdbm-ruby1.8, libreadline-ruby1.8, libopenssl-ruby1.8, irb1.8 (<< 1.8.7.249-3~), rdoc1.8 (<< 1.8.7.249-3~)
-Replaces: libsdbm-ruby1.8, libdl-ruby1.8, libpty-ruby1.8, libbigdecimal-ruby1.8, libsyslog-ruby1.8, libstrscan-ruby1.8, libiconv-ruby1.8, libracc-runtime-ruby1.8, libdrb-ruby1.8, liberb-ruby1.8, libtest-unit-ruby1.8, librexml-ruby1.8, libxmlrpc-ruby1.8, libsoap-ruby1.8, libwebrick-ruby1.8, libyaml-ruby1.8, libzlib-ruby1.8, libcurses-ruby1.8, libdbm-ruby1.8, libgdbm-ruby1.8, libreadline-ruby1.8, libopenssl-ruby1.8, irb1.8, rdoc1.8
+Conflicts: libsdbm-ruby1.8, libdl-ruby1.8, libpty-ruby1.8, libbigdecimal-ruby1.8, libsyslog-ruby1.8, libstrscan-ruby1.8, libiconv-ruby1.8, libracc-runtime-ruby1.8, libdrb-ruby1.8, liberb-ruby1.8, libtest-unit-ruby1.8, librexml-ruby1.8, libxmlrpc-ruby1.8, libsoap-ruby1.8, libwebrick-ruby1.8, libyaml-ruby1.8, libzlib-ruby1.8, libcurses-ruby1.8, libopenssl-ruby1.8 (<< 1.8.6), libdbm-ruby1.8, libgdbm-ruby1.8, libreadline-ruby1.8, libopenssl-ruby1.8, irb1.8 (<< 1.8.7.249-3~), rdoc1.8 (<< 1.8.7.249-3~), rubygems1.8 (>0)
+Replaces: libsdbm-ruby1.8, libdl-ruby1.8, libpty-ruby1.8, libbigdecimal-ruby1.8, libsyslog-ruby1.8, libstrscan-ruby1.8, libiconv-ruby1.8, libracc-runtime-ruby1.8, libdrb-ruby1.8, liberb-ruby1.8, libtest-unit-ruby1.8, librexml-ruby1.8, libxmlrpc-ruby1.8, libsoap-ruby1.8, libwebrick-ruby1.8, libyaml-ruby1.8, libzlib-ruby1.8, libcurses-ruby1.8, libdbm-ruby1.8, libgdbm-ruby1.8, libreadline-ruby1.8, libopenssl-ruby1.8, irb1.8, rdoc1.8, rubygems1.8 (>0)
 Provides: libsdbm-ruby1.8, libdl-ruby1.8, libpty-ruby1.8, libbigdecimal-ruby1.8, libsyslog-ruby1.8, libstrscan-ruby1.8, libiconv-ruby1.8, libracc-runtime-ruby1.8, libdrb-ruby1.8, liberb-ruby1.8, libtest-unit-ruby1.8, librexml-ruby1.8, libxmlrpc-ruby1.8, libsoap-ruby1.8, libwebrick-ruby1.8, libyaml-ruby1.8, libzlib-ruby1.8, libcurses-ruby1.8, libdbm-ruby1.8, libgdbm-ruby1.8, libreadline-ruby1.8, libopenssl-ruby1.8
 Description: Libraries necessary to run Ruby 1.8
  Ruby is the interpreted scripting language for quick and easy
