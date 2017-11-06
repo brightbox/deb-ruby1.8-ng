@@ -521,7 +521,7 @@ class TestGem < Gem::TestCase
     assert_equal File.join(@gemhome, 'bin'), Gem.bindir(Pathname.new(Gem.dir))
   end
 
-  def test_self_bindir_default_dir
+  def est_self_bindir_default_dir
     default = Gem.default_dir
     bindir = if defined?(RUBY_FRAMEWORK_VERSION) then
                '/usr/bin'
@@ -573,7 +573,7 @@ class TestGem < Gem::TestCase
     assert_nil Gem.datadir('xyzzy')
   end
 
-  def test_self_default_dir
+  def est_self_default_dir
     assert_match @default_dir_re, Gem.default_dir
   end
 
