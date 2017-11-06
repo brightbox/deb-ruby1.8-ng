@@ -1,3 +1,10 @@
+ruby1.8 (1:1.8.7.376-1bbox8~xenial1) xenial; urgency=medium
+
+  * Use /var/lib/gems for gem installation
+  * Disable system gem updater
+
+ -- John Leach <john@brightbox.co.uk>  Mon, 06 Nov 2017 17:46:52 +0000
+
 ruby1.8 (1:1.8.7.376-1bbox6~xenial1) xenial; urgency=low
 
   * Bump version to rebuild
